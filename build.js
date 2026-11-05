@@ -208,7 +208,7 @@ ${p.noindex ? '<meta name="robots" content="noindex">' : '<meta name="robots" co
 <script>document.documentElement.className += ' js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
 ${p.preload || ''}
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')}</script>
@@ -256,7 +256,7 @@ add({
     <img src="/assets/img/${IMG.hero.file}-1600.webp" width="1600" height="900" alt="${esc(IMG.hero.alt)}" fetchpriority="high">
   </picture>
   <div class="wrap">
-    <span class="eyebrow">Durham Region &amp; GTA</span>
+    <span class="eyebrow">Durham Region &amp; East GTA</span>
     <h1>Beautiful renovations. Built to last.</h1>
     <p class="lead">Basement, bathroom and home renovations in ${esc(C.city)} and across ${esc(C.region)}, by a team homeowners describe as honest, on time and clear about what to expect.</p>
     <div class="hero-actions"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="/projects/">See Our Projects</a></div>
