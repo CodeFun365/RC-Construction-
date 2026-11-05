@@ -268,7 +268,7 @@ add({
 <section class="trust" aria-label="Why homeowners trust us">
   <ul class="wrap">
     <li><b>${C.google.rating} ★</b>5-star Google rating</li>
-    <li><b>${C.homestars.rating} / 5</b>HomeStars, ${C.homestars.count} reviews</li>
+    <li><b>${C.homestars.rating} / 5</b>HomeStars rating</li>
     <li><b>Since ${C.homestars.since}</b>Reviewed by homeowners on HomeStars</li>
     <li><b>Warranty</b>Offered on our work</li>
   </ul>
@@ -368,7 +368,7 @@ add({
     <div class="section-head"><span class="eyebrow">Reviews</span><h2>Homeowners rate us 5.0 on Google</h2><p class="lead">Read what customers say in their own words on Google and HomeStars.</p></div>
     <div class="rating-row">
       <div class="rating-card"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>5-star Google rating</p></div>
-      <div class="rating-card"><div class="score">${C.homestars.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>HomeStars rating from ${C.homestars.count} reviews. <a href="${C.homestars.url}">Read them on HomeStars</a></p></div>
+      <div class="rating-card"><div class="score">${C.homestars.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>HomeStars rating. <a href="${C.homestars.url}">Read them on HomeStars</a></p></div>
     </div>
     <p class="mt-lg"><a class="btn btn-ghost" href="/reviews/">What customers say</a></p>
   </div>
@@ -539,12 +539,12 @@ ${cta('Planning something similar?')}`,
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Reviews', url: '/reviews/' }];
   add({
     path: '/reviews/', title: `Customer Reviews | ${C.name}, Oshawa`, crumbs,
-    description: `${C.name} has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars from ${C.homestars.count} reviews. See what Oshawa homeowners say.`,
+    description: `${C.name} has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars. See what Oshawa homeowners say.`,
     body: `${pageHero({ crumbs, eyebrow: 'Reviews', h1: `Rated ${C.google.rating} by homeowners on Google`, lead: 'Read what customers say about working with Sam and the crew.', actions: false })}
 <section class="section"><div class="wrap">
   <div class="rating-row">
     <div class="rating-card"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>5-star Google rating</p></div>
-    <div class="rating-card"><div class="score">${C.homestars.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>HomeStars rating from ${C.homestars.count} reviews, since ${C.homestars.since}. <a href="${C.homestars.url}">Read every review on HomeStars</a></p></div>
+    <div class="rating-card"><div class="score">${C.homestars.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>HomeStars rating, reviewed since ${C.homestars.since}. <a href="${C.homestars.url}">Read every review on HomeStars</a></p></div>
   </div>
   <div class="section-head mt-lg"><h2>What homeowners mention most</h2></div>
   <div class="grid grid-2">
@@ -628,7 +628,7 @@ ${cta()}`,
     <dt>Based in</dt><dd>${esc(C.city)}, Ontario, Canada</dd>
     <dt>Serves</dt><dd>${esc(C.areas.join(', '))}</dd>
     <dt>Services</dt><dd>Basement renovations, basement rental units, bathroom renovations, home renovations</dd>
-    <dt>Reviews</dt><dd>5-star rating on Google; ${C.homestars.rating} on HomeStars (${C.homestars.count})</dd>
+    <dt>Reviews</dt><dd>5-star rating on Google; ${C.homestars.rating} on HomeStars</dd>
     <dt>On HomeStars since</dt><dd>${C.homestars.since}</dd>
     <dt>Warranty</dt><dd>Offered on our work</dd>
     <dt>Phone</dt><dd><a href="${tel}">${esc(C.phoneDisplay)}</a></dd>
@@ -897,13 +897,13 @@ Sitemap: ${abs('/sitemap.xml')}
 // llms.txt: a plain summary for AI assistants (GEO).
 fs.writeFileSync(path.join(OUT, 'llms.txt'), `# ${C.name}
 
-> ${C.name} is a renovation contractor based in ${C.city}, Ontario, Canada, serving ${C.region} (${C.areas.join(', ')}). It does basement renovations, basement rental units, bathroom renovations and home renovations (kitchens, flooring, stairs, trim, wainscoting, painting). It has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars from ${C.homestars.count} reviews. Phone: ${C.phoneDisplay} (call or text).
+> ${C.name} is a renovation contractor based in ${C.city}, Ontario, Canada, serving ${C.region} (${C.areas.join(', ')}). It does basement renovations, basement rental units, bathroom renovations and home renovations (kitchens, flooring, stairs, trim, wainscoting, painting). It has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars. Phone: ${C.phoneDisplay} (call or text).
 
 ## Key facts
 - Based in: ${C.city}, Ontario, Canada
 - Serves: ${C.areas.join(', ')}
 - Led by: Sam
-- Reviews: 5-star rating on Google; ${C.homestars.rating} on HomeStars (${C.homestars.count} reviews), reviewed since ${C.homestars.since}
+- Reviews: 5-star rating on Google; ${C.homestars.rating} on HomeStars, reviewed since ${C.homestars.since}
 - Warranty: offered on its work
 - Coordinates electricians and plumbers as part of its projects
 - Contact: ${C.phoneDisplay} (call or text), estimate requests at ${abs('/get-an-estimate/')}
