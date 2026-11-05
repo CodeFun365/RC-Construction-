@@ -90,7 +90,7 @@ const footer = () => `<footer class="site-footer">
     <div class="footer-grid">
       <div>
         ${brand}
-        <p style="margin-top:18px">Basement, bathroom and home renovations in ${esc(C.city)} and across ${esc(C.region)}, Ontario.</p>
+        <p style="margin-top:18px">Basement, Bathroom, Kitchen and Home renovations across ${esc(C.region)} and Toronto.</p>
         <p><a href="${tel}">${esc(C.phoneDisplay)}</a> · call or text</p>
       </div>
       <div><h2>Services</h2><ul>${SERVICES.map((s) => `<li><a href="/services/${s.slug}/">${s.name}</a></li>`).join('')}</ul></div>
@@ -258,7 +258,7 @@ add({
   <div class="wrap">
     <span class="eyebrow">Durham Region &amp; East GTA</span>
     <h1>Beautiful renovations. Built to last.</h1>
-    <p class="lead">Basement, bathroom and home renovations in ${esc(C.city)} and across ${esc(C.region)}, by a team homeowners describe as honest, on time and clear about what to expect.</p>
+    <p class="lead">Basement, Bathroom, Kitchen and Home renovations across ${esc(C.region)} and Toronto, by a team homeowners describe as honest, on time and clear about what to expect.</p>
     <div class="hero-actions"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="/projects/">See Our Projects</a></div>
     <p class="hero-note">Takes about a minute. We'll call or text you back.</p>
     <div class="rating-chip"><strong>★ ${C.google.rating}</strong> on Google from ${C.google.count} reviews · <strong>${C.homestars.rating}</strong> on HomeStars</div>
