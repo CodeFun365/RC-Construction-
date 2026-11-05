@@ -245,7 +245,7 @@ const HOME_FAQ = [
 add({
   path: '/',
   title: `${C.name} | Basement, Bathroom & Home Renovations in Oshawa`,
-  description: `Basement, bathroom and home renovations in Oshawa and Durham Region. Rated ${C.google.rating} on Google from ${C.google.count} reviews. Call or text ${C.phoneDisplay}.`,
+  description: `Basement, bathroom and home renovations in Oshawa and Durham Region. 5-star rated on Google. Call or text ${C.phoneDisplay}.`,
   preload: `<link rel="preload" as="image" href="/assets/img/${IMG.hero.file}-800.webp" media="(max-width: 700px)"><link rel="preload" as="image" href="/assets/img/${IMG.hero.file}-1600.webp" media="(min-width: 701px)">`,
   schema: [faqLd(HOME_FAQ)],
   body: `
@@ -261,13 +261,13 @@ add({
     <p class="lead">Basement, Bathroom, Kitchen and Home renovations across ${esc(C.region)} and Toronto, by a team homeowners describe as honest, on time and clear about what to expect.</p>
     <div class="hero-actions"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="/projects/">See Our Projects</a></div>
     <p class="hero-note">Takes about a minute. We'll call or text you back.</p>
-    <div class="rating-chip"><strong>★ ${C.google.rating}</strong> on Google from ${C.google.count} reviews · <strong>${C.homestars.rating}</strong> on HomeStars</div>
+    <div class="rating-chip"><strong>★★★★★</strong> 5-star Google rating · <strong>${C.homestars.rating}</strong> on HomeStars</div>
   </div>
 </section>
 
 <section class="trust" aria-label="Why homeowners trust us">
   <ul class="wrap">
-    <li><b>${C.google.rating} ★</b>Google rating, ${C.google.count} reviews</li>
+    <li><b>${C.google.rating} ★</b>5-star Google rating</li>
     <li><b>${C.homestars.rating} / 5</b>HomeStars, ${C.homestars.count} reviews</li>
     <li><b>Since ${C.homestars.since}</b>Reviewed by homeowners on HomeStars</li>
     <li><b>Warranty</b>Offered on our work</li>
@@ -367,7 +367,7 @@ add({
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">Reviews</span><h2>Homeowners rate us 5.0 on Google</h2><p class="lead">Read what customers say in their own words on Google and HomeStars.</p></div>
     <div class="rating-row">
-      <div class="rating-card"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>Google rating from ${C.google.count} reviews</p></div>
+      <div class="rating-card"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>5-star Google rating</p></div>
       <div class="rating-card"><div class="score">${C.homestars.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>HomeStars rating from ${C.homestars.count} reviews. <a href="${C.homestars.url}">Read them on HomeStars</a></p></div>
     </div>
     <p class="mt-lg"><a class="btn btn-ghost" href="/reviews/">What customers say</a></p>
@@ -539,11 +539,11 @@ ${cta('Planning something similar?')}`,
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Reviews', url: '/reviews/' }];
   add({
     path: '/reviews/', title: `Customer Reviews | ${C.name}, Oshawa`, crumbs,
-    description: `${C.name} is rated ${C.google.rating} on Google from ${C.google.count} reviews and ${C.homestars.rating} on HomeStars from ${C.homestars.count} reviews. See what Oshawa homeowners say.`,
+    description: `${C.name} has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars from ${C.homestars.count} reviews. See what Oshawa homeowners say.`,
     body: `${pageHero({ crumbs, eyebrow: 'Reviews', h1: `Rated ${C.google.rating} by homeowners on Google`, lead: 'Read what customers say about working with Sam and the crew.', actions: false })}
 <section class="section"><div class="wrap">
   <div class="rating-row">
-    <div class="rating-card"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>Google rating from ${C.google.count} reviews</p></div>
+    <div class="rating-card"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>5-star Google rating</p></div>
     <div class="rating-card"><div class="score">${C.homestars.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>HomeStars rating from ${C.homestars.count} reviews, since ${C.homestars.since}. <a href="${C.homestars.url}">Read every review on HomeStars</a></p></div>
   </div>
   <div class="section-head mt-lg"><h2>What homeowners mention most</h2></div>
@@ -599,7 +599,7 @@ ${cta()}`,
     <p>A finished basement must meet the Ontario Building Code and Oshawa's Zoning By-law. Adding an apartment has its own rules; see <a href="/services/basement-rental-units/">basement rental units</a>.</p>
     <p>Read more in our <a href="/resources/basement-permits-oshawa/">Oshawa basement permit guide</a>.</p>
     <h2>Why Oshawa homeowners choose us</h2>
-    <ul><li>${C.google.rating} stars on Google from ${C.google.count} reviews, and ${C.homestars.rating} on HomeStars</li><li>One team from demolition to the final walkthrough, with trades coordinated</li><li>Clear quotes and timelines that we keep to</li></ul>
+    <ul><li>A 5-star Google rating, and ${C.homestars.rating} on HomeStars</li><li>One team from demolition to the final walkthrough, with trades coordinated</li><li>Clear quotes and timelines that we keep to</li></ul>
   </article>
   <aside>${sideCard('Renovating in Oshawa?')}</aside>
 </div></section>
@@ -628,7 +628,7 @@ ${cta()}`,
     <dt>Based in</dt><dd>${esc(C.city)}, Ontario, Canada</dd>
     <dt>Serves</dt><dd>${esc(C.areas.join(', '))}</dd>
     <dt>Services</dt><dd>Basement renovations, basement rental units, bathroom renovations, home renovations</dd>
-    <dt>Reviews</dt><dd>${C.google.rating} on Google (${C.google.count}); ${C.homestars.rating} on HomeStars (${C.homestars.count})</dd>
+    <dt>Reviews</dt><dd>5-star rating on Google; ${C.homestars.rating} on HomeStars (${C.homestars.count})</dd>
     <dt>On HomeStars since</dt><dd>${C.homestars.since}</dd>
     <dt>Warranty</dt><dd>Offered on our work</dd>
     <dt>Phone</dt><dd><a href="${tel}">${esc(C.phoneDisplay)}</a></dd>
@@ -786,7 +786,7 @@ const choice = (name, value, required = true) => `<label class="choice"><input t
   </form>
   <aside>
     <div class="side-card"><h2>What happens next</h2><ol class="next-steps"><li>We call or text to talk it through</li><li>We visit to see the space</li><li>You get a clear quote and timeline</li></ol><a class="btn btn-primary" href="${tel}">Call ${esc(C.phoneDisplay)}</a><a class="btn btn-light" href="${sms}">Text us</a></div>
-    <div class="rating-card mt-lg"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>Google rating from ${C.google.count} reviews</p></div>
+    <div class="rating-card mt-lg"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>5-star Google rating</p></div>
   </aside>
 </div></section>`,
   });
@@ -897,13 +897,13 @@ Sitemap: ${abs('/sitemap.xml')}
 // llms.txt: a plain summary for AI assistants (GEO).
 fs.writeFileSync(path.join(OUT, 'llms.txt'), `# ${C.name}
 
-> ${C.name} is a renovation contractor based in ${C.city}, Ontario, Canada, serving ${C.region} (${C.areas.join(', ')}). It does basement renovations, basement rental units, bathroom renovations and home renovations (kitchens, flooring, stairs, trim, wainscoting, painting). Rated ${C.google.rating} on Google from ${C.google.count} reviews and ${C.homestars.rating} on HomeStars from ${C.homestars.count} reviews. Phone: ${C.phoneDisplay} (call or text).
+> ${C.name} is a renovation contractor based in ${C.city}, Ontario, Canada, serving ${C.region} (${C.areas.join(', ')}). It does basement renovations, basement rental units, bathroom renovations and home renovations (kitchens, flooring, stairs, trim, wainscoting, painting). It has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars from ${C.homestars.count} reviews. Phone: ${C.phoneDisplay} (call or text).
 
 ## Key facts
 - Based in: ${C.city}, Ontario, Canada
 - Serves: ${C.areas.join(', ')}
 - Led by: Sam
-- Reviews: ${C.google.rating} on Google (${C.google.count} reviews); ${C.homestars.rating} on HomeStars (${C.homestars.count} reviews), reviewed since ${C.homestars.since}
+- Reviews: 5-star rating on Google; ${C.homestars.rating} on HomeStars (${C.homestars.count} reviews), reviewed since ${C.homestars.since}
 - Warranty: offered on its work
 - Coordinates electricians and plumbers as part of its projects
 - Contact: ${C.phoneDisplay} (call or text), estimate requests at ${abs('/get-an-estimate/')}
