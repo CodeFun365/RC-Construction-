@@ -314,3 +314,30 @@ a.card:hover { transform: translateY(-3px); }
 .form-nav { display: flex; gap: 12px; justify-content: space-between; flex-wrap: wrap; margin-top: 4px; }
 .form-nav .btn:last-child { margin-left: auto; }
 .next-steps { padding-left: 1.2em; margin: 0 0 8px; color: #c9d1d4; display: grid; gap: 6px; }
+
+/* "Not sure where to start?" card at the end of the services grid */
+.card-cta { background: var(--charcoal); color: #fff; text-decoration: none; justify-content: center; }
+.card-cta .card-body { justify-content: center; gap: 10px; padding: 32px 28px; }
+.card-cta .eyebrow { color: #e1c19b; margin: 0; }
+.card-cta h3 { color: #fff; }
+.card-cta p { color: #c9d1d4; }
+.card-cta .btn { align-self: flex-start; margin-top: 8px; }
+
+/* Google reviews */
+.reviews-band { background: linear-gradient(180deg, var(--ivory-2), var(--ivory)); }
+.rating-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: -6px 0 28px; color: var(--ink-2); font-size: .98rem; }
+.rating-strip .big { font: 600 2.4rem/1 var(--display); color: var(--charcoal); }
+.rating-strip .stars { color: #e3a008; letter-spacing: 3px; font-size: 1.3rem; }
+.review { margin: 0; background: #fff; border-radius: var(--radius); padding: 26px 26px 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; border-top: 4px solid #e3a008; position: relative; }
+.review::before { content: "\201C"; position: absolute; right: 22px; top: 6px; font: 600 5rem/1 var(--display); color: var(--ivory-2); pointer-events: none; }
+.review-top { display: flex; align-items: center; gap: 12px; position: relative; }
+.review-top strong { display: block; color: var(--charcoal); font-size: 1.05rem; }
+.review-top div span { display: block; color: var(--ink-2); font-size: .9rem; }
+.avatar { width: 46px; height: 46px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--charcoal); color: #f3d7b2; font: 600 1.25rem/1 var(--display); }
+.g-badge { margin-left: auto; font: 600 .78rem/1 var(--body); padding: 6px 10px; border-radius: 999px; background: #f1f3f4; color: #3c4043; }
+.review .stars { color: #e3a008; letter-spacing: 3px; font-size: 1.15rem; }
+.review h3 { font-size: 1.25rem; margin: 0; }
+.review p, .review blockquote { margin: 0; color: var(--ink); font-size: 1rem; line-height: 1.6; }
+.review blockquote { font-style: italic; }
+.review figcaption { margin-top: auto; padding-top: 6px; font-size: .95rem; }
+.review figcaption a { color: var(--bronze-dark); font-weight: 600; }

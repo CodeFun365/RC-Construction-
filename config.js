@@ -13,11 +13,20 @@ module.exports = {
   city: 'Oshawa',
   region: 'Durham Region',
   province: 'ON',
-  // CONFIRM: the towns Sam actually serves. Only Oshawa gets its own page until real projects exist elsewhere.
-  areas: ['Oshawa', 'Whitby', 'Courtice', 'Ajax', 'Bowmanville', 'Pickering'],
+  // Towns Sam serves (confirmed by the RC team, Nov 2026), grouped by region for the Service Areas page.
+  areaGroups: [
+    { region: 'Durham Region', towns: ['Oshawa', 'Whitby', 'Courtice', 'Bowmanville', 'Ajax', 'Pickering', 'Port Perry'] },
+    { region: 'York Region', towns: ['Whitchurch-Stouffville', 'King City', 'Gormley'] },
+    { region: 'Northumberland County', towns: ['Cobourg'] },
+  ],
 
   // Review facts shown on the site (keep in sync with the live profiles).
-  google: { rating: '5.0', count: 34 },
+  // Google listings: the main one (34 reviews) and a second one at RC's street address (1 review).
+  google: {
+    rating: '5.0', count: 34,
+    url: 'https://www.google.com/maps/place/?q=place_id:ChIJT_eoHR9EIm4RoMKXWhseQpo',
+    url2: 'https://www.google.com/maps/place/?q=place_id:ChIJ5xxXKucc1YkRy0xM9eXxkg0',
+  },
   homestars: { rating: '4.9', count: 29, url: 'https://www.homestars.com/profile/2920698-rc-construction', since: 2018 },
   warranty: true, // HomeStars profile: "Offers warranty". CONFIRM the terms before describing them.
 
@@ -25,5 +34,6 @@ module.exports = {
   web3formsKey: process.env.WEB3FORMS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY',
 
   // Other public profiles (add Facebook / Instagram / Google listing link when known).
-  sameAs: ['https://www.homestars.com/profile/2920698-rc-construction'],
+  sameAs: ['https://www.homestars.com/profile/2920698-rc-construction', 'https://www.google.com/maps/place/?q=place_id:ChIJT_eoHR9EIm4RoMKXWhseQpo'],
 };
+module.exports.areas = module.exports.areaGroups.flatMap((g) => g.towns);

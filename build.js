@@ -6,7 +6,8 @@
 // - No "free estimate", "licensed and insured", "award-winning" or years-in-business claims.
 // - Stock photos are illustrative only and never shown as RC's own projects (see /photo-credits/).
 // - No thin city pages: only Oshawa gets a location page until real projects exist elsewhere.
-// - Customer reviews are summarised in our own words with links to the full reviews.
+// - Service pages talk about Durham Region and the wider area, never one town.
+// - Customer reviews are summarised in our own words with the reviewer's first name and a link to the full review.
 
 const fs = require('fs');
 const path = require('path');
@@ -51,17 +52,21 @@ function img(key, { sizes = '(min-width: 1000px) 50vw, 100vw', eager = false, cl
 // ---------------------------------------------------------------------------
 const SERVICES = [
   { slug: 'basement-renovations', name: 'Basement Renovations', short: 'Finished basements, rec rooms, offices and bedrooms, built to feel like the rest of your home.', img: 'basementStairs' },
-  { slug: 'basement-rental-units', name: 'Basement Rental Units', short: 'Planning a basement apartment the right way, from layout to the City of Oshawa permit.', img: 'suite' },
+  { slug: 'basement-rental-units', name: 'Basement Rental Units', short: 'Basement apartments planned the right way, from layout to the building permit.', img: 'suite' },
   { slug: 'bathroom-renovations', name: 'Bathroom Renovations', short: 'Full bathroom remodels: tile, showers, tubs, vanities, lighting and plumbing, done in one go.', img: 'shower' },
-  { slug: 'home-renovations', name: 'Home Renovations', short: 'Kitchens, flooring, stairs, trim, wainscoting and paint, for one room or the whole house.', img: 'kitchen' },
+  { slug: 'kitchen-remodeling', name: 'Kitchen Remodeling', short: 'New kitchens and kitchen updates: layout, cabinets, islands, quartz counters, tile and floors.', img: 'kitchen' },
+  { slug: 'home-renovations', name: 'Home Renovations', short: 'Flooring, stairs, trim, wainscoting, paint and open-concept updates, for one room or the whole house.', img: 'stairs' },
 ];
+const AREA_LINE = 'Durham Region, York Region and Cobourg';
+const serviceCards = (sizes) => SERVICES.map((s) => `<a class="card" href="/services/${s.slug}/">${img(s.img, { sizes })}<div class="card-body"><h3>${s.name}</h3><p>${s.short}</p><span class="card-link">Learn more</span></div></a>`).join('')
+  + `<a class="card card-cta" href="/get-an-estimate/"><div class="card-body"><span class="eyebrow">Not sure where to start?</span><h3>Tell us about your project</h3><p>Three quick questions, then we call or text you back with next steps.</p><span class="btn btn-primary">Get an Estimate</span></div></a>`;
 
 const NAV = [
   { href: '/', label: 'Home' },
   { href: '/services/', label: 'Services', sub: SERVICES.map((s) => ({ href: `/services/${s.slug}/`, label: s.name })) },
   { href: '/projects/', label: 'Our Projects' },
   { href: '/service-areas/', label: 'Service Areas' },
-  { href: '/about/', label: 'About Us', sub: [{ href: '/about/', label: 'About RC Construction' }, { href: '/our-process/', label: 'Our Process' }, { href: '/reviews/', label: 'Reviews' }, { href: '/resources/', label: 'Homeowner Guides' }] },
+  { href: '/about/', label: 'About Us', sub: [{ href: '/about/', label: 'About RC Construction' }, { href: '/our-process/', label: 'Our Process' }, { href: '/reviews/', label: 'Reviews' }, { href: '/faq/', label: 'FAQ' }, { href: '/resources/', label: 'Homeowner Guides' }] },
   { href: '/contact/', label: 'Contact' },
 ];
 
@@ -94,7 +99,7 @@ const footer = () => `<footer class="site-footer">
         <p><a href="${tel}">${esc(C.phoneDisplay)}</a> · call or text</p>
       </div>
       <div><h2>Services</h2><ul>${SERVICES.map((s) => `<li><a href="/services/${s.slug}/">${s.name}</a></li>`).join('')}</ul></div>
-      <div><h2>Company</h2><ul><li><a href="/about/">About Us</a></li><li><a href="/our-process/">Our Process</a></li><li><a href="/projects/">Our Projects</a></li><li><a href="/reviews/">Reviews</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h2>Company</h2><ul><li><a href="/about/">About Us</a></li><li><a href="/our-process/">Our Process</a></li><li><a href="/projects/">Our Projects</a></li><li><a href="/reviews/">Reviews</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li></ul></div>
       <div><h2>Homeowner guides</h2><ul>${GUIDES.map((g) => `<li><a href="/resources/${g.slug}/">${g.short}</a></li>`).join('')}<li><a href="/service-areas/">Service areas</a></li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -141,9 +146,25 @@ const PROJECTS = [
 
 const projectCard = (p) => `<article class="project"><span class="meta">${esc(p.cat)} · ${p.year}</span><h3>${esc(p.title)}</h3><ul>${p.scope.map((s) => `<li>${esc(s)}</li>`).join('')}</ul><p class="note">Summarised from a <a href="${C.homestars.url}">HomeStars review</a>. Project photos coming soon.</p></article>`;
 
+// Real Google reviews (Google Maps, Nov 2026), summarised in our own words. First name and last initial only.
+// To use a customer's exact words instead, paste them into `quote` and they show in quotation marks.
+const REVIEWS = [
+  { name: 'Alexey S.', job: 'Basement flood repair', title: 'Done in two and a half weeks, not four', text: 'After a basement flood, Alexey needed walls, baseboards, flooring, parts of the ceiling and paint redone. A company recommended by the insurer estimated four weeks. Sam and Farid finished in two and a half, and Alexey was fully satisfied with the quality.', url: C.google.url },
+  { name: 'Cindy D.', job: 'Kitchen, floors and bathroom', title: 'A kitchen, new floors and a surprise bathroom', text: 'Cindy hired us for a kitchen demolition and new flooring, then added an unexpected bathroom renovation. Cindy describes Sam and Farid as honest and dependable, with the work done quickly and exactly to spec.', url: C.google.url },
+  { name: 'Sayed A.', job: 'Whole-house renovation', title: 'A whole house, and the basement next', text: 'Sayed had RC Construction renovate the full house and says the workmanship went beyond expectations. Sayed calls us reliable, professional and honest, and booked us to finish the basement next.', url: C.google.url },
+  { name: 'Amira E.', job: 'Custom floor repair', title: 'Same-day floor repair', text: 'Amira needed a custom floorboard repaired. Our crew came the same day, and Amira says the repair is seamless and the team clearly takes pride in its work.', url: C.google.url },
+  { name: 'Leo V.', job: 'Renovation', title: '"Absolutely gorgeous" work', text: 'Leo calls the finished work gorgeous and says dealing with Sam and Farid was seamless, with honest, fair work from start to finish.', url: C.google.url2 },
+  { name: 'Carly M.', job: 'Renovation', title: 'Worked around Carly’s schedule', text: 'Carly valued how flexible Sam and Farid were, fitting the job around Carly’s schedule, and was also very happy with the glass installer Sam recommended.', url: C.google.url },
+];
+const reviewCard = (r) => `<figure class="review"><div class="review-top"><span class="avatar" aria-hidden="true">${esc(r.name[0])}</span><div><strong>${esc(r.name)}</strong><span>${esc(r.job)}</span></div><span class="g-badge" title="Google review">Google</span></div>
+  <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+  <h3>${esc(r.title)}</h3>
+  ${r.quote ? `<blockquote>“${esc(r.quote)}”</blockquote>` : `<p>${esc(r.text)}</p>`}
+  <figcaption><a href="${r.url}" rel="noopener">Read ${esc(r.name.split(' ')[0])}’s review on Google</a></figcaption></figure>`;
+
 const GUIDES = [
-  { slug: 'basement-permits-oshawa', short: 'Basement permits in Oshawa', title: 'Do You Need a Permit to Finish a Basement in Oshawa?', img: 'basementOpen' },
-  { slug: 'basement-renovation-cost-factors', short: 'What drives basement costs', title: 'What Affects the Cost of a Basement Renovation in Oshawa?', img: 'measure' },
+  { slug: 'basement-permits-oshawa', short: 'Basement permit guide', title: 'Do You Need a Permit to Finish a Basement in Oshawa?', img: 'basementOpen' },
+  { slug: 'basement-renovation-cost-factors', short: 'What drives basement costs', title: 'What Affects the Cost of a Basement Renovation?', img: 'measure' },
   { slug: 'basement-finishing-vs-rental-unit', short: 'Finishing vs a rental unit', title: 'Basement Finishing vs a Basement Rental Unit: What’s Different?', img: 'suite' },
 ];
 
@@ -162,7 +183,7 @@ const business = {
   telephone: C.phone,
   image: abs(`/assets/img/${IMG.hero.file}-1600.webp`),
   logo: abs('/assets/logo-512.png'),
-  description: `${C.name} is a renovation contractor based in ${C.city}, Ontario, doing basement renovations, basement rental units, bathroom renovations and home renovations across ${C.region}.`,
+  description: `${C.name} is a renovation contractor doing basement renovations, basement rental units, bathroom renovations, kitchen remodeling and home renovations across ${AREA_LINE}, Ontario.`,
   address: { '@type': 'PostalAddress', addressLocality: C.city, addressRegion: C.province, addressCountry: 'CA' },
   areaServed: C.areas.map((a) => ({ '@type': 'City', name: `${a}, Ontario` })),
   knowsAbout: ['Basement renovation', 'Basement finishing', 'Basement apartments', 'Bathroom renovation', 'Kitchen renovation', 'Hardwood flooring', 'Tile installation', 'Stair renovation', 'Trim and wainscoting'],
@@ -172,7 +193,7 @@ const business = {
 const website = { '@type': 'WebSite', '@id': `${URL}/#website`, url: `${URL}/`, name: C.name, publisher: { '@id': BUSINESS_ID } };
 const breadcrumbLd = (crumbs) => ({ '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: abs(c.url) })) });
 const faqLd = (items) => ({ '@type': 'FAQPage', mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: stripTags(f.a) } })) });
-const serviceLd = (s, desc) => ({ '@type': 'Service', name: `${s.name} in ${C.city} and ${C.region}`, serviceType: s.name, description: desc, provider: { '@id': BUSINESS_ID }, areaServed: C.areas.map((a) => ({ '@type': 'City', name: `${a}, Ontario` })), url: abs(`/services/${s.slug}/`) });
+const serviceLd = (s, desc) => ({ '@type': 'Service', name: `${s.name} in ${AREA_LINE}`, serviceType: s.name, description: desc, provider: { '@id': BUSINESS_ID }, areaServed: C.areas.map((a) => ({ '@type': 'City', name: `${a}, Ontario` })), url: abs(`/services/${s.slug}/`) });
 const articleLd = (g, desc) => ({ '@type': 'Article', headline: g.title, description: desc, datePublished: '2026-11-03', dateModified: TODAY, author: { '@id': BUSINESS_ID }, publisher: { '@id': BUSINESS_ID }, image: abs(`/assets/img/${IMG[g.img].file}-1600.webp`), mainEntityOfPage: abs(`/resources/${g.slug}/`) });
 
 // ---------------------------------------------------------------------------
@@ -232,20 +253,43 @@ ${footer()}
 const pages = [];
 const add = (p) => pages.push(p);
 
-const HOME_FAQ = [
-  { q: 'What areas does RC Construction serve?', a: `<p>We're based in ${C.city} and work across ${C.region}, including ${C.areas.slice(1).join(', ')}. Not sure if you're in our area? <a href="/contact/">Ask us</a>.</p>` },
-  { q: 'What kinds of renovations do you do?', a: `<p>Mostly basements, bathrooms and home renovations: basement finishing and rental units, full bathroom remodels, kitchens, hardwood and tile floors, stairs, trim, wainscoting and painting. See <a href="/services/">all services</a>.</p>` },
-  { q: 'Do you coordinate electricians and plumbers?', a: '<p>Yes. We bring in and coordinate the electricians and plumbers your project needs, so you deal with one team from demolition to the final walkthrough.</p>' },
-  { q: 'Do you offer a warranty?', a: '<p>Yes, we offer a warranty on our work. Ask us for the details that apply to your project when we quote.</p>' },
-  { q: 'Do I need a permit to finish my basement in Oshawa?', a: `<p>Usually, yes. The City of Oshawa says renovations that change the inside of a home, like finishing a basement or adding a bathroom, usually need a building permit. Read our <a href="/resources/basement-permits-oshawa/">Oshawa basement permit guide</a>.</p>` },
-  { q: 'How do I get an estimate?', a: `<p>Call or text <a href="${tel}">${esc(C.phoneDisplay)}</a>, or <a href="/get-an-estimate/">answer three quick questions</a> with a few photos. We'll talk it through, visit to see the space, and give you a clear quote before any work starts.</p>` },
+const ONTARIO_UNITS = 'https://www.ontario.ca/page/add-second-unit-your-house';
+const areaSentence = () => C.areaGroups.map((g) => `${g.region} (${g.towns.join(', ')})`).join('; ');
+// Grouped FAQ for /faq/. Answers are short and direct (answer first) so search engines and AI assistants can quote them.
+const FAQ_GROUPS = [
+  { title: 'Getting started', items: [
+    { q: 'What areas does RC Construction serve?', a: `<p>We renovate homes across ${areaSentence()}. Not sure if you're in our area? <a href="/get-an-estimate/">Ask us</a> and we'll tell you straight away.</p>`, home: true },
+    { q: 'What types of renovations do you do?', a: `<p>Basement renovations and basement rental units, bathroom renovations, kitchen remodeling and home renovations such as flooring, stairs, trim, wainscoting, painting and open-concept updates. We also take smaller repair jobs. See <a href="/services/">all services</a>.</p>`, home: true },
+    { q: 'How do I get an estimate?', a: `<p>Call or text <a href="${tel}">${esc(C.phoneDisplay)}</a>, or <a href="/get-an-estimate/">answer three quick questions</a> online. We talk it through, visit to see the space, and give you a clear written quote and timeline before any work starts.</p>`, home: true },
+    { q: 'Do you take on small jobs and repairs?', a: '<p>Yes. Along with full renovations we do repairs and single-room updates, such as replacing a damaged floorboard, new baseboards and trim, or painting. One customer had a custom floor repair done the same day they called.</p>' },
+    { q: 'Do you offer a warranty?', a: '<p>Yes, we offer a warranty on our work. Ask us for the details that apply to your project when we quote.</p>', home: true },
+  ] },
+  { title: 'Cost and timing', items: [
+    { q: 'How much does a renovation cost?', a: `<p>It depends on the size of the space, the layout, whether plumbing moves or a bathroom or kitchen is added, the condition of what's there now, and the finishes you choose. That's why we quote after seeing the space rather than guessing over the phone. Our guide explains <a href="/resources/basement-renovation-cost-factors/">what drives basement renovation costs</a>.</p>`, home: true },
+    { q: 'How long does a basement renovation take?', a: '<p>It depends on the size and what goes in, such as a bathroom or a rental unit. You get a timeline with your quote, and customers tell us we keep to it. After one basement flood, an insurer-recommended company estimated four weeks for the repairs; we finished in two and a half.</p>', home: true },
+    { q: 'How long does a bathroom or kitchen renovation take?', a: '<p>A bathroom or kitchen is usually faster than a basement, but it depends on how much changes: moving plumbing, new cabinets and layout changes add time. We give you a realistic timeline with your quote and keep you updated as we go.</p>' },
+    { q: 'Can I stay in my home during the renovation?', a: '<p>Usually, yes. Most homeowners stay home during basement work. For kitchens and bathrooms we talk through which rooms will be out of use and for how long, so you can plan around it.</p>' },
+  ] },
+  { title: 'Permits and rental units', items: [
+    { q: 'Do I need a building permit to finish a basement in Ontario?', a: '<p>Usually, yes. Ontario municipalities generally require a building permit when you build new rooms, add a bathroom, move plumbing or change walls. Replacing finishes like flooring usually does not need one. Rules vary by town, so check with your local building department; we talk through permits with you before work starts.</p>', home: true },
+    { q: 'Can I add a basement apartment to my house?', a: `<p>Often, yes. Ontario allows a second unit in many detached, semi-detached and row houses, as long as it meets your municipality's zoning and the Ontario Building Code. You need a building permit from your local building department and a separate electrical permit. Source: <a href="${ONTARIO_UNITS}">Government of Ontario</a>.</p>` },
+    { q: 'What does a legal basement apartment need?', a: `<p>The Government of Ontario lists Building Code requirements for room sizes, ceiling heights, windows, plumbing, ventilation, electrical, fire separation, smoke and carbon monoxide alarms, and exits. Your town may also have parking and other rules. See <a href="/services/basement-rental-units/">basement rental units</a>.</p>` },
+  ] },
+  { title: 'Working with us', items: [
+    { q: 'Do you coordinate electricians and plumbers?', a: '<p>Yes. We bring in and coordinate the electricians and plumbers your project needs, so you deal with one team from demolition to the final walkthrough.</p>', home: true },
+    { q: 'Can you help me choose tile, flooring and finishes?', a: '<p>Yes. We talk through options that suit your budget and how you use the space, and recommend suppliers we trust. Customers have also been happy with the specialist trades Sam refers, such as glass installers.</p>' },
+    { q: 'Do you repair flooded or water-damaged basements?', a: '<p>Yes. We have repaired basements after flooding, including walls, baseboards, flooring, ceilings and paint, and restored basements with new drywall and floors. Talk to your insurer about what your policy covers.</p>' },
+    { q: 'Who will I deal with during the job?', a: '<p>Sam and the RC Construction crew. You get one point of contact, regular updates, and a final walkthrough when the work is done.</p>' },
+  ] },
 ];
+const ALL_FAQ = FAQ_GROUPS.flatMap((g) => g.items);
+const HOME_FAQ = ALL_FAQ.filter((f) => f.home);
 
 // Home
 add({
   path: '/',
-  title: `${C.name} | Basement, Bathroom & Home Renovations in Oshawa`,
-  description: `Basement, bathroom and home renovations in Oshawa and Durham Region. 5-star rated on Google. Call or text ${C.phoneDisplay}.`,
+  title: `${C.name} | Basement, Bathroom, Kitchen & Home Renovations in Durham Region`,
+  description: `Basement, bathroom, kitchen and home renovations across Durham Region, York Region and Cobourg. 5-star rated on Google. Call or text ${C.phoneDisplay}.`,
   preload: `<link rel="preload" as="image" href="/assets/img/${IMG.hero.file}-800.webp" media="(max-width: 700px)"><link rel="preload" as="image" href="/assets/img/${IMG.hero.file}-1600.webp" media="(min-width: 701px)">`,
   schema: [faqLd(HOME_FAQ)],
   body: `
@@ -285,13 +329,13 @@ add({
 <section class="section">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">What we do</span><h2>Renovation services tailored to your home</h2><p class="lead">From an unfinished basement to a tired bathroom or a dated main floor, we plan it properly and build it to last.</p></div>
-    <div class="grid grid-4">${SERVICES.map((s) => `<a class="card" href="/services/${s.slug}/">${img(s.img, { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<div class="card-body"><h3>${s.name}</h3><p>${s.short}</p><span class="card-link">Learn more</span></div></a>`).join('')}</div>
+    <div class="grid grid-3">${serviceCards('(min-width: 1000px) 33vw, (min-width: 720px) 50vw, 100vw')}</div>
   </div>
 </section>
 
 <section class="section alt">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">Basement ideas</span><h2>What could your basement become?</h2><p class="lead">Basements are most of our work. These are the spaces Oshawa homeowners ask us for.</p></div>
+    <div class="section-head"><span class="eyebrow">Basement ideas</span><h2>What could your basement become?</h2><p class="lead">Basements are most of our work. These are the spaces Durham Region homeowners ask us for.</p></div>
     <div class="ideas">
       <a class="idea" href="/services/basement-rental-units/">${img('suite', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A rental unit</strong><span>A second unit for a tenant or family</span></span></a>
       <a class="idea" href="/services/basement-renovations/">${img('recRoom', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A games or rec room</strong><span>Room for the pool table and movie nights</span></span></a>
@@ -363,14 +407,12 @@ add({
   </div>
 </section>
 
-<section class="section alt">
+<section class="section reviews-band">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow">Reviews</span><h2>Homeowners rate us 5.0 on Google</h2><p class="lead">Read what customers say in their own words on Google and HomeStars.</p></div>
-    <div class="rating-row">
-      <div class="rating-card"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>5-star Google rating</p></div>
-      <div class="rating-card"><div class="score">${C.homestars.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>HomeStars rating. <a href="${C.homestars.url}">Read them on HomeStars</a></p></div>
-    </div>
-    <p class="mt-lg"><a class="btn btn-ghost" href="/reviews/">What customers say</a></p>
+    <div class="section-head"><span class="eyebrow">Google reviews</span><h2>What our customers say</h2><p class="lead">Real customers, real projects. Every review links to the original on Google.</p></div>
+    <div class="rating-strip"><span class="big">${C.google.rating}</span><span class="stars" aria-hidden="true">★★★★★</span><span>5-star Google rating · ${C.homestars.rating} on HomeStars</span></div>
+    <div class="grid grid-3 reviews">${REVIEWS.slice(0, 3).map(reviewCard).join('')}</div>
+    <div class="hero-actions mt-lg"><a class="btn btn-primary" href="/reviews/">Read more reviews</a><a class="btn btn-ghost" href="${C.google.url}" rel="noopener">See us on Google</a></div>
   </div>
 </section>
 
@@ -378,9 +420,9 @@ add({
   <div class="wrap split flip">
     <div>
       <span class="eyebrow">Service areas</span>
-      <h2>Based in Oshawa, working across Durham Region</h2>
-      <p class="lead">We renovate homes in ${esc(C.city)} and nearby communities.</p>
-      <ul class="chips"><li><a href="/service-areas/oshawa/">Oshawa</a></li>${C.areas.slice(1).map((a) => `<li><span>${esc(a)}</span></li>`).join('')}</ul>
+      <h2>Renovating homes across Durham Region and beyond</h2>
+      <p class="lead">From Pickering to Cobourg, and north to Port Perry, Stouffville and King City.</p>
+      <ul class="chips">${C.areas.map((a) => (a === 'Oshawa' ? '<li><a href="/service-areas/oshawa/">Oshawa</a></li>' : `<li><span>${esc(a)}</span></li>`)).join('')}</ul>
       <p class="mt-lg"><a href="/service-areas/">More about our service areas</a></p>
     </div>
     ${img('home')}
@@ -394,20 +436,20 @@ add({
   </div>
 </section>
 
-<section class="section"><div class="wrap">${faqBlock(HOME_FAQ)}</div></section>
+<section class="section"><div class="wrap">${faqBlock(HOME_FAQ)}<p class="mt-lg"><a class="btn btn-ghost" href="/faq/">See all questions</a></p></div></section>
 ${cta('Ready to transform your home?')}`,
 });
 
 // Services hub
 add({
   path: '/services/',
-  title: `Renovation Services in Oshawa & Durham Region | ${C.name}`,
-  description: `Basement renovations, basement rental units, bathroom renovations and home renovations in Oshawa and Durham Region by ${C.name}.`,
+  title: `Renovation Services in Durham Region | ${C.name}`,
+  description: `Basement renovations, basement rental units, bathroom renovations, kitchen remodeling and home renovations across Durham Region, York Region and Cobourg by ${C.name}.`,
   crumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services/' }],
   ogImage: 'basementStairs',
-  body: `${pageHero({ crumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services/' }], eyebrow: 'Services', h1: 'Renovation services for Oshawa homes', lead: `Basements, bathrooms and the rest of the house, planned properly and built by one accountable team.`, image: 'basementStairs' })}
+  body: `${pageHero({ crumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services/' }], eyebrow: 'Services', h1: 'Renovation services across Durham Region', lead: `Basements, bathrooms and the rest of the house, planned properly and built by one accountable team.`, image: 'basementStairs' })}
 <section class="section"><div class="wrap">
-  <div class="grid grid-2">${SERVICES.map((s) => `<a class="card" href="/services/${s.slug}/">${img(s.img)}<div class="card-body"><h3>${s.name}</h3><p>${s.short}</p><span class="card-link">Explore ${s.name.toLowerCase()}</span></div></a>`).join('')}</div>
+  <div class="grid grid-3">${serviceCards('(min-width: 1000px) 33vw, (min-width: 720px) 50vw, 100vw')}</div>
 </div></section>
 <section class="section alt"><div class="wrap split">
   <div><span class="eyebrow">Also on our list</span><h2>Other work we do</h2><p class="lead">Jobs our customers have hired us for, alongside bigger renovations.</p>
@@ -421,79 +463,99 @@ ${cta()}`,
 // Service pages
 const SERVICE_PAGES = {
   'basement-renovations': {
-    title: `Basement Renovations in Oshawa | Finished Basements | ${C.name}`,
-    description: `Basement renovations and basement finishing in Oshawa and Durham Region: rec rooms, bedrooms, offices and basement bathrooms. See projects and request an estimate.`,
-    h1: 'Basement renovations in Oshawa, built for the way you live',
-    lead: 'Turn unused space into a family room, guest suite, office or games room that feels like the rest of your home.',
+    title: `Basement Renovations in Durham Region | Finished Basements | ${C.name}`,
+    description: `Basement renovations and basement finishing across Durham Region, York Region and Cobourg: rec rooms, bedrooms, offices, basement bathrooms and flood repairs.`,
+    h1: 'Basement renovations, built for the way you live',
+    lead: 'Turn unused space into a family room, guest suite, office or games room that feels like the rest of your home, anywhere in Durham Region.',
     hero: 'recRoom',
-    body: `<p>Basements are the work our customers write about most. Whether you're finishing a bare basement from the studs or restoring one after damage, we plan the space with you and handle every stage, from framing to the last coat of paint.</p>
+    body: `<p>Basements are the work our customers write about most. Whether you're finishing a bare basement from the studs or restoring one after a flood, we plan the space with you and handle every stage, from framing to the last coat of paint.</p>
 <h2>What we build</h2>
 <ul><li>Family rooms, rec rooms and media rooms</li><li>Bedrooms and guest suites</li><li>Home offices</li><li>Basement bathrooms and laundry rooms</li><li>Storage and built-ins</li><li>Separate side entrances</li></ul>
 <h2>What's included</h2>
 <ul><li>Framing, drywall, insulation and ceilings</li><li>Flooring, baseboards, trim and interior doors</li><li>Lighting, including pot lights, through the electricians we coordinate</li><li>Plumbing for basement bathrooms and laundry, through the plumbers we coordinate</li><li>Priming and painting</li><li>Demolition, supplies and clean-up</li></ul>
-<div class="callout"><p><strong>Planning a rental unit downstairs?</strong> That has extra rules in Oshawa. See <a href="/services/basement-rental-units/">basement rental units</a>.</p></div>
+<h2>Flooded or water-damaged basement?</h2>
+<p>We repair basements after flooding: walls, baseboards, flooring, ceilings and paint. One customer's insurer-recommended company estimated four weeks; we finished in two and a half.</p>
+<div class="callout"><p><strong>Planning a rental unit downstairs?</strong> That has extra requirements. See <a href="/services/basement-rental-units/">basement rental units</a>.</p></div>
 <h2>Things we'll talk through with you</h2>
-<ul><li>How you'll use the space, now and in a few years</li><li>Moisture and any past water problems</li><li>Ceiling height, ducts and beams, and where lighting goes</li><li>Windows and safe ways out of the basement</li><li>Whether your plans need a <a href="/resources/basement-permits-oshawa/">building permit from the City of Oshawa</a></li></ul>
+<ul><li>How you'll use the space, now and in a few years</li><li>Moisture and any past water problems</li><li>Ceiling height, ducts and beams, and where lighting goes</li><li>Windows and safe ways out of the basement</li><li>Whether your plans need a <a href="/resources/basement-permits-oshawa/">building permit</a> from your town</li></ul>
 <h2>What affects the cost</h2>
 <p>Size, the number of rooms, whether you add a bathroom, ceiling and flooring choices and the condition of the space all matter. Our guide explains <a href="/resources/basement-renovation-cost-factors/">what drives basement renovation costs</a>. We give you a clear quote after seeing the space.</p>`,
     faq: [
       { q: 'How long does a basement renovation take?', a: '<p>It depends on the size and what goes in, such as a bathroom. We give you a timeline with your quote, and customers tell us we keep to it.</p>' },
-      { q: 'Do I need a permit to finish my basement in Oshawa?', a: `<p>Usually, yes. The City of Oshawa lists finishing a basement, moving plumbing and adding a bathroom as work that usually needs a building permit. See our <a href="/resources/basement-permits-oshawa/">basement permit guide</a>.</p>` },
+      { q: 'Do I need a permit to finish my basement?', a: '<p>Usually, yes. Ontario municipalities generally require a building permit when you build new rooms, add a bathroom or move plumbing. Rules vary by town, so we talk it through with you before work starts.</p>' },
       { q: 'Can you add a bathroom to my basement?', a: '<p>Yes. We coordinate the plumbing and build the bathroom as part of the basement project.</p>' },
-      { q: 'Do you fix water-damaged basements?', a: '<p>Yes. We have restored basements with new drywall, floors and baseboards, and fixed unexpected problems found along the way.</p>' },
+      { q: 'Do you fix flooded or water-damaged basements?', a: '<p>Yes. We have repaired flooded basements and restored others with new drywall, floors and baseboards, fixing unexpected problems found along the way.</p>' },
     ],
   },
   'basement-rental-units': {
-    title: `Basement Rental Units in Oshawa | Basement Apartments | ${C.name}`,
-    description: `Planning a basement apartment in Oshawa? We build basement rental units and walk you through the City of Oshawa permit, zoning and parking rules.`,
-    h1: 'Basement rental units in Oshawa, planned the right way',
-    lead: 'Add a second unit that works for tenants or family, with the City of Oshawa requirements in mind from day one.',
+    title: `Basement Rental Units in Durham Region | Basement Apartments | ${C.name}`,
+    description: `Planning a basement apartment in Durham Region or York Region? We build basement rental units and plan them around Ontario Building Code and permit requirements.`,
+    h1: 'Basement rental units, planned the right way',
+    lead: 'Add a second unit that works for tenants or family, with permit and Building Code requirements in mind from day one.',
     hero: 'suite',
     body: `<p>We've built basement rental units, including a two-bedroom unit in a walkout basement where the owners kept a bedroom for themselves. A rental unit has more requirements than a regular basement finish, so we plan it with you before anything is built.</p>
 <h2>What we build</h2>
 <ul><li>One- and two-bedroom basement units</li><li>Kitchens, bathrooms and laundry for the unit</li><li>Separate entrances</li><li>Flooring, trim, doors and paint to a finish tenants will appreciate</li><li>Electrical and plumbing through the trades we coordinate</li></ul>
-<h2>Oshawa rules to know before you start</h2>
-<p>From the City of Oshawa's <a href="${OSHAWA_APARTMENTS}">accessory apartments</a> page:</p>
-<ul><li>A building permit is required to legalize a second or third unit created after July 1994.</li><li>Accessory apartments are allowed in single detached and semi-detached homes, among other house types, in listed zones. A lot can have up to three residential units.</li><li>One extra parking space is required for each accessory unit; for two units, three spaces.</li><li>Permit plans show items like smoke and CO alarm locations, ways out (means of egress) and fire separations.</li><li>New units built with a permit get a two-unit house registration after the final inspection.</li></ul>
-<div class="callout"><p>This is a summary, not legal advice. Rules change, so check the City's current requirements or call Service Oshawa at 905-436-3311 before you commit. Our guide compares <a href="/resources/basement-finishing-vs-rental-unit/">basement finishing and a rental unit</a>.</p></div>`,
+<h2>Rules to know before you start</h2>
+<p>From the Government of Ontario's guide, <a href="${ONTARIO_UNITS}">Add a second unit in your house</a>:</p>
+<ul><li>A second unit is a self-contained home with its own kitchen, bathroom and sleeping area.</li><li>It must meet your municipality's zoning and other by-laws. If your property can't comply, you can't add the unit.</li><li>You need a building permit from your local building department, with construction drawings, and a separate electrical permit.</li><li>The Building Code sets requirements for room sizes, ceiling heights, windows, plumbing, ventilation, electrical, fire separation, smoke and carbon monoxide alarms, and exits.</li><li>Your town may have parking requirements too.</li></ul>
+<div class="callout"><p>This is a summary, not legal advice. Rules differ between towns and change over time, so check with your local building department before you commit. Our guide compares <a href="/resources/basement-finishing-vs-rental-unit/">basement finishing and a rental unit</a>.</p></div>`,
     faq: [
-      { q: 'Can I add a basement apartment to my house in Oshawa?', a: `<p>Often, yes. The City of Oshawa allows accessory apartments in single detached and semi-detached homes, among others, in listed zones, with up to three residential units on a lot. Check your property on the City's <a href="${OSHAWA_APARTMENTS}">accessory apartments page</a>.</p>` },
-      { q: 'Do I need a permit for a basement apartment in Oshawa?', a: '<p>Yes. The City says a building permit is required to legalize a second or third unit created after July 1994.</p>' },
-      { q: 'How much parking does a basement apartment need in Oshawa?', a: '<p>The City requires one extra parking space for each accessory unit. For two units, three parking spaces are required.</p>' },
+      { q: 'Can I add a basement apartment to my house?', a: `<p>Often, yes. Ontario allows a second unit in many detached, semi-detached and row houses if it meets your municipality's zoning and the Building Code. See the <a href="${ONTARIO_UNITS}">Government of Ontario guide</a>.</p>` },
+      { q: 'Do I need a permit for a basement apartment?', a: '<p>Yes. You need a building permit from your local building department, and a separate electrical permit.</p>' },
+      { q: 'Do I need extra parking for a basement apartment?', a: '<p>It depends on your town. Parking rules are set in municipal zoning, so check with your local planning department. We can talk it through when we visit.</p>' },
     ],
   },
   'bathroom-renovations': {
-    title: `Bathroom Renovations in Oshawa | Bathroom Remodels | ${C.name}`,
-    description: `Bathroom renovations in Oshawa and Durham Region: full remodels, tile, walk-in showers, tubs, vanities and plumbing coordinated by one team.`,
-    h1: 'Bathroom renovations in Oshawa',
+    title: `Bathroom Renovations in Durham Region | Bathroom Remodels | ${C.name}`,
+    description: `Bathroom renovations across Durham Region, York Region and Cobourg: full remodels, tile, walk-in showers, tubs, vanities and plumbing coordinated by one team.`,
+    h1: 'Bathroom renovations',
     lead: 'From a quick refresh to a full gut and rebuild, a bathroom that looks great and holds up to daily use.',
     hero: 'shower',
-    body: `<p>We've gutted and rebuilt washrooms and completed full master bathroom renovations, with a clear quote up front. One team handles the demolition, the tile and finishing work, and the plumbing and electrical trades.</p>
+    body: `<p>We've gutted and rebuilt washrooms, completed full master bathroom renovations, and taken on an unexpected bathroom renovation in the middle of a kitchen project. One team handles the demolition, the tile and finishing work, and the plumbing and electrical trades.</p>
 <h2>What we do</h2>
-<ul><li>Complete bathroom remodels, including master bathrooms</li><li>Walk-in showers, tubs and tub-to-shower conversions</li><li>Wall and floor tile</li><li>Vanities, mirrors, lighting and fans</li><li>Plumbing and electrical through the trades we coordinate</li><li>Basement bathrooms as part of a basement renovation</li></ul>
+<ul><li>Complete bathroom remodels, including master bathrooms</li><li>Walk-in showers and tubs</li><li>Wall and floor tile</li><li>Vanities, mirrors, lighting and fans</li><li>Glass shower enclosures through specialist installers we recommend</li><li>Plumbing and electrical through the trades we coordinate</li><li>Basement bathrooms as part of a basement renovation</li></ul>
 <h2>What to expect</h2>
 <ul><li>We talk through layout, fixtures and tile, and recommend suppliers if you'd like help choosing</li><li>You get a clear quote and timeline before we start</li><li>We keep the work area clean and let you know what's happening each day</li></ul>`,
     faq: [
       { q: 'How long does a bathroom renovation take?', a: '<p>It depends on the size of the room and what changes. We give you a timeline with your quote.</p>' },
-      { q: 'Do I need a permit for a bathroom renovation in Oshawa?', a: `<p>Replacing finishes usually doesn't need one, but the City of Oshawa lists moving plumbing and adding a bathroom as work that usually needs a building permit. See the City's <a href="${OSHAWA_BASEMENTS}">renovation permit page</a>.</p>` },
+      { q: 'Do I need a permit for a bathroom renovation?', a: '<p>Replacing finishes and fixtures in the same place usually does not need one. Moving plumbing or adding a new bathroom usually does. Rules vary by town, so we check with you before work starts.</p>' },
       { q: 'Can you help me choose tile and fixtures?', a: '<p>Yes. We recommend suppliers and talk through options that fit your budget and the way you use the room.</p>' },
     ],
   },
-  'home-renovations': {
-    title: `Home Renovations in Oshawa & Durham Region | ${C.name}`,
-    description: `Home renovations in Oshawa and Durham Region: kitchens, hardwood and tile floors, stairs, trim, wainscoting, paint and open-concept updates.`,
-    h1: 'Home renovations in Oshawa and Durham Region',
-    lead: 'Kitchens, floors, stairs, trim and paint: one room at a time or the whole house at once.',
+  'kitchen-remodeling': {
+    title: `Kitchen Remodeling in Durham Region | Kitchen Renovations | ${C.name}`,
+    description: `Kitchen remodeling across Durham Region, York Region and Cobourg: new layouts, cabinets, islands, quartz counters, tile, flooring and lighting, with trades coordinated.`,
+    h1: 'Kitchen remodeling',
+    lead: 'A kitchen that works for the way you cook and live, from a full remodel to new floors and tile.',
     hero: 'kitchen',
-    body: `<p>Some of our favourite projects change a whole floor: a new kitchen, carpet replaced with hardwood, oak stairs rebuilt with modern metal pickets, wainscoting and waffle ceilings, and the entire house painted. We also take on smaller jobs that make a big difference.</p>
+    body: `<p>Our kitchen work ranges from complete remodels, like a new kitchen with a quartz waterfall island as part of a whole-home makeover, to focused updates such as new kitchen tile and hardwood floors. We handle the demolition, coordinate the trades and keep you updated from start to finish.</p>
 <h2>What we do</h2>
-<ul><li>Kitchen renovations, including islands and quartz counters</li><li>Hardwood, vinyl and tile floors</li><li>Stairs, railings and pickets</li><li>Baseboards, trim, custom interior doors and wainscoting</li><li>Waffle ceilings and feature walls</li><li>Open-concept layouts</li><li>Interior painting</li><li>Fireplace removal, laundry room cabinets and decks</li></ul>
+<ul><li>Full kitchen remodels and new layouts</li><li>Kitchen demolition and clean-up</li><li>Cabinets and islands, including waterfall islands</li><li>Quartz counters and backsplashes</li><li>Tile and hardwood flooring</li><li>Pot lights, pendants and appliance hook-ups through the electricians and plumbers we coordinate</li><li>Opening up walls for an open-concept kitchen</li></ul>
+<h2>What to expect</h2>
+<ul><li>We talk through how you use the kitchen, your layout options and finishes</li><li>Supplier recommendations for tile, flooring and counters if you'd like them</li><li>A clear quote and timeline before any work starts</li><li>Regular updates and a clean, respectful job site</li></ul>`,
+    faq: [
+      { q: 'How long does a kitchen remodel take?', a: '<p>It depends on how much changes. Keeping the layout is faster than moving plumbing or walls. We give you a realistic timeline with your quote.</p>' },
+      { q: 'Do I need a permit for a kitchen renovation?', a: '<p>Replacing cabinets and counters without plumbing changes usually does not need one. Moving plumbing or removing walls usually does. Rules vary by town, so we talk it through before work starts.</p>' },
+      { q: 'Can you update my kitchen without a full remodel?', a: '<p>Yes. We also do focused updates, such as new tile, flooring, lighting or an island, if a full remodel isn\'t what you need.</p>' },
+    ],
+  },
+  'home-renovations': {
+    title: `Home Renovations in Durham Region | Floors, Stairs & Trim | ${C.name}`,
+    description: `Home renovations across Durham Region, York Region and Cobourg: hardwood and tile floors, stairs, trim, wainscoting, paint, open-concept updates and whole-home makeovers.`,
+    h1: 'Home renovations, one room or the whole house',
+    lead: 'Floors, stairs, trim, ceilings and paint that change how your whole home feels.',
+    hero: 'stairs',
+    body: `<p>Some of our favourite projects change a whole floor: carpet replaced with hardwood, oak stairs rebuilt with modern metal pickets, wainscoting and waffle ceilings, and the entire house painted. We also take on smaller jobs and repairs that make a big difference.</p>
+<h2>What we do</h2>
+<ul><li>Hardwood, vinyl and tile floors, and floor repairs</li><li>Stairs, railings and pickets</li><li>Baseboards, trim, custom interior doors and wainscoting</li><li>Waffle ceilings and feature walls</li><li>Open-concept layouts</li><li>Interior painting</li><li>Fireplace removal, laundry room cabinets and decks</li><li>Whole-home renovations, coordinated as one project</li></ul>
+<p>Planning a new kitchen? See <a href="/services/kitchen-remodeling/">kitchen remodeling</a>.</p>
 <h2>One team for the whole job</h2>
 <p>We coordinate the electricians and plumbers, for example for pot lights, chandeliers and new appliances, and handle supplies and clean-up, so you aren't managing trades yourself.</p>`,
     faq: [
       { q: 'Do you do whole-home renovations?', a: '<p>Yes. We have renovated entire homes: kitchens, floors, stairs, trim, ceilings, paint and finished basements, coordinated as one project.</p>' },
-      { q: 'Do you take on smaller jobs?', a: '<p>Yes. We also do single-room updates, flooring, trim, doors, painting and similar jobs. Tell us what you need.</p>' },
-      { q: 'Do I need a permit to remove a wall?', a: `<p>Removing or adding walls usually needs a building permit in Oshawa. The City lists changes to floor plans and walls among work that usually needs one. See the City's <a href="${OSHAWA_BASEMENTS}">renovation permit page</a>.</p>` },
+      { q: 'Do you take on smaller jobs?', a: '<p>Yes. We also do single-room updates and repairs, flooring, trim, doors, painting and similar jobs. Tell us what you need.</p>' },
+      { q: 'Do I need a permit to remove a wall?', a: '<p>Usually, yes. Removing or adding walls is typically work that needs a building permit, especially if the wall is load-bearing. We check with you before work starts.</p>' },
     ],
   },
 };
@@ -512,7 +574,7 @@ for (const s of SERVICES) {
 </div></section>
 ${related.length ? `<section class="section alt"><div class="wrap"><div class="section-head"><span class="eyebrow">Related projects</span><h2>Recent ${s.name.toLowerCase()} work</h2></div><div class="grid grid-2">${related.map(projectCard).join('')}</div><p class="mt-lg"><a class="btn btn-ghost" href="/projects/">See all projects</a></p></div></section>` : ''}
 <section class="section"><div class="wrap">${faqBlock(d.faq)}</div></section>
-<section class="section alt"><div class="wrap"><h2>Other services</h2><ul class="chips">${SERVICES.filter((o) => o.slug !== s.slug).map((o) => `<li><a href="/services/${o.slug}/">${o.name}</a></li>`).join('')}<li><a href="/service-areas/oshawa/">Renovations in Oshawa</a></li></ul></div></section>
+<section class="section alt"><div class="wrap"><h2>Other services</h2><ul class="chips">${SERVICES.filter((o) => o.slug !== s.slug).map((o) => `<li><a href="/services/${o.slug}/">${o.name}</a></li>`).join('')}<li><a href="/service-areas/">Service areas</a></li></ul></div></section>
 ${cta()}`,
   });
 }
@@ -538,14 +600,17 @@ ${cta('Planning something similar?')}`,
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Reviews', url: '/reviews/' }];
   add({
-    path: '/reviews/', title: `Customer Reviews | ${C.name}, Oshawa`, crumbs,
-    description: `${C.name} has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars. See what Oshawa homeowners say.`,
+    path: '/reviews/', title: `Customer Reviews | ${C.name}`, crumbs,
+    description: `${C.name} has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars. Read what homeowners across Durham Region say.`,
     body: `${pageHero({ crumbs, eyebrow: 'Reviews', h1: `Rated ${C.google.rating} by homeowners on Google`, lead: 'Read what customers say about working with Sam and the crew.', actions: false })}
 <section class="section"><div class="wrap">
   <div class="rating-row">
     <div class="rating-card"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>5-star Google rating</p></div>
     <div class="rating-card"><div class="score">${C.homestars.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>HomeStars rating, reviewed since ${C.homestars.since}. <a href="${C.homestars.url}">Read every review on HomeStars</a></p></div>
   </div>
+  <div class="section-head mt-lg"><span class="eyebrow">Google reviews</span><h2>In our customers' words</h2><p class="lead">Recent Google reviews, summarised. Tap any review to read the original.</p></div>
+  <div class="grid grid-3 reviews">${REVIEWS.map(reviewCard).join('')}</div>
+  <p class="mt-lg"><a class="btn btn-ghost" href="${C.google.url}" rel="noopener">See all our Google reviews</a></p>
   <div class="section-head mt-lg"><h2>What homeowners mention most</h2></div>
   <div class="grid grid-2">
     <div class="project"><h3>Honesty and clear expectations</h3><p>Customers say Sam is honest from the start, sets clear expectations and explains the process and timing as the job goes.</p></div>
@@ -553,7 +618,7 @@ ${cta('Planning something similar?')}`,
     <div class="project"><h3>Quality workmanship</h3><p>From basements that now match the main floor to whole-home makeovers, customers describe results they're proud of.</p></div>
     <div class="project"><h3>A respectful, tidy crew</h3><p>Homeowners describe the crew as professional, polite and considerate, and say the team came back to fix small things afterwards.</p></div>
   </div>
-  <p class="notice mt-lg">Ratings as shown on Google and HomeStars in October 2026. Summaries are in our own words; read the full reviews on each site.</p>
+  <p class="notice mt-lg">Ratings as shown on Google and HomeStars in October 2026. Reviews are summarised in our own words with the customer's first name; read the full reviews on each site.</p>
 </div></section>
 ${cta('Become our next five-star project')}`,
   });
@@ -563,17 +628,16 @@ ${cta('Become our next five-star project')}`,
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Service Areas', url: '/service-areas/' }];
   add({
-    path: '/service-areas/', title: `Service Areas: Oshawa & Durham Region | ${C.name}`, crumbs, ogImage: 'home',
-    description: `${C.name} renovates homes in Oshawa and nearby Durham Region communities including ${C.areas.slice(1).join(', ')}.`,
-    body: `${pageHero({ crumbs, eyebrow: 'Service areas', h1: 'Renovating homes across Durham Region', lead: `Based in ${C.city}, we take on basement, bathroom and home renovations in nearby communities.`, image: 'home' })}
+    path: '/service-areas/', title: `Service Areas: Durham Region, York Region & Cobourg | ${C.name}`, crumbs, ogImage: 'home',
+    description: `${C.name} renovates homes across Durham Region (${C.areaGroups[0].towns.join(', ')}), York Region (${C.areaGroups[1].towns.join(', ')}) and Cobourg.`,
+    body: `${pageHero({ crumbs, eyebrow: 'Service areas', h1: 'Renovating homes across Durham Region and beyond', lead: 'Basement, bathroom, kitchen and home renovations from Pickering to Cobourg, and north to Port Perry, Stouffville and King City.', image: 'home' })}
 <section class="section"><div class="wrap split">
   <div>
     <h2>Where we work</h2>
-    <p class="lead">${esc(C.city)} is home base. We also work in:</p>
-    <ul class="chips"><li><a href="/service-areas/oshawa/">Oshawa</a></li>${C.areas.slice(1).map((a) => `<li><span>${esc(a)}</span></li>`).join('')}</ul>
-    <p class="mt-lg">Outside these areas? <a href="/contact/">Ask us</a>. If we can't take your project, we'll tell you straight away.</p>
+    ${C.areaGroups.map((g) => `<h3 class="mt-lg">${esc(g.region)}</h3><ul class="chips">${g.towns.map((a) => (a === 'Oshawa' ? '<li><a href="/service-areas/oshawa/">Oshawa</a></li>' : `<li><span>${esc(a)}</span></li>`)).join('')}</ul>`).join('')}
+    <p class="mt-lg">Outside these areas? <a href="/get-an-estimate/">Ask us</a>. If we can't take your project, we'll tell you straight away.</p>
   </div>
-  <div class="facts"><dl><dt>Based in</dt><dd>${esc(C.city)}, Ontario</dd><dt>Region</dt><dd>${esc(C.region)}</dd><dt>Services</dt><dd>${SERVICES.map((s) => `<a href="/services/${s.slug}/">${s.name}</a>`).join(', ')}</dd><dt>Contact</dt><dd><a href="${tel}">${esc(C.phoneDisplay)}</a> (call or text)</dd></dl></div>
+  <div class="facts"><dl><dt>Regions</dt><dd>${esc(C.areaGroups.map((g) => g.region).join(', '))}</dd><dt>Services</dt><dd>${SERVICES.map((s) => `<a href="/services/${s.slug}/">${s.name}</a>`).join(', ')}</dd><dt>Contact</dt><dd><a href="${tel}">${esc(C.phoneDisplay)}</a> (call or text)</dd></dl></div>
 </div></section>
 ${cta()}`,
   });
@@ -627,7 +691,7 @@ ${cta()}`,
     <dt>Business</dt><dd>Renovation contractor (general contractor)</dd>
     <dt>Based in</dt><dd>${esc(C.city)}, Ontario, Canada</dd>
     <dt>Serves</dt><dd>${esc(C.areas.join(', '))}</dd>
-    <dt>Services</dt><dd>Basement renovations, basement rental units, bathroom renovations, home renovations</dd>
+    <dt>Services</dt><dd>Basement renovations, basement rental units, bathroom renovations, kitchen remodeling, home renovations</dd>
     <dt>Reviews</dt><dd>5-star rating on Google; ${C.homestars.rating} on HomeStars</dd>
     <dt>On HomeStars since</dt><dd>${C.homestars.since}</dd>
     <dt>Warranty</dt><dd>Offered on our work</dd>
@@ -663,13 +727,31 @@ ${cta()}`,
   });
 }
 
+// FAQ
+{
+  const crumbs = [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about/' }, { name: 'FAQ', url: '/faq/' }];
+  add({
+    path: '/faq/', title: `Renovation FAQ: Basements, Bathrooms, Kitchens & Permits | ${C.name}`, crumbs, ogImage: 'measure', schema: [faqLd(ALL_FAQ)],
+    description: 'Answers to common renovation questions in Durham Region and Ontario: costs, timelines, building permits, basement apartments, warranties and working with RC Construction.',
+    body: `${pageHero({ crumbs, eyebrow: 'FAQ', h1: 'Renovation questions, answered', lead: 'Straight answers about costs, timelines, permits and basement apartments, for homeowners across Durham Region and Ontario.', actions: false })}
+<section class="section"><div class="wrap sidebar-layout">
+  <div>
+    <ul class="chips" aria-label="Topics">${FAQ_GROUPS.map((g) => `<li><a href="#${g.title.toLowerCase().replace(/[^a-z]+/g, '-')}">${esc(g.title)}</a></li>`).join('')}</ul>
+    ${FAQ_GROUPS.map((g) => `<div class="mt-lg" id="${g.title.toLowerCase().replace(/[^a-z]+/g, '-')}">${faqBlock(g.items, g.title)}</div>`).join('')}
+  </div>
+  <aside>${sideCard('Have a question we missed?')}</aside>
+</div></section>
+${cta()}`,
+  });
+}
+
 // Resources hub + guides
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Homeowner Guides', url: '/resources/' }];
   add({
-    path: '/resources/', title: `Renovation Guides for Oshawa Homeowners | ${C.name}`, crumbs, ogImage: 'basementOpen',
-    description: 'Plain-English guides for Oshawa and Durham Region homeowners: basement permits, what drives renovation costs, and basement finishing vs a rental unit.',
-    body: `${pageHero({ crumbs, eyebrow: 'Homeowner guides', h1: 'Plan your renovation with confidence', lead: 'Straight answers to the questions we hear most from Oshawa homeowners.', actions: false })}
+    path: '/resources/', title: `Renovation Guides for Durham Region Homeowners | ${C.name}`, crumbs, ogImage: 'basementOpen',
+    description: 'Plain-English guides for Durham Region homeowners: basement permits, what drives renovation costs, and basement finishing vs a rental unit.',
+    body: `${pageHero({ crumbs, eyebrow: 'Homeowner guides', h1: 'Plan your renovation with confidence', lead: 'Straight answers to the questions we hear most from homeowners.', actions: false })}
 <section class="section"><div class="wrap"><div class="grid grid-3">${GUIDES.map((g) => `<a class="card" href="/resources/${g.slug}/">${img(g.img, { sizes: '(min-width: 1000px) 33vw, 100vw' })}<div class="card-body"><h3>${esc(g.title)}</h3><span class="card-link">Read the guide</span></div></a>`).join('')}</div></div></section>
 ${cta()}`,
   });
@@ -693,7 +775,7 @@ const GUIDE_BODIES = {
 <div class="callout"><p>This guide summarises the City of Oshawa's published information as of November 2026. It isn't legal advice, and rules change, so confirm with the City before you start.</p></div>`,
   },
   'basement-renovation-cost-factors': {
-    description: 'What drives the cost of a basement renovation in Oshawa: size, layout, bathrooms, ceilings, flooring, condition, permits and finishes.',
+    description: 'What drives the cost of a basement renovation in Durham Region and Ontario: size, layout, bathrooms, ceilings, flooring, condition, permits and finishes.',
     answer: 'The biggest cost drivers are the size of the basement, how many rooms you add, whether you add a bathroom or kitchen, the condition of the space (moisture, old finishes to remove), ceiling and lighting choices, flooring and finish levels, and whether the work needs a building permit.',
     body: `<p>Every basement is different, which is why we give a quote after seeing the space rather than a number over the phone. These are the things that move the price most.</p>
 <h2>1. Size and layout</h2><p>More square footage means more framing, drywall, flooring and paint. Adding rooms, such as bedrooms or an office, adds walls, doors and trim.</p>
@@ -701,7 +783,7 @@ const GUIDE_BODIES = {
 <h2>3. The condition of the space</h2><p>Old finishes to tear out, past water problems or uneven floors all add work before the new space can go in.</p>
 <h2>4. Ceilings, lighting and electrical</h2><p>Drywall ceilings, pot lights and extra outlets cost more than a basic layout, but they make the biggest difference to how a basement feels.</p>
 <h2>5. Flooring and finishes</h2><p>Vinyl plank, tile, carpet or hardwood; standard or custom doors and trim; feature walls and built-ins all change the total.</p>
-<h2>6. Permits and rental units</h2><p>Most basement finishing in Oshawa needs a building permit. A rental unit adds requirements like fire separations, ways out and parking. See our <a href="/resources/basement-permits-oshawa/">permit guide</a>.</p>
+<h2>6. Permits and rental units</h2><p>Most basement finishing in Ontario needs a building permit from your town. A rental unit adds requirements like fire separations, ways out and parking. See our <a href="/resources/basement-permits-oshawa/">permit guide</a>.</p>
 <h2>How to get an accurate number</h2><p>Send us photos and a few details, then we'll visit and give you a clear written quote. <a href="/get-an-estimate/">Get an estimate</a>.</p>`,
   },
   'basement-finishing-vs-rental-unit': {
@@ -752,8 +834,8 @@ const choice = (name, value, required = true) => `<label class="choice"><input t
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Get an Estimate', url: '/get-an-estimate/' }];
   add({
-    path: '/get-an-estimate/', title: `Get a Renovation Estimate in Oshawa | ${C.name}`, crumbs,
-    description: `Get an estimate for your basement, bathroom or home renovation in Oshawa or Durham Region. Answer three quick questions and we'll call or text you back.`,
+    path: '/get-an-estimate/', title: `Get a Renovation Estimate in Durham Region | ${C.name}`, crumbs,
+    description: `Get an estimate for your basement, bathroom, kitchen or home renovation in Durham Region, York Region or Cobourg. Answer three quick questions and we'll call or text you back.`,
     body: `${pageHero({ crumbs, eyebrow: 'Get an estimate', h1: 'Tell us about your project', lead: `Three quick questions, about a minute. Prefer to talk? Call or text <a href="${tel}" style="color:#f1d9ba">${esc(C.phoneDisplay)}</a>.`, actions: false })}
 <section class="section"><div class="wrap sidebar-layout">
   <form class="lead-form estimate-form" data-steps data-phone="${esc(C.phoneDisplay)}" action="https://api.web3forms.com/submit" method="POST">
@@ -761,13 +843,13 @@ const choice = (name, value, required = true) => `<label class="choice"><input t
     <div class="progress js-only" aria-hidden="true"><span class="progress-bar"></span></div>
     <fieldset class="step" data-step="1">
       <legend><span class="step-k">Step 1 of 3</span>What are you planning?</legend>
-      <div class="choice-grid">${['Basement renovation', 'Basement rental unit', 'Bathroom renovation', 'Kitchen or home renovation', 'Flooring, stairs or trim', 'Not sure yet'].map((v) => choice('project_type', v)).join('')}</div>
+      <div class="choice-grid">${['Basement renovation', 'Basement rental unit', 'Bathroom renovation', 'Kitchen remodel', 'Floors, stairs, trim or other', 'Not sure yet'].map((v) => choice('project_type', v)).join('')}</div>
       <div class="form-nav js-only"><button class="btn btn-dark" type="button" data-next>Next</button></div>
     </fieldset>
     <fieldset class="step" data-step="2">
       <legend><span class="step-k">Step 2 of 3</span>When would you like to start?</legend>
       <div class="choice-grid">${['As soon as possible', 'In 1 to 3 months', 'In 3 to 6 months', 'Just planning for now'].map((v) => choice('timing', v)).join('')}</div>
-      <div class="field"><label for="est-city">Where is the home?</label><select id="est-city" name="city" required><option value="">Choose a town</option>${C.areas.map((a) => `<option>${esc(a)}</option>`).join('')}<option>Somewhere else in Durham Region</option><option>Outside Durham Region</option></select></div>
+      <div class="field"><label for="est-city">Where is the home?</label><select id="est-city" name="city" required><option value="">Choose a town</option>${C.areas.map((a) => `<option>${esc(a)}</option>`).join('')}<option>Somewhere else</option></select></div>
       <div class="form-nav js-only"><button class="btn btn-ghost" type="button" data-back>Back</button><button class="btn btn-dark" type="button" data-next>Next</button></div>
     </fieldset>
     <fieldset class="step" data-step="3">
@@ -801,15 +883,15 @@ add({
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact/' }];
   add({
-    path: '/contact/', title: `Contact ${C.name} | Request a Renovation Estimate in Oshawa`, crumbs,
-    description: `Request an estimate for your basement, bathroom or home renovation in Oshawa or Durham Region. Call or text ${C.phoneDisplay}, or send your project details.`,
+    path: '/contact/', title: `Contact ${C.name} | Renovation Estimates in Durham Region`, crumbs,
+    description: `Request an estimate for your basement, bathroom, kitchen or home renovation in Durham Region, York Region or Cobourg. Call or text ${C.phoneDisplay}, or send your project details.`,
     body: `${pageHero({ crumbs, eyebrow: 'Contact', h1: 'Tell us about your project', lead: `Call or text <a href="${tel}" style="color:#f1d9ba">${esc(C.phoneDisplay)}</a>, or send a few details below. We'll get back to you quickly.`, actions: false })}
 <section class="section"><div class="wrap sidebar-layout">
   <form class="lead-form" data-phone="${esc(C.phoneDisplay)}" action="https://api.web3forms.com/submit" method="POST">
     ${hiddenFormFields('New message from the RC Construction contact page')}
     <div class="row">
-      <div class="field"><label for="type">Project type</label><select id="type" name="project_type" required><option value="">Choose one</option><option>Basement renovation</option><option>Basement rental unit</option><option>Bathroom renovation</option><option>Kitchen or home renovation</option><option>Flooring, stairs or trim</option><option>Something else</option></select></div>
-      <div class="field"><label for="city">City or neighbourhood</label><input id="city" name="city" autocomplete="address-level2" placeholder="e.g. Oshawa"></div>
+      <div class="field"><label for="type">Project type</label><select id="type" name="project_type" required><option value="">Choose one</option><option>Basement renovation</option><option>Basement rental unit</option><option>Bathroom renovation</option><option>Kitchen remodel</option><option>Floors, stairs, trim or other</option><option>Something else</option></select></div>
+      <div class="field"><label for="city">City or neighbourhood</label><input id="city" name="city" autocomplete="address-level2" placeholder="e.g. Whitby"></div>
     </div>
     <div class="row">
       <div class="field"><label for="budget">Budget range</label><select id="budget" name="budget"><option>Not sure yet</option><option>Under $15,000</option><option>$15,000 to $40,000</option><option>$40,000 to $80,000</option><option>Over $80,000</option></select></div>
@@ -844,8 +926,9 @@ add({
 // ---------------------------------------------------------------------------
 // Write everything
 // ---------------------------------------------------------------------------
-fs.rmSync(OUT, { recursive: true, force: true });
+// Empty the output folder rather than deleting it, so a running preview server or OneDrive lock does not block the build.
 fs.mkdirSync(OUT, { recursive: true });
+for (const f of fs.readdirSync(OUT)) fs.rmSync(path.join(OUT, f), { recursive: true, force: true });
 fs.cpSync(path.join(__dirname, 'assets'), path.join(OUT, 'assets'), { recursive: true });
 
 for (const p of pages) {
@@ -897,7 +980,7 @@ Sitemap: ${abs('/sitemap.xml')}
 // llms.txt: a plain summary for AI assistants (GEO).
 fs.writeFileSync(path.join(OUT, 'llms.txt'), `# ${C.name}
 
-> ${C.name} is a renovation contractor based in ${C.city}, Ontario, Canada, serving ${C.region} (${C.areas.join(', ')}). It does basement renovations, basement rental units, bathroom renovations and home renovations (kitchens, flooring, stairs, trim, wainscoting, painting). It has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars. Phone: ${C.phoneDisplay} (call or text).
+> ${C.name} is a renovation contractor based in ${C.city}, Ontario, Canada, serving ${areaSentence()}. It does basement renovations, basement rental units, bathroom renovations, kitchen remodeling and home renovations (flooring, stairs, trim, wainscoting, painting). It has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars. Phone: ${C.phoneDisplay} (call or text).
 
 ## Key facts
 - Based in: ${C.city}, Ontario, Canada
@@ -917,6 +1000,8 @@ ${GUIDES.map((g) => `- [${g.title}](${abs(`/resources/${g.slug}/`)})`).join('\n'
 ## Other pages
 - [Projects](${abs('/projects/')})
 - [Reviews](${abs('/reviews/')})
+- [FAQ](${abs('/faq/')})
+- [Service areas](${abs('/service-areas/')})
 - [Oshawa](${abs('/service-areas/oshawa/')})
 - [About](${abs('/about/')})
 - [Contact](${abs('/contact/')})
