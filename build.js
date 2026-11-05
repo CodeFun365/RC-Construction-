@@ -65,7 +65,7 @@ const NAV = [
   { href: '/contact/', label: 'Contact' },
 ];
 
-const brandMark = `<svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#17242B"/><path d="M11 33V15h7.2c4 0 6.3 2 6.3 5.3 0 2.4-1.3 4-3.5 4.7L25 33h-4.3l-3.3-7.4H15V33zm4-11h3c1.8 0 2.8-.7 2.8-2.1 0-1.4-1-2.1-2.8-2.1h-3z" fill="#F5F1E9"/><path d="M37.6 30.7c-1.2 1.6-3.2 2.6-5.5 2.6-4.6 0-7.6-3.6-7.6-9.3s3-9.3 7.6-9.3c2.3 0 4.3 1 5.5 2.6l-2.7 2.4c-.7-1-1.7-1.6-2.8-1.6-2.2 0-3.6 2.3-3.6 5.9s1.4 5.9 3.6 5.9c1.1 0 2.1-.6 2.8-1.6z" fill="#A47C56"/></svg>`;
+const brandMark = `<img class="brand-mark" src="/assets/logo.svg" width="56" height="56" alt="">`;
 const brand = `<a class="brand" href="/" aria-label="${esc(C.name)} home">${brandMark}<span class="brand-name">${esc(C.name)}<small>${esc(C.city)}, Ontario</small></span></a>`;
 
 function nav(current) {
@@ -79,7 +79,7 @@ function nav(current) {
   <div class="wrap nav-bar">
     ${brand}
     <nav class="primary-nav" aria-label="Main"><ul>${NAV.map(item).join('')}</ul></nav>
-    <div class="nav-cta"><a class="nav-phone" href="${tel}">${esc(C.phoneDisplay)}</a><a class="btn btn-primary" href="/contact/">Request an Estimate</a></div>
+    <div class="nav-cta"><a class="nav-phone" href="${tel}">${esc(C.phoneDisplay)}</a><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a></div>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span></span></button>
   </div>
 </header>`;
@@ -103,11 +103,11 @@ const footer = () => `<footer class="site-footer">
     </div>
   </div>
 </footer>
-<nav class="mobile-bar" aria-label="Quick contact"><a href="${tel}">Call</a><a href="${sms}">Text</a><a class="go" href="/contact/">Get an estimate</a></nav>`;
+<nav class="mobile-bar" aria-label="Quick contact"><a href="${tel}">Call</a><a href="${sms}">Text</a><a class="go" href="/get-an-estimate/">Get an estimate</a></nav>`;
 
 const cta = (title = 'Ready to talk about your renovation?', text = `Tell us what you have in mind. We'll talk it through, look at the space and give you a clear quote before any work starts.`) => `<section class="section"><div class="wrap"><div class="cta-band">
   <div><h2>${title}</h2><p>${text}</p></div>
-  <div class="cta-actions"><a class="btn btn-primary" href="/contact/">Request an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a></div>
+  <div class="cta-actions"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a></div>
 </div></div></section>`;
 
 const faqBlock = (items, heading = 'Questions homeowners ask') => `<div class="faq"><h2>${heading}</h2>${items.map((f) => `<details><summary>${esc(f.q)}</summary><div>${f.a}</div></details>`).join('')}</div>`;
@@ -117,11 +117,11 @@ const crumbsHtml = (crumbs) => `<nav class="crumbs" aria-label="Breadcrumb">${cr
 function pageHero({ crumbs, eyebrow, h1, lead, image, actions = true }) {
   return `<section class="page-hero${image ? '' : ' plain'}">${image ? img(image, { sizes: '100vw', eager: true }) : ''}
   <div class="wrap">${crumbsHtml(crumbs)}${eyebrow ? `<span class="eyebrow" style="color:#e9cfaf">${esc(eyebrow)}</span>` : ''}<h1>${h1}</h1>${lead ? `<p class="lead">${lead}</p>` : ''}
-  ${actions ? `<div class="hero-actions"><a class="btn btn-primary" href="/contact/">Request an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a></div>` : ''}</div></section>`;
+  ${actions ? `<div class="hero-actions"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a></div>` : ''}</div></section>`;
 }
 
 const sideCard = (title = 'Talk to RC Construction') => `<div class="side-card"><h2>${title}</h2><p>Call or text Sam's team, or send a few details and photos of the space. We'll get back to you quickly.</p>
-  <a class="btn btn-primary" href="/contact/">Request an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a><a class="btn btn-light" href="${sms}">Text us</a></div>`;
+  <a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a><a class="btn btn-light" href="${sms}">Text us</a></div>`;
 
 // Real projects, summarised in our own words from RC's public HomeStars reviews (no customer names).
 const PROJECTS = [
@@ -161,7 +161,7 @@ const business = {
   url: `${URL}/`,
   telephone: C.phone,
   image: abs(`/assets/img/${IMG.hero.file}-1600.webp`),
-  logo: abs('/assets/logo.svg'),
+  logo: abs('/assets/logo-512.png'),
   description: `${C.name} is a renovation contractor based in ${C.city}, Ontario, doing basement renovations, basement rental units, bathroom renovations and home renovations across ${C.region}.`,
   address: { '@type': 'PostalAddress', addressLocality: C.city, addressRegion: C.province, addressCountry: 'CA' },
   areaServed: C.areas.map((a) => ({ '@type': 'City', name: `${a}, Ontario` })),
@@ -203,6 +203,9 @@ ${p.noindex ? '<meta name="robots" content="noindex">' : '<meta name="robots" co
 <meta name="geo.region" content="CA-ON">
 <meta name="geo.placename" content="${esc(C.city)}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<script>document.documentElement.className += ' js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
@@ -235,7 +238,7 @@ const HOME_FAQ = [
   { q: 'Do you coordinate electricians and plumbers?', a: '<p>Yes. We bring in and coordinate the electricians and plumbers your project needs, so you deal with one team from demolition to the final walkthrough.</p>' },
   { q: 'Do you offer a warranty?', a: '<p>Yes, we offer a warranty on our work. Ask us for the details that apply to your project when we quote.</p>' },
   { q: 'Do I need a permit to finish my basement in Oshawa?', a: `<p>Usually, yes. The City of Oshawa says renovations that change the inside of a home, like finishing a basement or adding a bathroom, usually need a building permit. Read our <a href="/resources/basement-permits-oshawa/">Oshawa basement permit guide</a>.</p>` },
-  { q: 'How do I get an estimate?', a: `<p>Call or text <a href="${tel}">${esc(C.phoneDisplay)}</a>, or <a href="/contact/">send us your project details</a> with a few photos. We'll talk it through, visit to see the space, and give you a clear quote before any work starts.</p>` },
+  { q: 'How do I get an estimate?', a: `<p>Call or text <a href="${tel}">${esc(C.phoneDisplay)}</a>, or <a href="/get-an-estimate/">answer three quick questions</a> with a few photos. We'll talk it through, visit to see the space, and give you a clear quote before any work starts.</p>` },
 ];
 
 // Home
@@ -256,7 +259,8 @@ add({
     <span class="eyebrow">Renovation contractor · ${esc(C.city)}, Ontario</span>
     <h1>Beautiful renovations. Built to last.</h1>
     <p class="lead">Basement, bathroom and home renovations in ${esc(C.city)} and across ${esc(C.region)}, by a team homeowners describe as honest, on time and clear about what to expect.</p>
-    <div class="hero-actions"><a class="btn btn-primary" href="/contact/">Request an Estimate</a><a class="btn btn-light" href="/projects/">View Our Projects</a></div>
+    <div class="hero-actions"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="/projects/">See Our Projects</a></div>
+    <p class="hero-note">Takes about a minute. We'll call or text you back.</p>
     <div class="rating-chip"><strong>★ ${C.google.rating}</strong> on Google from ${C.google.count} reviews · <strong>${C.homestars.rating}</strong> on HomeStars</div>
   </div>
 </section>
@@ -270,6 +274,14 @@ add({
   </ul>
 </section>
 
+<section class="section tight" aria-label="Where are you at?">
+  <div class="wrap paths">
+    <a class="path" href="/get-an-estimate/"><span class="path-k">Ready for a quote?</span><strong>Get an estimate</strong><span>Three quick questions, then we call or text you back.</span></a>
+    <a class="path" href="${tel}"><span class="path-k">Rather talk?</span><strong>Call or text ${esc(C.phoneDisplay)}</strong><span>On a job site? We'll call you back.</span></a>
+    <a class="path" href="/resources/"><span class="path-k">Just researching?</span><strong>Read our homeowner guides</strong><span>Permits, costs and rental units, explained.</span></a>
+  </div>
+</section>
+
 <section class="section">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">What we do</span><h2>Renovation services tailored to your home</h2><p class="lead">From an unfinished basement to a tired bathroom or a dated main floor, we plan it properly and build it to last.</p></div>
@@ -278,21 +290,15 @@ add({
 </section>
 
 <section class="section alt">
-  <div class="wrap split">
-    <div>
-      <span class="eyebrow">One team, start to finish</span>
-      <h2>From demolition to the final coat of paint</h2>
-      <p class="lead">Homeowners hire us because they don't have to manage a dozen trades. We handle the work and the coordination.</p>
-      <ul class="ticks">
-        <li>Demolition, supplies and garbage removal taken care of</li>
-        <li>Electricians and plumbers coordinated for you</li>
-        <li>Help choosing tile, flooring and finishes, with supplier recommendations</li>
-        <li>A clear timeline before we start, and updates as we go</li>
-        <li>We come back to fix the small things that pop up afterwards</li>
-      </ul>
-      <a class="btn btn-dark" href="/our-process/">See how we work</a>
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Basement ideas</span><h2>What could your basement become?</h2><p class="lead">Basements are most of our work. These are the spaces Oshawa homeowners ask us for.</p></div>
+    <div class="ideas">
+      <a class="idea" href="/services/basement-rental-units/">${img('suite', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A rental unit</strong><span>A second unit for a tenant or family</span></span></a>
+      <a class="idea" href="/services/basement-renovations/">${img('recRoom', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A games or rec room</strong><span>Room for the pool table and movie nights</span></span></a>
+      <a class="idea" href="/services/basement-renovations/">${img('basementStairs', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A family room</strong><span>Space that feels like the rest of the house</span></span></a>
+      <a class="idea" href="/services/basement-renovations/">${img('basementOpen', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A guest suite or office</strong><span>Bedroom, bathroom or a quiet place to work</span></span></a>
     </div>
-    ${img('saw')}
+    <p class="mt-lg"><a class="btn btn-primary" href="/get-an-estimate/">Get an estimate for your basement</a></p>
   </div>
 </section>
 
@@ -306,13 +312,41 @@ add({
 
 <section class="section dark">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow" style="color:#e1c19b">Why RC Construction</span><h2>A better renovation experience</h2><p class="lead">What homeowners mention again and again in their reviews.</p></div>
-    <div class="grid grid-4 reasons">
-      <div class="reason"><h3>Straight answers from the first visit</h3><p>Honest advice, clear expectations and a quote you can understand before anything starts.</p></div>
-      <div class="reason"><h3>Finished when we said</h3><p>Customers point out that we keep to the timeline we give, and sometimes finish early.</p></div>
-      <div class="reason"><h3>Trades handled for you</h3><p>Electrical, plumbing and finishing trades coordinated under one team.</p></div>
-      <div class="reason"><h3>Respect for your home</h3><p>A polite, punctual crew that keeps the site clean and comes back for the small fixes.</p></div>
+    <div class="section-head"><span class="eyebrow" style="color:#e1c19b">Why RC Construction</span><h2>Renovating shouldn't feel like a gamble</h2><p class="lead">The worries homeowners bring to us, and how our customers describe working with us instead.</p></div>
+    <div class="compare">
+      <div class="compare-col bad"><h3>The usual worries</h3><ul>
+        <li>A quote that doesn't say what's included</li>
+        <li>A job that drags on past the date you were given</li>
+        <li>Chasing the plumber and electrician yourself</li>
+        <li>Small problems left behind when the crew leaves</li>
+        <li>A crew that doesn't respect your home</li>
+      </ul></div>
+      <div class="compare-col good"><h3>Working with RC Construction</h3><ul>
+        <li>A clear quote and timeline before any work starts</li>
+        <li>Finished on the timeline we give, with updates as we go</li>
+        <li>Electricians and plumbers coordinated for you</li>
+        <li>We come back to fix the small things</li>
+        <li>A polite, punctual crew that keeps the site clean</li>
+      </ul></div>
     </div>
+    <div class="hero-actions mt-lg"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="/reviews/">Read our reviews</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Meet the owner</span>
+      <h2>You deal with Sam, start to finish</h2>
+      <p class="lead">Sam leads every RC Construction project, from the first visit and the quote to the final walkthrough. One team does the work and handles the coordination.</p>
+      <ul class="ticks">
+        <li>Demolition, supplies and garbage removal taken care of</li>
+        <li>Help choosing tile, flooring and finishes, with supplier recommendations</li>
+        <li>Honest advice, even when it means a smaller job</li>
+      </ul>
+      <div class="hero-actions"><a class="btn btn-dark" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-ghost" href="/about/">About us</a></div>
+    </div>
+    ${img('saw')}
   </div>
 </section>
 
@@ -325,6 +359,7 @@ add({
       <li><h3>Renovate</h3><p>One team handles the work and the trades, with updates as we go.</p></li>
       <li><h3>Final walkthrough</h3><p>We walk the finished space with you and take care of anything that needs a touch-up.</p></li>
     </ol>
+    <p class="mt-lg center"><a class="btn btn-primary" href="/get-an-estimate/">Start with step one</a></p>
   </div>
 </section>
 
@@ -377,7 +412,7 @@ add({
 <section class="section alt"><div class="wrap split">
   <div><span class="eyebrow">Also on our list</span><h2>Other work we do</h2><p class="lead">Jobs our customers have hired us for, alongside bigger renovations.</p>
   <ul class="ticks"><li>Hardwood and tile flooring, including replacing carpet</li><li>Stairs rebuilt, such as oak stairs updated with metal pickets</li><li>Baseboards, door and window trim, and custom interior doors</li><li>Wainscoting, waffle ceilings and feature walls</li><li>Interior painting, from one room to the whole house</li><li>Fireplace removal, laundry room cabinets and decks</li></ul>
-  <a class="btn btn-dark" href="/contact/">Ask about your project</a></div>
+  <a class="btn btn-dark" href="/get-an-estimate/">Get an estimate</a></div>
   ${img('stairs')}
 </div></section>
 ${cta()}`,
@@ -667,7 +702,7 @@ const GUIDE_BODIES = {
 <h2>4. Ceilings, lighting and electrical</h2><p>Drywall ceilings, pot lights and extra outlets cost more than a basic layout, but they make the biggest difference to how a basement feels.</p>
 <h2>5. Flooring and finishes</h2><p>Vinyl plank, tile, carpet or hardwood; standard or custom doors and trim; feature walls and built-ins all change the total.</p>
 <h2>6. Permits and rental units</h2><p>Most basement finishing in Oshawa needs a building permit. A rental unit adds requirements like fire separations, ways out and parking. See our <a href="/resources/basement-permits-oshawa/">permit guide</a>.</p>
-<h2>How to get an accurate number</h2><p>Send us photos and a few details, then we'll visit and give you a clear written quote. <a href="/contact/">Request an estimate</a>.</p>`,
+<h2>How to get an accurate number</h2><p>Send us photos and a few details, then we'll visit and give you a clear written quote. <a href="/get-an-estimate/">Get an estimate</a>.</p>`,
   },
   'basement-finishing-vs-rental-unit': {
     description: 'The difference between finishing a basement and adding a basement rental unit in Oshawa: permits, zoning, fire safety, parking and registration.',
@@ -704,6 +739,64 @@ ${cta()}`,
   });
 }
 
+// Get an estimate: a short three-step form that captures the person's name and contact details.
+// Without JavaScript it shows as one form and still posts to Web3Forms, which redirects to /thank-you/.
+const hiddenFormFields = (subject) => `<input type="hidden" name="access_key" value="${esc(C.web3formsKey)}">
+    <input type="hidden" name="subject" value="${esc(subject)}">
+    <input type="hidden" name="from_name" value="${esc(C.name)} website">
+    <input type="hidden" name="redirect" value="${abs('/thank-you/')}">
+    <input type="hidden" name="lead_source" value="">
+    <input type="hidden" name="page" value="">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">`;
+const choice = (name, value, required = true) => `<label class="choice"><input type="radio" name="${name}" value="${esc(value)}"${required ? ' required' : ''}><span>${esc(value)}</span></label>`;
+{
+  const crumbs = [{ name: 'Home', url: '/' }, { name: 'Get an Estimate', url: '/get-an-estimate/' }];
+  add({
+    path: '/get-an-estimate/', title: `Get a Renovation Estimate in Oshawa | ${C.name}`, crumbs,
+    description: `Get an estimate for your basement, bathroom or home renovation in Oshawa or Durham Region. Answer three quick questions and we'll call or text you back.`,
+    body: `${pageHero({ crumbs, eyebrow: 'Get an estimate', h1: 'Tell us about your project', lead: `Three quick questions, about a minute. Prefer to talk? Call or text <a href="${tel}" style="color:#f1d9ba">${esc(C.phoneDisplay)}</a>.`, actions: false })}
+<section class="section"><div class="wrap sidebar-layout">
+  <form class="lead-form estimate-form" data-steps data-phone="${esc(C.phoneDisplay)}" action="https://api.web3forms.com/submit" method="POST">
+    ${hiddenFormFields('New estimate request from the RC Construction website')}
+    <div class="progress js-only" aria-hidden="true"><span class="progress-bar"></span></div>
+    <fieldset class="step" data-step="1">
+      <legend><span class="step-k">Step 1 of 3</span>What are you planning?</legend>
+      <div class="choice-grid">${['Basement renovation', 'Basement rental unit', 'Bathroom renovation', 'Kitchen or home renovation', 'Flooring, stairs or trim', 'Not sure yet'].map((v) => choice('project_type', v)).join('')}</div>
+      <div class="form-nav js-only"><button class="btn btn-dark" type="button" data-next>Next</button></div>
+    </fieldset>
+    <fieldset class="step" data-step="2">
+      <legend><span class="step-k">Step 2 of 3</span>When would you like to start?</legend>
+      <div class="choice-grid">${['As soon as possible', 'In 1 to 3 months', 'In 3 to 6 months', 'Just planning for now'].map((v) => choice('timing', v)).join('')}</div>
+      <div class="field"><label for="est-city">Where is the home?</label><select id="est-city" name="city" required><option value="">Choose a town</option>${C.areas.map((a) => `<option>${esc(a)}</option>`).join('')}<option>Somewhere else in Durham Region</option><option>Outside Durham Region</option></select></div>
+      <div class="form-nav js-only"><button class="btn btn-ghost" type="button" data-back>Back</button><button class="btn btn-dark" type="button" data-next>Next</button></div>
+    </fieldset>
+    <fieldset class="step" data-step="3">
+      <legend><span class="step-k">Step 3 of 3</span>How can we reach you?</legend>
+      <div class="row">
+        <div class="field"><label for="est-name">Your name</label><input id="est-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="est-phone">Phone</label><input id="est-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+      </div>
+      <div class="field"><label for="est-email">Email (optional)</label><input id="est-email" name="email" type="email" autocomplete="email"></div>
+      <div class="field"><span class="label">Best way to reach you</span><div class="choice-grid three">${['Call', 'Text', 'Email'].map((v) => choice('contact_by', v, false)).join('')}</div></div>
+      <div class="field"><label for="est-notes">Anything else we should know? (optional)</label><textarea id="est-notes" name="message" placeholder="Size of the space, what you'd like done, timing"></textarea></div>
+      <label class="consent"><input type="checkbox" name="consent" value="yes" required> <span>OK to contact me about this project by phone, text or email.</span></label>
+      <div class="form-nav"><button class="btn btn-ghost js-only" type="button" data-back>Back</button><button class="btn btn-primary" type="submit">Send my request</button></div>
+    </fieldset>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+  <aside>
+    <div class="side-card"><h2>What happens next</h2><ol class="next-steps"><li>We call or text to talk it through</li><li>We visit to see the space</li><li>You get a clear quote and timeline</li></ol><a class="btn btn-primary" href="${tel}">Call ${esc(C.phoneDisplay)}</a><a class="btn btn-light" href="${sms}">Text us</a></div>
+    <div class="rating-card mt-lg"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>Google rating from ${C.google.count} reviews</p></div>
+  </aside>
+</div></section>`,
+  });
+}
+
+add({
+  path: '/thank-you/', title: `Thank you | ${C.name}`, description: 'Your estimate request has been sent.', noindex: true,
+  body: `<section class="page-hero plain"><div class="wrap"><span class="eyebrow" style="color:#e9cfaf">Request received</span><h1>Thanks! We'll be in touch soon.</h1><p class="lead">We'll call or text you to talk about your project. If it's urgent, call or text <a href="${tel}" style="color:#f1d9ba">${esc(C.phoneDisplay)}</a>.</p><div class="hero-actions"><a class="btn btn-primary" href="/projects/">See our projects</a><a class="btn btn-light" href="/resources/">Read our guides</a></div></div></section>`,
+});
+
 // Contact
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact/' }];
@@ -712,10 +805,8 @@ ${cta()}`,
     description: `Request an estimate for your basement, bathroom or home renovation in Oshawa or Durham Region. Call or text ${C.phoneDisplay}, or send your project details.`,
     body: `${pageHero({ crumbs, eyebrow: 'Contact', h1: 'Tell us about your project', lead: `Call or text <a href="${tel}" style="color:#f1d9ba">${esc(C.phoneDisplay)}</a>, or send a few details below. We'll get back to you quickly.`, actions: false })}
 <section class="section"><div class="wrap sidebar-layout">
-  <form class="lead-form" data-phone="${esc(C.phoneDisplay)}" novalidate>
-    <input type="hidden" name="access_key" value="${esc(C.web3formsKey)}">
-    <input type="hidden" name="subject" value="New estimate request from the RC Construction website">
-    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <form class="lead-form" data-phone="${esc(C.phoneDisplay)}" action="https://api.web3forms.com/submit" method="POST">
+    ${hiddenFormFields('New message from the RC Construction contact page')}
     <div class="row">
       <div class="field"><label for="type">Project type</label><select id="type" name="project_type" required><option value="">Choose one</option><option>Basement renovation</option><option>Basement rental unit</option><option>Bathroom renovation</option><option>Kitchen or home renovation</option><option>Flooring, stairs or trim</option><option>Something else</option></select></div>
       <div class="field"><label for="city">City or neighbourhood</label><input id="city" name="city" autocomplete="address-level2" placeholder="e.g. Oshawa"></div>
@@ -815,7 +906,7 @@ fs.writeFileSync(path.join(OUT, 'llms.txt'), `# ${C.name}
 - Reviews: ${C.google.rating} on Google (${C.google.count} reviews); ${C.homestars.rating} on HomeStars (${C.homestars.count} reviews), reviewed since ${C.homestars.since}
 - Warranty: offered on its work
 - Coordinates electricians and plumbers as part of its projects
-- Contact: ${C.phoneDisplay}, ${abs('/contact/')}
+- Contact: ${C.phoneDisplay} (call or text), estimate requests at ${abs('/get-an-estimate/')}
 
 ## Services
 ${SERVICES.map((s) => `- [${s.name}](${abs(`/services/${s.slug}/`)}): ${s.short}`).join('\n')}

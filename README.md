@@ -2,7 +2,9 @@
 
 Static website for RC Construction (Oshawa, Durham Region). No framework and no dependencies: `build.js` turns the content into plain HTML in `site/`.
 
-- 19 pages: home, 4 service pages, projects, reviews, service areas, Oshawa, about, process, 3 homeowner guides, contact, photo credits, 404
+- 21 pages: home, 4 service pages, projects, reviews, service areas, Oshawa, about, process, 3 homeowner guides, get an estimate, thank you, contact, photo credits, 404
+- Logo: `assets/logo.svg` (vector redraw of RC's badge, watermark removed), favicons `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, and `logo-512.png` for Google
+- Leads: every "Get an Estimate" button opens `/get-an-estimate/`, a 3-step form (project, timing and town, then name, phone, email). Each request includes where the visitor came from (Google Ads click, UTM tags or referring site) and lands on `/thank-you/`, which can be used as the Google Ads conversion page
 - SEO: unique titles and descriptions, canonical URLs, Open Graph, `sitemap.xml`
 - Structured data (JSON-LD): GeneralContractor, WebSite, BreadcrumbList, Service, FAQPage, Article
 - AEO/GEO: short answers at the top of guides, FAQ sections, a facts block on About, `llms.txt`, and `robots.txt` that welcomes AI search crawlers
