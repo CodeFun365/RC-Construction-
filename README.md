@@ -28,7 +28,7 @@ npx serve site
 - [ ] Warranty terms (the site only says a warranty is offered)
 - [ ] Review counts still match Google and HomeStars
 - [ ] Replace stock photos with real project photos (`assets/img/`, same file names, 800 and 1600 px wide WebP)
-- [ ] Form key: sign up free at https://web3forms.com with Rahimiconstruction@outlook.com (the key is emailed to that inbox), then set `WEB3FORMS_KEY` in Cloudflare (Settings > Variables) or paste it into `config.js`. Until then the form asks people to call or text.
+- [x] Form key (added Nov 2026): sign up free at https://web3forms.com with Rahimiconstruction@outlook.com (the key is emailed to that inbox), then set `WEB3FORMS_KEY` in Cloudflare (Settings > Variables) or paste it into `config.js`. Until then the form asks people to call or text.
 - [ ] Domain: when a custom domain is connected, set `SITE_URL` in Cloudflare to it (for example `https://rcconstruction.ca`)
 
 ## Deploy free on Cloudflare Pages

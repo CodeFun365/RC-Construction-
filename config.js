@@ -32,7 +32,7 @@ module.exports = {
   warranty: true, // HomeStars profile: "Offers warranty". CONFIRM the terms before describing them.
 
   // Free form handling through https://web3forms.com: get an access key emailed to RC's inbox and paste it here.
-  web3formsKey: process.env.WEB3FORMS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY',
+  web3formsKey: process.env.WEB3FORMS_KEY || '4f8f67bb-8d0c-48ef-ad9f-092dcb0619d3',
 
   // Other public profiles (add Facebook / Instagram / Google listing link when known).
   sameAs: ['https://www.homestars.com/profile/2920698-rc-construction', 'https://www.google.com/maps/place/?q=place_id:ChIJT_eoHR9EIm4RoMKXWhseQpo'],
