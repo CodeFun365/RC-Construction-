@@ -301,7 +301,7 @@ add({
     <img src="/assets/img/${IMG.hero.file}-1600.webp" width="1600" height="900" alt="${esc(IMG.hero.alt)}" fetchpriority="high">
   </picture>
   <div class="wrap">
-    <span class="eyebrow">Durham Region &amp; North Markham</span>
+    <span class="eyebrow">Durham Region &ndash; Cobourg Renovation Experts</span>
     <h1>Beautiful renovations. Built to last.</h1>
     <p class="lead">Basement, Bathroom, Kitchen and Home renovations across ${esc(C.region)} and Toronto, by a team homeowners describe as honest, on time and clear about what to expect.</p>
     <div class="hero-actions"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="/projects/">See Our Projects</a></div>
