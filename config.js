@@ -17,7 +17,7 @@ module.exports = {
   areaGroups: [
     { region: 'Durham Region', towns: ['Oshawa', 'Whitby', 'Courtice', 'Bowmanville', 'Ajax', 'Pickering', 'Port Perry'] },
     { region: 'York Region', towns: ['Whitchurch-Stouffville', 'King City', 'Gormley'] },
-    { region: 'Northumberland County', towns: ['Cobourg'] },
+    { region: 'Eastern Ontario', towns: ['Cobourg', 'Kingston'] },
   ],
 
   // Review facts shown on the site (keep in sync with the live profiles).

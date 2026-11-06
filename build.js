@@ -57,7 +57,7 @@ const SERVICES = [
   { slug: 'kitchen-remodeling', name: 'Kitchen Remodeling', short: 'New kitchens and kitchen updates: layout, cabinets, islands, quartz counters, tile and floors.', img: 'kitchen' },
   { slug: 'home-renovations', name: 'Home Renovations', short: 'Flooring, stairs, trim, wainscoting, paint and open-concept updates, for one room or the whole house.', img: 'stairs' },
 ];
-const AREA_LINE = 'Durham Region, York Region and Cobourg';
+const AREA_LINE = 'Durham Region, York Region, Cobourg and Kingston';
 const serviceCards = (sizes) => SERVICES.map((s) => `<a class="card" href="/services/${s.slug}/">${img(s.img, { sizes })}<div class="card-body"><h3>${s.name}</h3><p>${s.short}</p><span class="card-link">Learn more</span></div></a>`).join('')
   + `<a class="card card-cta" href="/get-an-estimate/"><div class="card-body"><span class="eyebrow">Not sure where to start?</span><h3>Tell us about your project</h3><p>Three quick questions, then we call or text you back with next steps.</p><span class="btn btn-primary">Get an Estimate</span></div></a>`;
 
@@ -95,7 +95,7 @@ const footer = () => `<footer class="site-footer">
     <div class="footer-grid">
       <div>
         ${brand}
-        <p style="margin-top:18px">Basement, Bathroom, Kitchen and Home renovations across ${esc(C.region)} and Toronto.</p>
+        <p style="margin-top:18px">Basement, Bathroom, Kitchen and Home renovations across ${esc(C.region)} to Kingston.</p>
         <p><a href="${tel}">${esc(C.phoneDisplay)}</a> · call or text</p>
       </div>
       <div><h2>Services</h2><ul>${SERVICES.map((s) => `<li><a href="/services/${s.slug}/">${s.name}</a></li>`).join('')}</ul></div>
@@ -290,7 +290,7 @@ const HOME_FAQ = ALL_FAQ.filter((f) => f.home);
 add({
   path: '/',
   title: `${C.name} | Basement, Bathroom, Kitchen & Home Renovations in Durham Region`,
-  description: `Basement, bathroom, kitchen and home renovations across Durham Region, York Region and Cobourg. 5-star rated on Google. Call or text ${C.phoneDisplay}.`,
+  description: `Basement, bathroom, kitchen and home renovations across Durham Region, York Region, Cobourg and Kingston. 5-star rated on Google. Call or text ${C.phoneDisplay}.`,
   preload: `<link rel="preload" as="image" href="/assets/img/${IMG.hero.file}-800.webp" media="(max-width: 700px)"><link rel="preload" as="image" href="/assets/img/${IMG.hero.file}-1600.webp" media="(min-width: 701px)">`,
   schema: [faqLd(HOME_FAQ)],
   body: `
@@ -301,9 +301,9 @@ add({
     <img src="/assets/img/${IMG.hero.file}-1600.webp" width="1600" height="900" alt="${esc(IMG.hero.alt)}" fetchpriority="high">
   </picture>
   <div class="wrap">
-    <span class="eyebrow">Durham Region &ndash; Cobourg Renovation Experts</span>
+    <span class="eyebrow">Durham Region &ndash; Kingston Renovation Experts</span>
     <h1>Beautiful renovations. Built to last.</h1>
-    <p class="lead">Basement, Bathroom, Kitchen and Home renovations across ${esc(C.region)} and Toronto, by a team homeowners describe as honest, on time and clear about what to expect.</p>
+    <p class="lead">Basement, Bathroom, Kitchen and Home renovations across ${esc(C.region)} to Kingston, by a team homeowners describe as honest, on time and clear about what to expect.</p>
     <div class="hero-actions"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="/projects/">See Our Projects</a></div>
     <p class="hero-note">Takes about a minute. We'll call or text you back.</p>
     <div class="rating-chip"><strong>★★★★★</strong> 5-star Google rating · <strong>${C.homestars.rating}</strong> on HomeStars</div>
@@ -422,7 +422,7 @@ add({
     <div>
       <span class="eyebrow">Service areas</span>
       <h2>Renovating homes across Durham Region and beyond</h2>
-      <p class="lead">From Pickering to Cobourg, and north to Port Perry, Stouffville and King City.</p>
+      <p class="lead">From Pickering to Kingston, and north to Port Perry, Stouffville and King City.</p>
       <ul class="chips">${C.areas.map((a) => (a === 'Oshawa' ? '<li><a href="/service-areas/oshawa/">Oshawa</a></li>' : `<li><span>${esc(a)}</span></li>`)).join('')}</ul>
       <p class="mt-lg"><a href="/service-areas/">More about our service areas</a></p>
     </div>
@@ -445,7 +445,7 @@ ${cta('Ready to transform your home?')}`,
 add({
   path: '/services/',
   title: `Renovation Services in Durham Region | ${C.name}`,
-  description: `Basement renovations, basement rental units, bathroom renovations, kitchen remodeling and home renovations across Durham Region, York Region and Cobourg by ${C.name}.`,
+  description: `Basement renovations, basement rental units, bathroom renovations, kitchen remodeling and home renovations across Durham Region, York Region, Cobourg and Kingston by ${C.name}.`,
   crumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services/' }],
   ogImage: 'basementStairs',
   body: `${pageHero({ crumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services/' }], eyebrow: 'Services', h1: 'Renovation services across Durham Region', lead: `Basements, bathrooms and the rest of the house, planned properly and built by one accountable team.`, image: 'basementStairs' })}
@@ -465,7 +465,7 @@ ${cta()}`,
 const SERVICE_PAGES = {
   'basement-renovations': {
     title: `Basement Renovations in Durham Region | Finished Basements | ${C.name}`,
-    description: `Basement renovations and basement finishing across Durham Region, York Region and Cobourg: rec rooms, bedrooms, offices, basement bathrooms and flood repairs.`,
+    description: `Basement renovations and basement finishing across Durham Region, York Region, Cobourg and Kingston: rec rooms, bedrooms, offices, basement bathrooms and flood repairs.`,
     h1: 'Basement renovations, built for the way you live',
     lead: 'Turn unused space into a family room, guest suite, office or games room that feels like the rest of your home, anywhere in Durham Region.',
     hero: 'recRoom',
@@ -509,7 +509,7 @@ const SERVICE_PAGES = {
   },
   'bathroom-renovations': {
     title: `Bathroom Renovations in Durham Region | Bathroom Remodels | ${C.name}`,
-    description: `Bathroom renovations across Durham Region, York Region and Cobourg: full remodels, tile, walk-in showers, tubs, vanities and plumbing coordinated by one team.`,
+    description: `Bathroom renovations across Durham Region, York Region, Cobourg and Kingston: full remodels, tile, walk-in showers, tubs, vanities and plumbing coordinated by one team.`,
     h1: 'Bathroom renovations',
     lead: 'From a quick refresh to a full gut and rebuild, a bathroom that looks great and holds up to daily use.',
     hero: 'shower',
@@ -526,7 +526,7 @@ const SERVICE_PAGES = {
   },
   'kitchen-remodeling': {
     title: `Kitchen Remodeling in Durham Region | Kitchen Renovations | ${C.name}`,
-    description: `Kitchen remodeling across Durham Region, York Region and Cobourg: new layouts, cabinets, islands, quartz counters, tile, flooring and lighting, with trades coordinated.`,
+    description: `Kitchen remodeling across Durham Region, York Region, Cobourg and Kingston: new layouts, cabinets, islands, quartz counters, tile, flooring and lighting, with trades coordinated.`,
     h1: 'Kitchen remodeling',
     lead: 'A kitchen that works for the way you cook and live, from a full remodel to new floors and tile.',
     hero: 'kitchen',
@@ -543,7 +543,7 @@ const SERVICE_PAGES = {
   },
   'home-renovations': {
     title: `Home Renovations in Durham Region | Floors, Stairs & Trim | ${C.name}`,
-    description: `Home renovations across Durham Region, York Region and Cobourg: hardwood and tile floors, stairs, trim, wainscoting, paint, open-concept updates and whole-home makeovers.`,
+    description: `Home renovations across Durham Region, York Region, Cobourg and Kingston: hardwood and tile floors, stairs, trim, wainscoting, paint, open-concept updates and whole-home makeovers.`,
     h1: 'Home renovations, one room or the whole house',
     lead: 'Floors, stairs, trim, ceilings and paint that change how your whole home feels.',
     hero: 'stairs',
@@ -629,9 +629,9 @@ ${cta('Become our next five-star project')}`,
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Service Areas', url: '/service-areas/' }];
   add({
-    path: '/service-areas/', title: `Service Areas: Durham Region, York Region & Cobourg | ${C.name}`, crumbs, ogImage: 'home',
-    description: `${C.name} renovates homes across Durham Region (${C.areaGroups[0].towns.join(', ')}), York Region (${C.areaGroups[1].towns.join(', ')}) and Cobourg.`,
-    body: `${pageHero({ crumbs, eyebrow: 'Service areas', h1: 'Renovating homes across Durham Region and beyond', lead: 'Basement, bathroom, kitchen and home renovations from Pickering to Cobourg, and north to Port Perry, Stouffville and King City.', image: 'home' })}
+    path: '/service-areas/', title: `Service Areas: Durham Region, York Region, Cobourg & Kingston | ${C.name}`, crumbs, ogImage: 'home',
+    description: `${C.name} renovates homes across Durham Region (${C.areaGroups[0].towns.join(', ')}), York Region (${C.areaGroups[1].towns.join(', ')}), Cobourg and Kingston.`,
+    body: `${pageHero({ crumbs, eyebrow: 'Service areas', h1: 'Renovating homes across Durham Region and beyond', lead: 'Basement, bathroom, kitchen and home renovations from Pickering to Kingston, and north to Port Perry, Stouffville and King City.', image: 'home' })}
 <section class="section"><div class="wrap split">
   <div>
     <h2>Where we work</h2>
