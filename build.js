@@ -21,6 +21,7 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const stripTags = (s) => String(s).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 const tel = `tel:${C.phone}`;
 const sms = `sms:${C.phone}`;
+const mail = `mailto:${C.email}`;
 
 // ---------------------------------------------------------------------------
 // Images (Unsplash, free licence; illustrative only). `unsplash` is the photo id on images.unsplash.com.
@@ -97,6 +98,7 @@ const footer = () => `<footer class="site-footer">
         ${brand}
         <p style="margin-top:18px">Basement, Bathroom, Kitchen and Home renovations across ${esc(C.region)} to Kingston.</p>
         <p><a href="${tel}">${esc(C.phoneDisplay)}</a> · call or text</p>
+        <p><a class="email-link" href="${mail}">${esc(C.email)}</a></p>
       </div>
       <div><h2>Services</h2><ul>${SERVICES.map((s) => `<li><a href="/services/${s.slug}/">${s.name}</a></li>`).join('')}</ul></div>
       <div><h2>Company</h2><ul><li><a href="/about/">About Us</a></li><li><a href="/our-process/">Our Process</a></li><li><a href="/projects/">Our Projects</a></li><li><a href="/reviews/">Reviews</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li></ul></div>
@@ -126,7 +128,7 @@ function pageHero({ crumbs, eyebrow, h1, lead, image, actions = true }) {
 }
 
 const sideCard = (title = 'Talk to RC Construction') => `<div class="side-card"><h2>${title}</h2><p>Call or text Sam and Farid, or send a few details and photos of the space. We'll get back to you quickly.</p>
-  <a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a><a class="btn btn-light" href="${sms}">Text us</a></div>`;
+  <a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a><a class="btn btn-light" href="${sms}">Text us</a><p class="side-email">Or email <a href="${mail}">${esc(C.email)}</a></p></div>`;
 
 // Real projects, summarised in our own words from RC's public HomeStars reviews (no customer names).
 const PROJECTS = [
@@ -181,6 +183,7 @@ const business = {
   name: C.name,
   url: `${URL}/`,
   telephone: C.phone,
+  email: C.email,
   image: abs(`/assets/img/${IMG.hero.file}-1600.webp`),
   logo: abs('/assets/logo-512.png'),
   description: `${C.name} is a renovation contractor doing basement renovations, basement rental units, bathroom renovations, kitchen remodeling and home renovations across ${AREA_LINE}, Ontario.`,
@@ -638,7 +641,7 @@ ${cta('Become our next five-star project')}`,
     ${C.areaGroups.map((g) => `<h3 class="mt-lg">${esc(g.region)}</h3><ul class="chips">${g.towns.map((a) => (a === 'Oshawa' ? '<li><a href="/service-areas/oshawa/">Oshawa</a></li>' : `<li><span>${esc(a)}</span></li>`)).join('')}</ul>`).join('')}
     <p class="mt-lg">Outside these areas? <a href="/get-an-estimate/">Ask us</a>. If we can't take your project, we'll tell you straight away.</p>
   </div>
-  <div class="facts"><dl><dt>Regions</dt><dd>${esc(C.areaGroups.map((g) => g.region).join(', '))}</dd><dt>Services</dt><dd>${SERVICES.map((s) => `<a href="/services/${s.slug}/">${s.name}</a>`).join(', ')}</dd><dt>Contact</dt><dd><a href="${tel}">${esc(C.phoneDisplay)}</a> (call or text)</dd></dl></div>
+  <div class="facts"><dl><dt>Regions</dt><dd>${esc(C.areaGroups.map((g) => g.region).join(', '))}</dd><dt>Services</dt><dd>${SERVICES.map((s) => `<a href="/services/${s.slug}/">${s.name}</a>`).join(', ')}</dd><dt>Contact</dt><dd><a href="${tel}">${esc(C.phoneDisplay)}</a> (call or text)<br><a href="${mail}">${esc(C.email)}</a></dd></dl></div>
 </div></section>
 ${cta()}`,
   });
@@ -698,6 +701,7 @@ ${cta()}`,
     <dt>On HomeStars since</dt><dd>${C.homestars.since}</dd>
     <dt>Warranty</dt><dd>Offered on our work</dd>
     <dt>Phone</dt><dd><a href="${tel}">${esc(C.phoneDisplay)}</a></dd>
+    <dt>Email</dt><dd><a href="${mail}">${esc(C.email)}</a></dd>
   </dl></div>
 </div></section>
 ${cta()}`,
@@ -837,7 +841,7 @@ const choice = (name, value, required = true) => `<label class="choice"><input t
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Get an Estimate', url: '/get-an-estimate/' }];
   add({
     path: '/get-an-estimate/', title: `Get a Renovation Estimate in Durham Region | ${C.name}`, crumbs,
-    description: `Get an estimate for your basement, bathroom, kitchen or home renovation in Durham Region, York Region or Cobourg. Answer three quick questions and we'll call or text you back.`,
+    description: `Get an estimate for your basement, bathroom, kitchen or home renovation in Durham Region, York Region, Cobourg or Kingston. Answer three quick questions and we'll call or text you back.`,
     body: `${pageHero({ crumbs, eyebrow: 'Get an estimate', h1: 'Tell us about your project', lead: `Three quick questions, about a minute. Prefer to talk? Call or text <a href="${tel}" style="color:#f1d9ba">${esc(C.phoneDisplay)}</a>.`, actions: false })}
 <section class="section"><div class="wrap sidebar-layout">
   <form class="lead-form estimate-form" data-steps data-phone="${esc(C.phoneDisplay)}" action="https://api.web3forms.com/submit" method="POST">
@@ -886,8 +890,8 @@ add({
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact/' }];
   add({
     path: '/contact/', title: `Contact ${C.name} | Renovation Estimates in Durham Region`, crumbs,
-    description: `Request an estimate for your basement, bathroom, kitchen or home renovation in Durham Region, York Region or Cobourg. Call or text ${C.phoneDisplay}, or send your project details.`,
-    body: `${pageHero({ crumbs, eyebrow: 'Contact', h1: 'Tell us about your project', lead: `Call or text <a href="${tel}" style="color:#f1d9ba">${esc(C.phoneDisplay)}</a>, or send a few details below. We'll get back to you quickly.`, actions: false })}
+    description: `Request an estimate for your basement, bathroom, kitchen or home renovation in Durham Region, York Region, Cobourg or Kingston. Call or text ${C.phoneDisplay}, or send your project details.`,
+    body: `${pageHero({ crumbs, eyebrow: 'Contact', h1: 'Tell us about your project', lead: `Call or text <a href="${tel}" style="color:#f1d9ba">${esc(C.phoneDisplay)}</a>, email <a class="email-link" href="${mail}" style="color:#f1d9ba">${esc(C.email)}</a>, or send a few details below. We'll get back to you quickly.`, actions: false })}
 <section class="section"><div class="wrap sidebar-layout">
   <form class="lead-form" data-phone="${esc(C.phoneDisplay)}" action="https://api.web3forms.com/submit" method="POST">
     ${hiddenFormFields('New message from the RC Construction contact page')}
@@ -910,7 +914,7 @@ add({
     <p class="form-status" role="status" aria-live="polite"></p>
   </form>
   <aside>
-    <div class="side-card"><h2>Prefer to talk?</h2><p>Call or text us. If we're on a job site, we'll call you back.</p><a class="btn btn-primary" href="${tel}">Call ${esc(C.phoneDisplay)}</a><a class="btn btn-light" href="${sms}">Text us</a></div>
+    <div class="side-card"><h2>Prefer to talk?</h2><p>Call or text us. If we're on a job site, we'll call you back.</p><a class="btn btn-primary" href="${tel}">Call ${esc(C.phoneDisplay)}</a><a class="btn btn-light" href="${sms}">Text us</a><p class="side-email">Or email <a href="${mail}">${esc(C.email)}</a></p></div>
     <div class="facts mt-lg"><h2 style="font-size:1.3rem">What happens next</h2><ol style="padding-left:1.2em;margin:0;color:var(--ink-2)"><li>We call or text to talk it through</li><li>We visit to see the space</li><li>You get a clear quote and timeline</li></ol><p class="notice" style="margin-top:14px">Serving ${esc(C.areas.join(', '))}.</p></div>
   </aside>
 </div></section>`,
@@ -991,7 +995,7 @@ fs.writeFileSync(path.join(OUT, 'llms.txt'), `# ${C.name}
 - Reviews: 5-star rating on Google; ${C.homestars.rating} on HomeStars, reviewed since ${C.homestars.since}
 - Warranty: offered on its work
 - Coordinates electricians and plumbers as part of its projects
-- Contact: ${C.phoneDisplay} (call or text), estimate requests at ${abs('/get-an-estimate/')}
+- Contact: ${C.phoneDisplay} (call or text), ${C.email}, estimate requests at ${abs('/get-an-estimate/')}
 
 ## Services
 ${SERVICES.map((s) => `- [${s.name}](${abs(`/services/${s.slug}/`)}): ${s.short}`).join('\n')}

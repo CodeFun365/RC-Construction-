@@ -10,6 +10,7 @@ module.exports = {
   tagline: 'Basement, bathroom and home renovations',
   phone: '+16478649281', // from RC's HomeStars replies and Google listing
   phoneDisplay: '(647) 864-9281',
+  email: 'Rahimiconstruction@outlook.com', // RC's inbox for the website and web forms (Nov 2026)
   city: 'Oshawa',
   region: 'Durham Region',
   province: 'ON',

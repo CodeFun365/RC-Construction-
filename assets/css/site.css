@@ -203,6 +203,9 @@ a.card:hover { transform: translateY(-3px); }
 .side-card { background: var(--charcoal); color: #e1e6e8; border-radius: var(--radius); padding: 28px; }
 .side-card h2, .side-card h3 { color: #fff; font-size: 1.4rem; }
 .side-card p { color: #c9d1d4; }
+.side-card .side-email { margin: 14px 0 0; font-size: .95rem; overflow-wrap: anywhere; }
+.side-card .side-email a { color: #f1d9ba; }
+.email-link { overflow-wrap: anywhere; }
 .side-card .btn { width: 100%; margin-top: 10px; }
 
 /* FAQ */
@@ -222,12 +225,12 @@ a.card:hover { transform: translateY(-3px); }
 @media (min-width: 900px) { .cta-band { grid-template-columns: 1.3fr 1fr; } }
 .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
-.lead-form { background: #fff; border-radius: 22px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow); display: grid; gap: 16px; }
-.lead-form .row { display: grid; gap: 16px; }
+.lead-form { background: #fff; border-radius: 22px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow); display: grid; gap: 16px; min-width: 0; }
+.lead-form .row { display: grid; gap: 16px; min-width: 0; }
 @media (min-width: 640px) { .lead-form .row { grid-template-columns: 1fr 1fr; } }
-.field { display: grid; gap: 6px; }
+.field { display: grid; gap: 6px; min-width: 0; }
 .field label { font-weight: 600; font-size: .95rem; }
-.field input, .field select, .field textarea { font: inherit; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--stone); background: #fff; color: var(--ink); min-height: 50px; }
+.field input, .field select, .field textarea { font: inherit; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--stone); background: #fff; color: var(--ink); min-height: 50px; min-width: 0; width: 100%; }
 .field textarea { min-height: 120px; resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--bronze); box-shadow: 0 0 0 3px rgba(164, 124, 86, .2); }
 .consent { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; color: var(--ink-2); }
