@@ -90,7 +90,7 @@ p { margin: 0 0 1.1em; }
   .primary-nav > ul > li > a, .nav-cta .btn { white-space: nowrap; }
   .nav-phone { display: none; }
 }
-@media (min-width: 1440px) { .nav-phone { display: inline; } }
+@media (min-width: 1280px) { .nav-phone { display: inline; } }
 
 /* Hero */
 .hero { position: relative; min-height: min(88vh, 760px); display: flex; align-items: flex-end; color: #fff; isolation: isolate; }

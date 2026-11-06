@@ -63,11 +63,9 @@ const serviceCards = (sizes) => SERVICES.map((s) => `<a class="card" href="/serv
   + `<a class="card card-cta" href="/get-an-estimate/"><div class="card-body"><span class="eyebrow">Not sure where to start?</span><h3>Tell us about your project</h3><p>Three quick questions, then we call or text you back with next steps.</p><span class="btn btn-primary">Get an Estimate</span></div></a>`;
 
 const NAV = [
-  { href: '/', label: 'Home' },
   { href: '/services/', label: 'Services', sub: SERVICES.map((s) => ({ href: `/services/${s.slug}/`, label: s.name })) },
-  { href: '/projects/', label: 'Our Projects' },
-  { href: '/service-areas/', label: 'Service Areas' },
-  { href: '/about/', label: 'About Us', sub: [{ href: '/about/', label: 'About RC Construction' }, { href: '/our-process/', label: 'Our Process' }, { href: '/reviews/', label: 'Reviews' }, { href: '/faq/', label: 'FAQ' }, { href: '/resources/', label: 'Homeowner Guides' }] },
+  { href: '/projects/', label: 'Our Projects', sub: [{ href: '/projects/', label: 'Project Gallery' }, { href: '/reviews/', label: 'Customer Reviews' }] },
+  { href: '/about/', label: 'About Us', sub: [{ href: '/about/', label: 'About RC Construction' }, { href: '/our-process/', label: 'Our Process' }, { href: '/service-areas/', label: 'Service Areas' }, { href: '/faq/', label: 'FAQ' }, { href: '/resources/', label: 'Homeowner Guides' }] },
   { href: '/contact/', label: 'Contact' },
 ];
 
