@@ -103,8 +103,8 @@ const footer = () => `<footer class="site-footer">
       <div><h2>Homeowner guides</h2><ul>${GUIDES.map((g) => `<li><a href="/resources/${g.slug}/">${g.short}</a></li>`).join('')}<li><a href="/service-areas/">Service areas</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span>© ${new Date().getFullYear()} ${esc(C.name)}. Serving ${esc(C.areas.join(', '))}.</span>
-      <span>Photos are illustrative until our project photos are added. <a href="/photo-credits/">Photo credits</a></span>
+      <span>© ${new Date().getFullYear()} ${esc(C.name)}.</span>
+      <span>Designed by Handee Marketing</span>
     </div>
   </div>
 </footer>
@@ -125,7 +125,7 @@ function pageHero({ crumbs, eyebrow, h1, lead, image, actions = true }) {
   ${actions ? `<div class="hero-actions"><a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a></div>` : ''}</div></section>`;
 }
 
-const sideCard = (title = 'Talk to RC Construction') => `<div class="side-card"><h2>${title}</h2><p>Call or text Sam's team, or send a few details and photos of the space. We'll get back to you quickly.</p>
+const sideCard = (title = 'Talk to RC Construction') => `<div class="side-card"><h2>${title}</h2><p>Call or text Sam and Farid, or send a few details and photos of the space. We'll get back to you quickly.</p>
   <a class="btn btn-primary" href="/get-an-estimate/">Get an Estimate</a><a class="btn btn-light" href="${tel}">Call ${esc(C.phoneDisplay)}</a><a class="btn btn-light" href="${sms}">Text us</a></div>`;
 
 // Real projects, summarised in our own words from RC's public HomeStars reviews (no customer names).
@@ -138,7 +138,7 @@ const PROJECTS = [
   { cat: 'Kitchens & floors', year: 2022, title: 'Fireplace removal and new flooring', scope: ['Old fireplace removed', 'New flooring installed quickly and cleanly'], services: ['home-renovations'] },
   { cat: 'Bathrooms', year: 2020, title: 'Complete master bathroom renovation', scope: ['Full master bath remodel', 'Clear quote given up front'], services: ['bathroom-renovations'] },
   { cat: 'Bathrooms', year: 2019, title: 'Washroom gutted and rebuilt', scope: ['Washroom fully gutted', 'Rebuilt with new tile and fixtures'], services: ['bathroom-renovations'] },
-  { cat: 'Whole-home & more', year: 2019, title: 'Open-concept main floor renovation', scope: ['Main floor opened up into an open-concept layout', 'Handled start to finish by Sam and the crew'], services: ['home-renovations'] },
+  { cat: 'Whole-home & more', year: 2019, title: 'Open-concept main floor renovation', scope: ['Main floor opened up into an open-concept layout', 'Handled start to finish by Sam, Farid and the crew'], services: ['home-renovations'] },
   { cat: 'Whole-home & more', year: 2019, title: 'Custom doors, baseboards and trim for a full second floor', scope: ['Custom interior doors', 'Baseboards and door and window trim through the whole second floor'], services: ['home-renovations'] },
   { cat: 'Whole-home & more', year: 2020, title: 'New deck for a returning customer', scope: ['Deck built for a homeowner who had RC frame their basement earlier'], services: ['home-renovations'] },
   { cat: 'Basements', year: 2018, title: 'Basement and new side-entry door', scope: ['Basement finished', 'New side-entry door added'], services: ['basement-renovations'] },
@@ -188,6 +188,7 @@ const business = {
   areaServed: C.areas.map((a) => ({ '@type': 'City', name: `${a}, Ontario` })),
   knowsAbout: ['Basement renovation', 'Basement finishing', 'Basement apartments', 'Bathroom renovation', 'Kitchen renovation', 'Hardwood flooring', 'Tile installation', 'Stair renovation', 'Trim and wainscoting'],
   hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Renovation services', itemListElement: SERVICES.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name, url: abs(`/services/${s.slug}/`) } })) },
+  founder: [{ '@type': 'Person', name: 'Sam' }, { '@type': 'Person', name: 'Farid' }],
   sameAs: C.sameAs,
 };
 const website = { '@type': 'WebSite', '@id': `${URL}/#website`, url: `${URL}/`, name: C.name, publisher: { '@id': BUSINESS_ID } };
@@ -277,9 +278,9 @@ const FAQ_GROUPS = [
   ] },
   { title: 'Working with us', items: [
     { q: 'Do you coordinate electricians and plumbers?', a: '<p>Yes. We bring in and coordinate the electricians and plumbers your project needs, so you deal with one team from demolition to the final walkthrough.</p>', home: true },
-    { q: 'Can you help me choose tile, flooring and finishes?', a: '<p>Yes. We talk through options that suit your budget and how you use the space, and recommend suppliers we trust. Customers have also been happy with the specialist trades Sam refers, such as glass installers.</p>' },
+    { q: 'Can you help me choose tile, flooring and finishes?', a: '<p>Yes. We talk through options that suit your budget and how you use the space, and recommend suppliers we trust. Customers have also been happy with the specialist trades Sam and Farid refer, such as glass installers.</p>' },
     { q: 'Do you repair flooded or water-damaged basements?', a: '<p>Yes. We have repaired basements after flooding, including walls, baseboards, flooring, ceilings and paint, and restored basements with new drywall and floors. Talk to your insurer about what your policy covers.</p>' },
-    { q: 'Who will I deal with during the job?', a: '<p>Sam and the RC Construction crew. You get one point of contact, regular updates, and a final walkthrough when the work is done.</p>' },
+    { q: 'Who will I deal with during the job?', a: '<p>Sam and Farid, the owners, with the RC Construction crew. You get one team to deal with, regular updates, and a final walkthrough when the work is done.</p>' },
   ] },
 ];
 const ALL_FAQ = FAQ_GROUPS.flatMap((g) => g.items);
@@ -380,9 +381,9 @@ add({
 <section class="section">
   <div class="wrap split">
     <div>
-      <span class="eyebrow">Meet the owner</span>
-      <h2>You deal with Sam, start to finish</h2>
-      <p class="lead">Sam leads every RC Construction project, from the first visit and the quote to the final walkthrough. One team does the work and handles the coordination.</p>
+      <span class="eyebrow">Meet the owners</span>
+      <h2>You deal with Sam and Farid, start to finish</h2>
+      <p class="lead">Sam and Farid own RC Construction and lead every project, from the first visit and the quote to the final walkthrough. One team does the work and handles the coordination.</p>
       <ul class="ticks">
         <li>Demolition, supplies and garbage removal taken care of</li>
         <li>Help choosing tile, flooring and finishes, with supplier recommendations</li>
@@ -602,7 +603,7 @@ ${cta('Planning something similar?')}`,
   add({
     path: '/reviews/', title: `Customer Reviews | ${C.name}`, crumbs,
     description: `${C.name} has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars. Read what homeowners across Durham Region say.`,
-    body: `${pageHero({ crumbs, eyebrow: 'Reviews', h1: `Rated ${C.google.rating} by homeowners on Google`, lead: 'Read what customers say about working with Sam and the crew.', actions: false })}
+    body: `${pageHero({ crumbs, eyebrow: 'Reviews', h1: `Rated ${C.google.rating} by homeowners on Google`, lead: 'Read what customers say about working with Sam, Farid and the crew.', actions: false })}
 <section class="section"><div class="wrap">
   <div class="rating-row">
     <div class="rating-card"><div class="score">${C.google.rating}</div><div class="stars" aria-hidden="true">★★★★★</div><p>5-star Google rating</p></div>
@@ -613,7 +614,7 @@ ${cta('Planning something similar?')}`,
   <p class="mt-lg"><a class="btn btn-ghost" href="${C.google.url}" rel="noopener">See all our Google reviews</a></p>
   <div class="section-head mt-lg"><h2>What homeowners mention most</h2></div>
   <div class="grid grid-2">
-    <div class="project"><h3>Honesty and clear expectations</h3><p>Customers say Sam is honest from the start, sets clear expectations and explains the process and timing as the job goes.</p></div>
+    <div class="project"><h3>Honesty and clear expectations</h3><p>Customers say Sam and Farid are honest from the start, sets clear expectations and explains the process and timing as the job goes.</p></div>
     <div class="project"><h3>Finished on time</h3><p>Reviews mention work completed on the timeline given, and in some cases earlier than expected.</p></div>
     <div class="project"><h3>Quality workmanship</h3><p>From basements that now match the main floor to whole-home makeovers, customers describe results they're proud of.</p></div>
     <div class="project"><h3>A respectful, tidy crew</h3><p>Homeowners describe the crew as professional, polite and considerate, and say the team came back to fix small things afterwards.</p></div>
@@ -677,18 +678,19 @@ ${cta()}`,
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about/' }];
   add({
     path: '/about/', title: `About ${C.name} | Oshawa Renovation Contractor`, crumbs, ogImage: 'measure',
-    description: `${C.name} is an Oshawa-based renovation team led by Sam, known for honest advice, clear timelines and quality basement, bathroom and home renovations.`,
-    body: `${pageHero({ crumbs, eyebrow: 'About us', h1: 'A renovation team homeowners recommend', lead: `${esc(C.name)} is led by Sam and based in ${esc(C.city)}. We've been renovating Durham Region homes and earning five-star reviews since at least ${C.homestars.since}.`, image: 'measure' })}
+    description: `${C.name} is an Oshawa-based renovation team owned by Sam and Farid, known for honest advice, clear timelines and quality basement, bathroom and home renovations.`,
+    body: `${pageHero({ crumbs, eyebrow: 'About us', h1: 'A renovation team homeowners recommend', lead: `${esc(C.name)} is owned by Sam and Farid and based in ${esc(C.city)}. We've been renovating Durham Region homes and earning five-star reviews since at least ${C.homestars.since}.`, image: 'measure' })}
 <section class="section"><div class="wrap split">
   <div class="prose">
     <h2>Who we are</h2>
-    <p>We're a hands-on renovation team. Sam leads every project, from the first visit to the final walkthrough, with a crew that customers describe as professional, punctual and respectful of their homes.</p>
+    <p>We're a hands-on renovation team. Sam and Farid own the business and lead every project, from the first visit to the final walkthrough, with a crew that customers describe as professional, punctual and respectful of their homes.</p>
     <p>We focus on the work we do best: basements, bathrooms and the kind of home renovations that change how a house feels, like kitchens, floors, stairs and trim. For electrical and plumbing, we bring in trades we trust and coordinate them for you.</p>
     <h2>How we like to work</h2>
     <ul><li>Honest advice, even when it means a smaller job</li><li>A clear quote and timeline before we start</li><li>Regular updates while we work</li><li>A clean, respectful job site</li><li>Coming back for the small things after we finish</li></ul>
   </div>
   <div class="facts" aria-label="Company facts"><h2 style="font-size:1.4rem">${esc(C.name)} at a glance</h2><dl>
     <dt>Business</dt><dd>Renovation contractor (general contractor)</dd>
+    <dt>Owners</dt><dd>Sam and Farid</dd>
     <dt>Based in</dt><dd>${esc(C.city)}, Ontario, Canada</dd>
     <dt>Serves</dt><dd>${esc(C.areas.join(', '))}</dd>
     <dt>Services</dt><dd>Basement renovations, basement rental units, bathroom renovations, kitchen remodeling, home renovations</dd>
@@ -708,7 +710,7 @@ ${cta()}`,
   const processFaq = [
     { q: 'How quickly can you start?', a: '<p>It depends on our schedule and on permits, if your project needs one. We give you a realistic start date with your quote.</p>' },
     { q: 'Will I get a written quote?', a: '<p>Yes. You get a clear quote and timeline before any work starts.</p>' },
-    { q: 'Who will I deal with during the job?', a: '<p>Sam and the RC Construction crew. We coordinate the electricians and plumbers, so you have one point of contact.</p>' },
+    { q: 'Who will I deal with during the job?', a: '<p>Sam and Farid, the owners, with the RC Construction crew. We coordinate the electricians and plumbers, so you have one point of contact.</p>' },
   ];
   add({
     path: '/our-process/', title: `Our Renovation Process | ${C.name}`, crumbs, ogImage: 'saw', schema: [faqLd(processFaq)],
@@ -985,7 +987,7 @@ fs.writeFileSync(path.join(OUT, 'llms.txt'), `# ${C.name}
 ## Key facts
 - Based in: ${C.city}, Ontario, Canada
 - Serves: ${C.areas.join(', ')}
-- Led by: Sam
+- Owners: Sam and Farid
 - Reviews: 5-star rating on Google; ${C.homestars.rating} on HomeStars, reviewed since ${C.homestars.since}
 - Warranty: offered on its work
 - Coordinates electricians and plumbers as part of its projects
