@@ -190,8 +190,8 @@ const PROJECTS = [
   { img: 'pEntry', cat: 'Basements', year: 2018, title: 'Basement and new side-entry door', scope: ['Basement finished', 'New side-entry door added'], services: ['basement-renovations'] },
 ];
 
-// Project photos are illustrative stock images until RC's own job photos are added, and are labelled as such.
-const projectCard = (p, photo = true) => `<article class="project${photo && p.img ? ' has-photo' : ''}">${photo && p.img ? `<figure class="project-photo">${img(p.img, { sizes: '(min-width: 1000px) 33vw, (min-width: 720px) 50vw, 100vw' })}<figcaption>Illustrative photo</figcaption></figure>` : ''}<span class="meta">${esc(p.cat)} · ${p.year}</span><h3>${esc(p.title)}</h3><ul>${p.scope.map((s) => `<li>${esc(s)}</li>`).join('')}</ul><p class="note">Summarised from a <a href="${C.homestars.url}">HomeStars review</a>.</p></article>`;
+// Project photos are stock images of similar work until RC's own job photos are added (disclosed in the note under the projects).
+const projectCard = (p, photo = true) => `<article class="project${photo && p.img ? ' has-photo' : ''}">${photo && p.img ? `<figure class="project-photo">${img(p.img, { sizes: '(min-width: 1000px) 33vw, (min-width: 720px) 50vw, 100vw' })}</figure>` : ''}<span class="meta">${esc(p.cat)} · ${p.year}</span><h3>${esc(p.title)}</h3><ul>${p.scope.map((s) => `<li>${esc(s)}</li>`).join('')}</ul><p class="note">Summarised from a <a href="${C.homestars.url}">HomeStars review</a>.</p></article>`;
 
 // Real Google reviews (Google Maps, Nov 2026), summarised in our own words. First name and last initial only.
 // To use a customer's exact words instead, paste them into `quote` and they show in quotation marks.
@@ -687,7 +687,7 @@ ${cta()}`,
 <section class="section"><div class="wrap">
   <ul class="chips" aria-label="Project types">${cats.map((c) => `<li><a href="#${c.toLowerCase().replace(/[^a-z]+/g, '-')}">${esc(c)}</a></li>`).join('')}</ul>
   ${cats.map((c) => `<h2 class="mt-lg" id="${c.toLowerCase().replace(/[^a-z]+/g, '-')}">${esc(c)}</h2><div class="grid grid-3">${PROJECTS.filter((p) => p.cat === c).map((p) => projectCard(p)).join('')}</div>`).join('')}
-  <p class="notice mt-lg">Each project is summarised in our words from a customer's public review on HomeStars. Photos marked “Illustrative photo” show similar work, not these exact jobs. Photos from our own projects are being added.</p>
+  <p class="notice mt-lg">Each project is summarised in our words from a customer's public review on HomeStars. Photos show similar work, not these exact jobs. Photos from our own projects are being added.</p>
 </div></section>
 ${cta('Planning something similar?')}`,
   });

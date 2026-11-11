@@ -53,4 +53,4 @@ npx wrangler pages deploy site --project-name rc-construction
 - Add the website link to the Google Business Profile and HomeStars profile
 - Add Facebook or Instagram links to `sameAs` in `config.js` when known
 
-Photos: illustrative images from Unsplash (free licence), credited on `/photo-credits/`. Every photo is used once only. Project cards carry an "Illustrative photo" label; they must never be presented as RC's own work.
+Photos: illustrative images from Unsplash (free licence), credited on `/photo-credits/`. Every photo is used once only. Project photos are disclosed as similar work in a note on the projects page; they must never be presented as RC's own work.
