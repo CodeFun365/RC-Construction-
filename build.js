@@ -41,6 +41,49 @@ const IMG = {
   measure: { file: 'craft-measure', alt: 'Close-up of a carpenter marking a wood board with a pencil', unsplash: '1659930087003-2d64e33181f7' },
   tile: { file: 'tile-install', alt: 'Installer setting a white wall tile with spacers', unsplash: '1523413307857-ef24c53571ae' },
   home: { file: 'durham-home', alt: 'Two-storey family home with a two-car garage and a green lawn in a quiet suburb', unsplash: '1752119607845-ade31340d49e' },
+  // Added Nov 2026 so that no photo appears twice anywhere on the site.
+  basementOffice: { file: 'basement-open-office', alt: 'Finished basement with white walls, wood-look floors, a desk area and an open staircase', unsplash: '1646592491963-07ff7e7c31f7' },
+  rentalKitchen: { file: 'rental-kitchen-modern', alt: 'Compact modern kitchen with flat-panel cabinets and a small breakfast bar', unsplash: '1745429523635-ad375f836bf2' },
+  rentalHero: { file: 'rental-unit-kitchen-living', alt: 'Modern open kitchen with stainless steel appliances and wood floors', unsplash: '1773098587137-1a62971cfedb' },
+  kitchenStools: { file: 'kitchen-white-island-stools', alt: 'White kitchen with a large island, bar stools and pendant lights', unsplash: '1773579305267-8d75e0af5be4' },
+  kitchenBeams: { file: 'kitchen-wood-beams', alt: 'Bright kitchen with a long island, pendant lights and exposed wood ceiling beams', unsplash: '1768486143865-342d8cc12c90' },
+  painting: { file: 'painting-wall-roller', alt: 'Painter rolling a fresh coat of pale paint onto an interior wall', unsplash: '1789841417999-67a24a247c90' },
+  livingDining: { file: 'living-dining-hardwood', alt: 'Open living and dining room with warm hardwood floors and large windows', unsplash: '1722247521731-14d1b192bfb4' },
+  restoreWalls: { file: 'restoration-insulation-walls', alt: 'Room stripped back to the studs with new insulation, ready for drywall', unsplash: '1768321910174-6f55899299a2' },
+  restoreGutted: { file: 'restoration-gutted-room', alt: 'Room under repair with walls opened up, support posts and debris on the floor', unsplash: '1634586648651-f1fb9ec10d90' },
+  restoreKitchen: { file: 'restoration-kitchen-protected', alt: 'Kitchen under repair with cabinets covered in plastic and floors protected with paper', unsplash: '1618832515490-e181c4794a45' },
+  commercialOffice: { file: 'commercial-open-office', alt: 'Open-plan office with rows of white desks and frosted glass partitions', unsplash: '1577412647305-991150c7d163' },
+  commercialRetail: { file: 'commercial-retail-store', alt: 'Modern retail store interior with display shelves and bright lighting', unsplash: '1771033834141-023d630b3965' },
+  commercialRestaurant: { file: 'commercial-restaurant', alt: 'Warm restaurant dining room with wood tables, banquette seating and pendant lights', unsplash: '1776763255189-3c8237aec808' },
+  livingWindows: { file: 'living-room-big-windows', alt: 'Modern living room with a brown sofa and floor-to-ceiling windows', unsplash: '1600210492493-0946911123ea' },
+  wainscoting: { file: 'hallway-wainscoting', alt: 'Hallway with white wainscoting panels and framed artwork', unsplash: '1778731525561-7ff97698d242' },
+  ideaKitchen: { file: 'idea-small-kitchen', alt: 'Small bright kitchen with white cabinets and a window, suited to a second unit', unsplash: '1723810389040-44aee5338fb9' },
+  ideaMedia: { file: 'idea-media-room', alt: 'Media room with a large grey sectional sofa facing a projection screen', unsplash: '1789381565458-73e4c3a76c18' },
+  ideaFamily: { file: 'idea-family-room', alt: 'Comfortable family room with a sectional sofa, armchair and warm lighting', unsplash: '1773098587088-f0a3aaab48a8' },
+  ideaOffice: { file: 'idea-office-library', alt: 'Bright home office with built-in bookshelves and two desks by the windows', unsplash: '1777896193454-8b4863264f0b' },
+  guideOpenPlan: { file: 'guide-open-plan-living', alt: 'Modern open-plan living space with a grey sofa and a red accent chair', unsplash: '1791138960935-70f1aedbb7fb' },
+  guideBlueprint: { file: 'guide-blueprint-drafting', alt: 'Person drafting renovation plans on a blueprint', unsplash: '1503387837-b154d5074bd2' },
+  guideBudget: { file: 'guide-calculator-budget', alt: 'Calculator, scissors and office supplies on a desk for planning a budget', unsplash: '1746221331496-a87689fc8eb9' },
+  guideLaundry: { file: 'guide-basement-laundry', alt: 'Finished basement with white walls and a laundry area', unsplash: '1646592474273-86049d4f3575' },
+  guideArchitect: { file: 'guide-architect-plans', alt: 'Architect working on a drawing with a pencil and ruler', unsplash: '1503387762-592deb58ef4e' },
+  guideCalculator: { file: 'guide-calculator-pen', alt: 'Calculator and pen on a printed budget sheet', unsplash: '1648201637025-1c77b9be3013' },
+  guideBedroom: { file: 'guide-cozy-bedroom', alt: 'Cozy bedroom with a single bed beside a window', unsplash: '1765464184843-105e144bd54b' },
+  aboutTools: { file: 'about-tool-wall', alt: 'Hand tools neatly organised on a workshop wall', unsplash: '1731694411560-050e5b91e943' },
+  areasHomes: { file: 'areas-brick-homes', alt: 'Row of brick family homes on a residential street corner', unsplash: '1720469145899-0d361b7c3081' },
+  oshawaHome: { file: 'oshawa-family-home', alt: 'Family home with a mature tree in the front yard', unsplash: '1675583139055-f30428c95ceb' },
+  projectsHero: { file: 'projects-open-living', alt: 'Open-plan living and dining room with a grey sofa and dining table', unsplash: '1593696140826-c58b021acf8b' },
+  pKitchenIsland: { file: 'project-kitchen-island', alt: 'Large kitchen with a centre island surrounded by stools', unsplash: '1633109611134-c41b5c0bbc1a' },
+  pPlaster: { file: 'project-plastering', alt: 'Hands smoothing new plaster on a wall with trowels', unsplash: '1768839725085-829e6ac7ac26' },
+  pBasementStuds: { file: 'project-unfinished-basement', alt: 'Unfinished basement with exposed joists, support posts and stairs, before framing', unsplash: '1782353921981-bb73a53a7482' },
+  pWhiteKitchen: { file: 'project-white-kitchen', alt: 'Modern white kitchen with an island and a dining area', unsplash: '1760545813135-fbda9423e448' },
+  pTrimPaint: { file: 'project-trim-paint', alt: 'Freshly painted room with light grey walls, white trim and grey wood-look flooring', unsplash: '1792628952654-767fda73053c' },
+  pFlooring: { file: 'project-new-flooring', alt: 'Large empty room with new wood flooring and windows', unsplash: '1665507299418-87f6abb3c846' },
+  pMasterBath: { file: 'project-master-bath', alt: 'Modern master bathroom with double sinks and a bathtub', unsplash: '1770941550709-a555ac4a69b3' },
+  pWashroom: { file: 'project-washroom', alt: 'Renovated washroom with a glass shower, toilet and vanity', unsplash: '1704428381342-ea9df943619e' },
+  pOpenConcept: { file: 'project-open-concept', alt: 'Open-concept main floor with the living room flowing into the kitchen', unsplash: '1649083048337-4aeb6dda80bb' },
+  pDoorsTrim: { file: 'project-doors-trim', alt: 'Hallway with grey walls, hardwood floors and white interior doors and trim', unsplash: '1792630861937-d8c6bcb95b03' },
+  pDeck: { file: 'project-deck', alt: 'Grey wooden deck with stairs at the back of a house', unsplash: '1792630862523-e76c8fa6c7da' },
+  pEntry: { file: 'project-entry-door', alt: 'Entryway with wooden stairs and a glass-panelled door', unsplash: '1771354959667-96360bf59eab' },
 };
 
 function img(key, { sizes = '(min-width: 1000px) 50vw, 100vw', eager = false, cls = '' } = {}) {
@@ -51,15 +94,18 @@ function img(key, { sizes = '(min-width: 1000px) 50vw, 100vw', eager = false, cl
 // ---------------------------------------------------------------------------
 // Shared pieces
 // ---------------------------------------------------------------------------
+// img: card on the home page; hubImg: card on /services/. Each service page has its own hero (SERVICE_PAGES), so no photo repeats.
 const SERVICES = [
-  { slug: 'basement-renovations', name: 'Basement Renovations', short: 'Finished basements, rec rooms, offices and bedrooms, built to feel like the rest of your home.', img: 'basementStairs' },
-  { slug: 'basement-rental-units', name: 'Basement Rental Units', short: 'Basement apartments planned the right way, from layout to the building permit.', img: 'suite' },
-  { slug: 'bathroom-renovations', name: 'Bathroom Renovations', short: 'Full bathroom remodels: tile, showers, tubs, vanities, lighting and plumbing, done in one go.', img: 'shower' },
-  { slug: 'kitchen-remodeling', name: 'Kitchen Remodeling', short: 'New kitchens and kitchen updates: layout, cabinets, islands, quartz counters, tile and floors.', img: 'kitchen' },
-  { slug: 'home-renovations', name: 'Home Renovations', short: 'Flooring, stairs, trim, wainscoting, paint and open-concept updates, for one room or the whole house.', img: 'stairs' },
+  { slug: 'basement-renovations', name: 'Basement Renovations', short: 'Finished basements, rec rooms, offices and bedrooms, built to feel like the rest of your home.', img: 'basementStairs', hubImg: 'basementOffice' },
+  { slug: 'basement-rental-units', name: 'Basement Rental Units', short: 'Basement apartments planned the right way, from layout to the building permit.', img: 'suite', hubImg: 'rentalKitchen' },
+  { slug: 'bathroom-renovations', name: 'Bathroom Renovations', short: 'Full bathroom remodels: tile, showers, tubs, vanities, lighting and plumbing, done in one go.', img: 'shower', hubImg: 'vanity' },
+  { slug: 'kitchen-remodeling', name: 'Kitchen Remodeling', short: 'New kitchens and kitchen updates: layout, cabinets, islands, quartz counters, tile and floors.', img: 'kitchen', hubImg: 'kitchenStools' },
+  { slug: 'home-renovations', name: 'Home Renovations', short: 'Flooring, stairs, trim, wainscoting, paint and open-concept updates, for one room or the whole house.', img: 'stairs', hubImg: 'painting' },
+  { slug: 'restoration', name: 'Restoration', short: 'Rebuilding after flood or water damage: drywall, insulation, floors, baseboards, ceilings and paint.', img: 'restoreWalls', hubImg: 'restoreGutted' },
+  { slug: 'commercial-renovations', name: 'Commercial Renovations', short: 'Offices, stores, restaurants and other business spaces, renovated with your opening hours in mind.', img: 'commercialOffice', hubImg: 'commercialRetail' },
 ];
 const AREA_LINE = 'Durham Region, York Region, Cobourg and Kingston';
-const serviceCards = (sizes) => SERVICES.map((s) => `<a class="card" href="/services/${s.slug}/">${img(s.img, { sizes })}<div class="card-body"><h3>${s.name}</h3><p>${s.short}</p><span class="card-link">Learn more</span></div></a>`).join('')
+const serviceCards = (sizes, key = 'img') => SERVICES.map((s) => `<a class="card" href="/services/${s.slug}/">${img(s[key], { sizes })}<div class="card-body"><h3>${s.name}</h3><p>${s.short}</p><span class="card-link">Learn more</span></div></a>`).join('')
   + `<a class="card card-cta" href="/get-an-estimate/"><div class="card-body"><span class="eyebrow">Not sure where to start?</span><h3>Tell us about your project</h3><p>Three quick questions, then we call or text you back with next steps.</p><span class="btn btn-primary">Get an Estimate</span></div></a>`;
 
 const NAV = [
@@ -130,21 +176,22 @@ const sideCard = (title = 'Talk to RC Construction') => `<div class="side-card">
 
 // Real projects, summarised in our own words from RC's public HomeStars reviews (no customer names).
 const PROJECTS = [
-  { cat: 'Basements', year: 2023, title: 'Walkout basement with a two-bedroom rental unit, plus a whole-home refresh', scope: ['Three-bedroom walkout basement: one bedroom for the owners and a two-bedroom rental unit', 'Demolition, supplies and garbage removal coordinated from start to finish', 'Oak stairs rebuilt as modern open stairs with metal pickets', 'New kitchen with a quartz waterfall island; carpet replaced with hardwood; new tile', 'Wainscoting, waffle ceilings, new baseboards and trim, and the whole house painted', 'Electricians and plumbers coordinated for pot lights, chandeliers and appliances'], services: ['basement-rental-units', 'basement-renovations', 'home-renovations'] },
-  { cat: 'Basements', year: 2024, title: 'Basement restoration: drywall, floors and baseboards', scope: ['New drywall, flooring and baseboards after damage', 'Unexpected issues found and fixed along the way', 'Finished on schedule, with updates throughout'], services: ['basement-renovations'] },
-  { cat: 'Basements', year: 2024, title: 'Basement finished from the studs', scope: ['Complete basement finishing', 'Customer describes very good work from start to end'], services: ['basement-renovations'] },
-  { cat: 'Kitchens & floors', year: 2024, title: 'New kitchen tile and hardwood flooring', scope: ['Kitchen tile and new hardwood floors', 'Supplier recommendations for tile and flooring', 'Completed on the timeline given at the start'], services: ['home-renovations'] },
-  { cat: 'Basements', year: 2022, title: 'Basement finishing: trim, doors and paint', scope: ['Trim, baseboards and interior doors installed', 'Walls and ceiling primed and painted', 'Basement now matches the main floor'], services: ['basement-renovations'] },
-  { cat: 'Kitchens & floors', year: 2022, title: 'Fireplace removal and new flooring', scope: ['Old fireplace removed', 'New flooring installed quickly and cleanly'], services: ['home-renovations'] },
-  { cat: 'Bathrooms', year: 2020, title: 'Complete master bathroom renovation', scope: ['Full master bath remodel', 'Clear quote given up front'], services: ['bathroom-renovations'] },
-  { cat: 'Bathrooms', year: 2019, title: 'Washroom gutted and rebuilt', scope: ['Washroom fully gutted', 'Rebuilt with new tile and fixtures'], services: ['bathroom-renovations'] },
-  { cat: 'Whole-home & more', year: 2019, title: 'Open-concept main floor renovation', scope: ['Main floor opened up into an open-concept layout', 'Handled start to finish by Sam, Farid and the crew'], services: ['home-renovations'] },
-  { cat: 'Whole-home & more', year: 2019, title: 'Custom doors, baseboards and trim for a full second floor', scope: ['Custom interior doors', 'Baseboards and door and window trim through the whole second floor'], services: ['home-renovations'] },
-  { cat: 'Whole-home & more', year: 2020, title: 'New deck for a returning customer', scope: ['Deck built for a homeowner who had RC frame their basement earlier'], services: ['home-renovations'] },
-  { cat: 'Basements', year: 2018, title: 'Basement and new side-entry door', scope: ['Basement finished', 'New side-entry door added'], services: ['basement-renovations'] },
+  { img: 'pKitchenIsland', cat: 'Basements', year: 2023, title: 'Walkout basement with a two-bedroom rental unit, plus a whole-home refresh', scope: ['Three-bedroom walkout basement: one bedroom for the owners and a two-bedroom rental unit', 'Demolition, supplies and garbage removal coordinated from start to finish', 'Oak stairs rebuilt as modern open stairs with metal pickets', 'New kitchen with a quartz waterfall island; carpet replaced with hardwood; new tile', 'Wainscoting, waffle ceilings, new baseboards and trim, and the whole house painted', 'Electricians and plumbers coordinated for pot lights, chandeliers and appliances'], services: ['basement-rental-units', 'basement-renovations', 'home-renovations'] },
+  { img: 'pPlaster', cat: 'Basements', year: 2024, title: 'Basement restoration: drywall, floors and baseboards', scope: ['New drywall, flooring and baseboards after damage', 'Unexpected issues found and fixed along the way', 'Finished on schedule, with updates throughout'], services: ['basement-renovations', 'restoration'] },
+  { img: 'pBasementStuds', cat: 'Basements', year: 2024, title: 'Basement finished from the studs', scope: ['Complete basement finishing', 'Customer describes very good work from start to end'], services: ['basement-renovations'] },
+  { img: 'pWhiteKitchen', cat: 'Kitchens & floors', year: 2024, title: 'New kitchen tile and hardwood flooring', scope: ['Kitchen tile and new hardwood floors', 'Supplier recommendations for tile and flooring', 'Completed on the timeline given at the start'], services: ['home-renovations'] },
+  { img: 'pTrimPaint', cat: 'Basements', year: 2022, title: 'Basement finishing: trim, doors and paint', scope: ['Trim, baseboards and interior doors installed', 'Walls and ceiling primed and painted', 'Basement now matches the main floor'], services: ['basement-renovations'] },
+  { img: 'pFlooring', cat: 'Kitchens & floors', year: 2022, title: 'Fireplace removal and new flooring', scope: ['Old fireplace removed', 'New flooring installed quickly and cleanly'], services: ['home-renovations'] },
+  { img: 'pMasterBath', cat: 'Bathrooms', year: 2020, title: 'Complete master bathroom renovation', scope: ['Full master bath remodel', 'Clear quote given up front'], services: ['bathroom-renovations'] },
+  { img: 'pWashroom', cat: 'Bathrooms', year: 2019, title: 'Washroom gutted and rebuilt', scope: ['Washroom fully gutted', 'Rebuilt with new tile and fixtures'], services: ['bathroom-renovations'] },
+  { img: 'pOpenConcept', cat: 'Whole-home & more', year: 2019, title: 'Open-concept main floor renovation', scope: ['Main floor opened up into an open-concept layout', 'Handled start to finish by Sam, Farid and the crew'], services: ['home-renovations'] },
+  { img: 'pDoorsTrim', cat: 'Whole-home & more', year: 2019, title: 'Custom doors, baseboards and trim for a full second floor', scope: ['Custom interior doors', 'Baseboards and door and window trim through the whole second floor'], services: ['home-renovations'] },
+  { img: 'pDeck', cat: 'Whole-home & more', year: 2020, title: 'New deck for a returning customer', scope: ['Deck built for a homeowner who had RC frame their basement earlier'], services: ['home-renovations'] },
+  { img: 'pEntry', cat: 'Basements', year: 2018, title: 'Basement and new side-entry door', scope: ['Basement finished', 'New side-entry door added'], services: ['basement-renovations'] },
 ];
 
-const projectCard = (p) => `<article class="project"><span class="meta">${esc(p.cat)} · ${p.year}</span><h3>${esc(p.title)}</h3><ul>${p.scope.map((s) => `<li>${esc(s)}</li>`).join('')}</ul><p class="note">Summarised from a <a href="${C.homestars.url}">HomeStars review</a>. Project photos coming soon.</p></article>`;
+// Project photos are illustrative stock images until RC's own job photos are added, and are labelled as such.
+const projectCard = (p, photo = true) => `<article class="project${photo && p.img ? ' has-photo' : ''}">${photo && p.img ? `<figure class="project-photo">${img(p.img, { sizes: '(min-width: 1000px) 33vw, (min-width: 720px) 50vw, 100vw' })}<figcaption>Illustrative photo</figcaption></figure>` : ''}<span class="meta">${esc(p.cat)} · ${p.year}</span><h3>${esc(p.title)}</h3><ul>${p.scope.map((s) => `<li>${esc(s)}</li>`).join('')}</ul><p class="note">Summarised from a <a href="${C.homestars.url}">HomeStars review</a>.</p></article>`;
 
 // Real Google reviews (Google Maps, Nov 2026), summarised in our own words. First name and last initial only.
 // To use a customer's exact words instead, paste them into `quote` and they show in quotation marks.
@@ -163,9 +210,9 @@ const reviewCard = (r) => `<figure class="review"><div class="review-top"><span 
   <figcaption><a href="${r.url}" rel="noopener">Read ${esc(r.name.split(' ')[0])}’s review on Google</a></figcaption></figure>`;
 
 const GUIDES = [
-  { slug: 'basement-permits-oshawa', short: 'Basement permit guide', title: 'Do You Need a Permit to Finish a Basement in Oshawa?', img: 'basementOpen' },
-  { slug: 'basement-renovation-cost-factors', short: 'What drives basement costs', title: 'What Affects the Cost of a Basement Renovation?', img: 'measure' },
-  { slug: 'basement-finishing-vs-rental-unit', short: 'Finishing vs a rental unit', title: 'Basement Finishing vs a Basement Rental Unit: What’s Different?', img: 'suite' },
+  { slug: 'basement-permits-oshawa', short: 'Basement permit guide', title: 'Do You Need a Permit to Finish a Basement in Oshawa?', img: 'basementOpen', hubImg: 'guideBlueprint', hero: 'guideArchitect' },
+  { slug: 'basement-renovation-cost-factors', short: 'What drives basement costs', title: 'What Affects the Cost of a Basement Renovation?', img: 'measure', hubImg: 'guideBudget', hero: 'guideCalculator' },
+  { slug: 'basement-finishing-vs-rental-unit', short: 'Finishing vs a rental unit', title: 'Basement Finishing vs a Basement Rental Unit: What’s Different?', img: 'guideOpenPlan', hubImg: 'guideLaundry', hero: 'guideBedroom' },
 ];
 
 const OSHAWA_BASEMENTS = 'https://www.oshawa.ca/living-here/building-and-renovating/basement-renovations/';
@@ -184,10 +231,10 @@ const business = {
   email: C.email,
   image: abs(`/assets/img/${IMG.hero.file}-1600.webp`),
   logo: abs('/assets/logo-512.png'),
-  description: `${C.name} is a renovation contractor doing basement renovations, basement rental units, bathroom renovations, kitchen remodeling and home renovations across ${AREA_LINE}, Ontario.`,
+  description: `${C.name} is a renovation contractor doing basement renovations, basement rental units, bathroom renovations, kitchen remodeling, home renovations, restoration and commercial renovations across ${AREA_LINE}, Ontario.`,
   address: { '@type': 'PostalAddress', addressLocality: C.city, addressRegion: C.province, addressCountry: 'CA' },
   areaServed: C.areas.map((a) => ({ '@type': 'City', name: `${a}, Ontario` })),
-  knowsAbout: ['Basement renovation', 'Basement finishing', 'Basement apartments', 'Bathroom renovation', 'Kitchen renovation', 'Hardwood flooring', 'Tile installation', 'Stair renovation', 'Trim and wainscoting'],
+  knowsAbout: ['Basement renovation', 'Basement finishing', 'Basement apartments', 'Bathroom renovation', 'Kitchen renovation', 'Hardwood flooring', 'Tile installation', 'Stair renovation', 'Trim and wainscoting', 'Water damage restoration', 'Flood damage repair', 'Commercial renovation', 'Office renovation', 'Retail store renovation'],
   hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Renovation services', itemListElement: SERVICES.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name, url: abs(`/services/${s.slug}/`) } })) },
   founder: [{ '@type': 'Person', name: 'Sam' }, { '@type': 'Person', name: 'Farid' }],
   sameAs: C.sameAs,
@@ -196,7 +243,7 @@ const website = { '@type': 'WebSite', '@id': `${URL}/#website`, url: `${URL}/`, 
 const breadcrumbLd = (crumbs) => ({ '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: abs(c.url) })) });
 const faqLd = (items) => ({ '@type': 'FAQPage', mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: stripTags(f.a) } })) });
 const serviceLd = (s, desc) => ({ '@type': 'Service', name: `${s.name} in ${AREA_LINE}`, serviceType: s.name, description: desc, provider: { '@id': BUSINESS_ID }, areaServed: C.areas.map((a) => ({ '@type': 'City', name: `${a}, Ontario` })), url: abs(`/services/${s.slug}/`) });
-const articleLd = (g, desc) => ({ '@type': 'Article', headline: g.title, description: desc, datePublished: '2026-11-03', dateModified: TODAY, author: { '@id': BUSINESS_ID }, publisher: { '@id': BUSINESS_ID }, image: abs(`/assets/img/${IMG[g.img].file}-1600.webp`), mainEntityOfPage: abs(`/resources/${g.slug}/`) });
+const articleLd = (g, desc) => ({ '@type': 'Article', headline: g.title, description: desc, datePublished: '2026-11-03', dateModified: TODAY, author: { '@id': BUSINESS_ID }, publisher: { '@id': BUSINESS_ID }, image: abs(`/assets/img/${IMG[g.hero].file}-1600.webp`), mainEntityOfPage: abs(`/resources/${g.slug}/`) });
 
 // ---------------------------------------------------------------------------
 // Page shell
@@ -261,7 +308,7 @@ const areaSentence = () => C.areaGroups.map((g) => `${g.region} (${g.towns.join(
 const FAQ_GROUPS = [
   { title: 'Getting started', items: [
     { q: 'What areas does RC Construction serve?', a: `<p>We renovate homes across ${areaSentence()}. Not sure if you're in our area? <a href="/get-an-estimate/">Ask us</a> and we'll tell you straight away.</p>`, home: true },
-    { q: 'What types of renovations do you do?', a: `<p>Basement renovations and basement rental units, bathroom renovations, kitchen remodeling and home renovations such as flooring, stairs, trim, wainscoting, painting and open-concept updates. We also take smaller repair jobs. See <a href="/services/">all services</a>.</p>`, home: true },
+    { q: 'What types of renovations do you do?', a: `<p>Basement renovations and basement rental units, bathroom renovations, kitchen remodeling, home renovations such as flooring, stairs, trim, wainscoting, painting and open-concept updates, <a href="/services/restoration/">restoration after flood or water damage</a>, and <a href="/services/commercial-renovations/">commercial renovations</a>. We also take smaller repair jobs. See <a href="/services/">all services</a>.</p>`, home: true },
     { q: 'How do I get an estimate?', a: `<p>Call or text <a href="${tel}">${esc(C.phoneDisplay)}</a>, or <a href="/get-an-estimate/">answer three quick questions</a> online. We talk it through, visit to see the space, and give you a clear written quote and timeline before any work starts.</p>`, home: true },
     { q: 'Do you take on small jobs and repairs?', a: '<p>Yes. Along with full renovations we do repairs and single-room updates, such as replacing a damaged floorboard, new baseboards and trim, or painting. One customer had a custom floor repair done the same day they called.</p>' },
     { q: 'Do you offer a warranty?', a: '<p>Yes, we offer a warranty on our work. Ask us for the details that apply to your project when we quote.</p>', home: true },
@@ -280,8 +327,14 @@ const FAQ_GROUPS = [
   { title: 'Working with us', items: [
     { q: 'Do you coordinate electricians and plumbers?', a: '<p>Yes. We bring in and coordinate the electricians and plumbers your project needs, so you deal with one team from demolition to the final walkthrough.</p>', home: true },
     { q: 'Can you help me choose tile, flooring and finishes?', a: '<p>Yes. We talk through options that suit your budget and how you use the space, and recommend suppliers we trust. Customers have also been happy with the specialist trades Sam and Farid refer, such as glass installers.</p>' },
-    { q: 'Do you repair flooded or water-damaged basements?', a: '<p>Yes. We have repaired basements after flooding, including walls, baseboards, flooring, ceilings and paint, and restored basements with new drywall and floors. Talk to your insurer about what your policy covers.</p>' },
     { q: 'Who will I deal with during the job?', a: '<p>Sam and Farid, the owners, with the RC Construction crew. You get one team to deal with, regular updates, and a final walkthrough when the work is done.</p>' },
+  ] },
+  { title: 'Restoration and commercial work', items: [
+    { q: 'Do you do water damage and flood restoration?', a: '<p>Yes. After a flood, burst pipe or leak, we rebuild what was damaged: drywall, insulation, flooring, baseboards, ceilings and paint. After one basement flood, an insurer-recommended company estimated four weeks for the repairs; we finished in two and a half. See <a href="/services/restoration/">restoration</a>.</p>', home: true },
+    { q: 'What should I do first after water damage in my home?', a: '<p>Stop the water if you can do so safely, photograph and video the damage, and call your insurance company. Make sure the space is properly dried before anything is rebuilt, because moisture trapped behind new drywall leads to mould. Then call or text us for a repair quote.</p>' },
+    { q: 'Do you work with insurance claims?', a: '<p>Yes. We give you a clear written quote for the repairs that you can share with your insurance adjuster. Your insurer decides what your policy covers, so talk to them early.</p>' },
+    { q: 'Do you do commercial renovations?', a: '<p>Yes. We renovate offices, retail stores, restaurants and other business spaces, as well as homes. See <a href="/services/commercial-renovations/">commercial renovations</a>.</p>', home: true },
+    { q: 'Can you renovate my business without closing it?', a: '<p>Often, yes. We plan the schedule with you, for example by renovating in phases so part of the space stays open. If you lease, get your landlord\'s written approval before work starts.</p>' },
   ] },
 ];
 const ALL_FAQ = FAQ_GROUPS.flatMap((g) => g.items);
@@ -291,7 +344,7 @@ const HOME_FAQ = ALL_FAQ.filter((f) => f.home);
 add({
   path: '/',
   title: `${C.name} | Basement, Bathroom, Kitchen & Home Renovations in Durham Region`,
-  description: `Basement, bathroom, kitchen and home renovations across Durham Region, York Region, Cobourg and Kingston. 5-star rated on Google. Call or text ${C.phoneDisplay}.`,
+  description: `Basement, bathroom, kitchen, home and commercial renovations, plus flood and water damage restoration, across Durham Region, York Region, Cobourg and Kingston. 5-star rated on Google. Call or text ${C.phoneDisplay}.`,
   preload: `<link rel="preload" as="image" href="/assets/img/${IMG.hero.file}-800.webp" media="(max-width: 700px)"><link rel="preload" as="image" href="/assets/img/${IMG.hero.file}-1600.webp" media="(min-width: 701px)">`,
   schema: [faqLd(HOME_FAQ)],
   body: `
@@ -339,10 +392,10 @@ add({
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">Basement ideas</span><h2>What could your basement become?</h2><p class="lead">Basements are most of our work. These are the spaces Durham Region homeowners ask us for.</p></div>
     <div class="ideas">
-      <a class="idea" href="/services/basement-rental-units/">${img('suite', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A rental unit</strong><span>A second unit for a tenant or family</span></span></a>
-      <a class="idea" href="/services/basement-renovations/">${img('recRoom', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A games or rec room</strong><span>Room for the pool table and movie nights</span></span></a>
-      <a class="idea" href="/services/basement-renovations/">${img('basementStairs', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A family room</strong><span>Space that feels like the rest of the house</span></span></a>
-      <a class="idea" href="/services/basement-renovations/">${img('basementOpen', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A guest suite or office</strong><span>Bedroom, bathroom or a quiet place to work</span></span></a>
+      <a class="idea" href="/services/basement-rental-units/">${img('ideaKitchen', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A rental unit</strong><span>A second unit for a tenant or family</span></span></a>
+      <a class="idea" href="/services/basement-renovations/">${img('ideaMedia', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A games or rec room</strong><span>Room for the pool table and movie nights</span></span></a>
+      <a class="idea" href="/services/basement-renovations/">${img('ideaFamily', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A family room</strong><span>Space that feels like the rest of the house</span></span></a>
+      <a class="idea" href="/services/basement-renovations/">${img('ideaOffice', { sizes: '(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw' })}<span class="idea-body"><strong>A guest suite or office</strong><span>Bedroom, bathroom or a quiet place to work</span></span></a>
     </div>
     <p class="mt-lg"><a class="btn btn-primary" href="/get-an-estimate/">Get an estimate for your basement</a></p>
   </div>
@@ -351,7 +404,7 @@ add({
 <section class="section">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">Our projects</span><h2>Real homes. Real transformations.</h2><p class="lead">A few of the jobs our customers have written about. More project photos are on the way.</p></div>
-    <div class="grid grid-3">${PROJECTS.slice(0, 3).map(projectCard).join('')}</div>
+    <div class="grid grid-3">${PROJECTS.slice(0, 3).map((p) => projectCard(p, false)).join('')}</div>
     <p class="mt-lg"><a class="btn btn-ghost" href="/projects/">See all projects</a></p>
   </div>
 </section>
@@ -446,18 +499,18 @@ ${cta('Ready to transform your home?')}`,
 add({
   path: '/services/',
   title: `Renovation Services in Durham Region | ${C.name}`,
-  description: `Basement renovations, basement rental units, bathroom renovations, kitchen remodeling and home renovations across Durham Region, York Region, Cobourg and Kingston by ${C.name}.`,
+  description: `Basement renovations, basement rental units, bathroom renovations, kitchen remodeling, home renovations, flood and water damage restoration, and commercial renovations across Durham Region, York Region, Cobourg and Kingston by ${C.name}.`,
   crumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services/' }],
-  ogImage: 'basementStairs',
-  body: `${pageHero({ crumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services/' }], eyebrow: 'Services', h1: 'Renovation services across Durham Region', lead: `Basements, bathrooms and the rest of the house, planned properly and built by one accountable team.`, image: 'basementStairs' })}
+  ogImage: 'livingWindows',
+  body: `${pageHero({ crumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services/' }], eyebrow: 'Services', h1: 'Renovation services across Durham Region', lead: `Basements, bathrooms and the rest of the house, planned properly and built by one accountable team.`, image: 'livingWindows' })}
 <section class="section"><div class="wrap">
-  <div class="grid grid-3">${serviceCards('(min-width: 1000px) 33vw, (min-width: 720px) 50vw, 100vw')}</div>
+  <div class="grid grid-3">${serviceCards('(min-width: 1000px) 33vw, (min-width: 720px) 50vw, 100vw', 'hubImg')}</div>
 </div></section>
 <section class="section alt"><div class="wrap split">
   <div><span class="eyebrow">Also on our list</span><h2>Other work we do</h2><p class="lead">Jobs our customers have hired us for, alongside bigger renovations.</p>
   <ul class="ticks"><li>Hardwood and tile flooring, including replacing carpet</li><li>Stairs rebuilt, such as oak stairs updated with metal pickets</li><li>Baseboards, door and window trim, and custom interior doors</li><li>Wainscoting, waffle ceilings and feature walls</li><li>Interior painting, from one room to the whole house</li><li>Fireplace removal, laundry room cabinets and decks</li></ul>
   <a class="btn btn-dark" href="/get-an-estimate/">Get an estimate</a></div>
-  ${img('stairs')}
+  ${img('wainscoting')}
 </div></section>
 ${cta()}`,
 });
@@ -494,7 +547,7 @@ const SERVICE_PAGES = {
     description: `Planning a basement apartment in Durham Region or York Region? We build basement rental units and plan them around Ontario Building Code and permit requirements.`,
     h1: 'Basement rental units, planned the right way',
     lead: 'Add a second unit that works for tenants or family, with permit and Building Code requirements in mind from day one.',
-    hero: 'suite',
+    hero: 'rentalHero',
     body: `<p>We've built basement rental units, including a two-bedroom unit in a walkout basement where the owners kept a bedroom for themselves. A rental unit has more requirements than a regular basement finish, so we plan it with you before anything is built.</p>
 <h2>What we build</h2>
 <ul><li>One- and two-bedroom basement units</li><li>Kitchens, bathrooms and laundry for the unit</li><li>Separate entrances</li><li>Flooring, trim, doors and paint to a finish tenants will appreciate</li><li>Electrical and plumbing through the trades we coordinate</li></ul>
@@ -513,7 +566,7 @@ const SERVICE_PAGES = {
     description: `Bathroom renovations across Durham Region, York Region, Cobourg and Kingston: full remodels, tile, walk-in showers, tubs, vanities and plumbing coordinated by one team.`,
     h1: 'Bathroom renovations',
     lead: 'From a quick refresh to a full gut and rebuild, a bathroom that looks great and holds up to daily use.',
-    hero: 'shower',
+    hero: 'tub',
     body: `<p>We've gutted and rebuilt washrooms, completed full master bathroom renovations, and taken on an unexpected bathroom renovation in the middle of a kitchen project. One team handles the demolition, the tile and finishing work, and the plumbing and electrical trades.</p>
 <h2>What we do</h2>
 <ul><li>Complete bathroom remodels, including master bathrooms</li><li>Walk-in showers and tubs</li><li>Wall and floor tile</li><li>Vanities, mirrors, lighting and fans</li><li>Glass shower enclosures through specialist installers we recommend</li><li>Plumbing and electrical through the trades we coordinate</li><li>Basement bathrooms as part of a basement renovation</li></ul>
@@ -530,7 +583,7 @@ const SERVICE_PAGES = {
     description: `Kitchen remodeling across Durham Region, York Region, Cobourg and Kingston: new layouts, cabinets, islands, quartz counters, tile, flooring and lighting, with trades coordinated.`,
     h1: 'Kitchen remodeling',
     lead: 'A kitchen that works for the way you cook and live, from a full remodel to new floors and tile.',
-    hero: 'kitchen',
+    hero: 'kitchenBeams',
     body: `<p>Our kitchen work ranges from complete remodels, like a new kitchen with a quartz waterfall island as part of a whole-home makeover, to focused updates such as new kitchen tile and hardwood floors. We handle the demolition, coordinate the trades and keep you updated from start to finish.</p>
 <h2>What we do</h2>
 <ul><li>Full kitchen remodels and new layouts</li><li>Kitchen demolition and clean-up</li><li>Cabinets and islands, including waterfall islands</li><li>Quartz counters and backsplashes</li><li>Tile and hardwood flooring</li><li>Pot lights, pendants and appliance hook-ups through the electricians and plumbers we coordinate</li><li>Opening up walls for an open-concept kitchen</li></ul>
@@ -547,7 +600,7 @@ const SERVICE_PAGES = {
     description: `Home renovations across Durham Region, York Region, Cobourg and Kingston: hardwood and tile floors, stairs, trim, wainscoting, paint, open-concept updates and whole-home makeovers.`,
     h1: 'Home renovations, one room or the whole house',
     lead: 'Floors, stairs, trim, ceilings and paint that change how your whole home feels.',
-    hero: 'stairs',
+    hero: 'livingDining',
     body: `<p>Some of our favourite projects change a whole floor: carpet replaced with hardwood, oak stairs rebuilt with modern metal pickets, wainscoting and waffle ceilings, and the entire house painted. We also take on smaller jobs and repairs that make a big difference.</p>
 <h2>What we do</h2>
 <ul><li>Hardwood, vinyl and tile floors, and floor repairs</li><li>Stairs, railings and pickets</li><li>Baseboards, trim, custom interior doors and wainscoting</li><li>Waffle ceilings and feature walls</li><li>Open-concept layouts</li><li>Interior painting</li><li>Fireplace removal, laundry room cabinets and decks</li><li>Whole-home renovations, coordinated as one project</li></ul>
@@ -558,6 +611,48 @@ const SERVICE_PAGES = {
       { q: 'Do you do whole-home renovations?', a: '<p>Yes. We have renovated entire homes: kitchens, floors, stairs, trim, ceilings, paint and finished basements, coordinated as one project.</p>' },
       { q: 'Do you take on smaller jobs?', a: '<p>Yes. We also do single-room updates and repairs, flooring, trim, doors, painting and similar jobs. Tell us what you need.</p>' },
       { q: 'Do I need a permit to remove a wall?', a: '<p>Usually, yes. Removing or adding walls is typically work that needs a building permit, especially if the wall is load-bearing. We check with you before work starts.</p>' },
+    ],
+  },
+  'restoration': {
+    title: `Water Damage & Flood Restoration in Durham Region | ${C.name}`,
+    description: `Restoration after flood or water damage across Durham Region, York Region, Cobourg and Kingston: drywall, insulation, flooring, baseboards, ceilings and paint, rebuilt by one team.`,
+    h1: 'Restoration after flood and water damage',
+    lead: 'When a flood, burst pipe or leak damages your home, we rebuild what was lost: walls, floors, ceilings and finishes.',
+    hero: 'restoreKitchen',
+    body: `<p>We restore homes after water damage. After one basement flood, a company recommended by the customer's insurer estimated four weeks for the repairs. We finished the walls, baseboards, flooring, ceiling and paint in two and a half. We've also restored basements with new drywall, floors and baseboards, fixing unexpected problems found along the way.</p>
+<h2>What we restore</h2>
+<ul><li>Drywall and insulation, removed and replaced</li><li>Flooring, including hardwood, vinyl, laminate and tile, and subfloor repairs</li><li>Baseboards, trim and interior doors</li><li>Ceilings, including basement ceilings</li><li>Priming and painting so repairs blend in</li><li>Basements, kitchens and bathrooms rebuilt after damage</li><li>Electrical and plumbing repairs through the trades we coordinate</li></ul>
+<h2>What to do first after water damage</h2>
+<ol><li>Stop the water if you can do so safely, and keep away from wet electrical outlets and panels.</li><li>Take photos and video of the damage before anything is removed.</li><li>Call your insurance company to report the damage and ask what your policy covers.</li><li>Make sure the space is properly dried out before rebuilding. Moisture trapped behind new drywall leads to mould.</li><li>Call or text us for a clear written quote for the repairs, which you can share with your adjuster.</li></ol>
+<h2>Repair and upgrade in one project</h2>
+<p>Many homeowners use a repair as the chance to improve the space, for example finishing a basement properly or updating the floors throughout. We can quote the repair and any upgrades separately, so you can see what insurance covers and what you're choosing to add.</p>
+<div class="callout"><p><strong>Planning a full basement finish while you're at it?</strong> See <a href="/services/basement-renovations/">basement renovations</a>.</p></div>`,
+    faq: [
+      { q: 'Do you repair homes after flood or water damage?', a: '<p>Yes. We rebuild what was damaged: drywall, insulation, flooring, baseboards, ceilings and paint, with any electrical or plumbing repairs coordinated through our trades.</p>' },
+      { q: 'Do you work with insurance claims?', a: '<p>Yes. We give you a clear written quote for the repairs that you can share with your insurance adjuster. Your insurer decides what your policy covers, so talk to them early.</p>' },
+      { q: 'How long does flood damage restoration take?', a: '<p>It depends on how much was damaged. On one basement flood repair, we finished walls, baseboards, flooring, ceiling and paint in two and a half weeks; the insurer-recommended company had estimated four.</p>' },
+      { q: 'What should I do first after water damage?', a: '<p>Stop the water if it is safe to, photograph the damage, call your insurer, and get the space dried out before anything is rebuilt. Then call or text us for a repair quote.</p>' },
+    ],
+  },
+  'commercial-renovations': {
+    title: `Commercial Renovations in Durham Region | Offices, Retail & Restaurants | ${C.name}`,
+    description: `Commercial renovations across Durham Region, York Region, Cobourg and Kingston: offices, retail stores, restaurants and other business spaces, with work planned around your hours.`,
+    h1: 'Commercial renovations',
+    lead: 'Renovations for offices, stores, restaurants and other business spaces, planned so your business can keep running.',
+    hero: 'commercialRestaurant',
+    body: `<p>The same team homeowners trust with their basements, kitchens and bathrooms also renovates business spaces. We handle the building work, coordinate the trades and keep you updated, so you can focus on running your business.</p>
+<h2>Spaces we renovate</h2>
+<ul><li>Offices and professional suites</li><li>Retail stores and showrooms</li><li>Restaurants and cafés</li><li>Studios, salons and clinics</li><li>Commercial washrooms and staff rooms</li><li>Units being fitted out for a new tenant</li></ul>
+<h2>What we do</h2>
+<ul><li>Demolition and clean-up</li><li>Framing, drywall, insulation and ceilings</li><li>Flooring, including tile, vinyl, laminate and hardwood</li><li>Washrooms and kitchenettes</li><li>Trim, doors and paint</li><li>Lighting, electrical and plumbing through the trades we coordinate</li></ul>
+<h2>Built around your business</h2>
+<ul><li>We plan the schedule with you so the work disrupts your business as little as possible, for example by working in phases</li><li>A clear written quote and timeline before work starts</li><li>A clean, safe site and regular updates</li><li>One team to deal with from start to finish</li></ul>
+<div class="callout"><p><strong>Leasing your space?</strong> Most commercial leases need the landlord's written approval before renovations, and many commercial projects need a building permit. We talk through what your project needs before work starts.</p></div>`,
+    faq: [
+      { q: 'Do you do commercial renovations?', a: '<p>Yes. Along with homes, we renovate offices, retail stores, restaurants and other business spaces across Durham Region, York Region, Cobourg and Kingston.</p>' },
+      { q: 'Can you work around my business hours?', a: '<p>We plan the schedule with you so the work disrupts your business as little as possible, for example by renovating in phases so part of the space stays open.</p>' },
+      { q: 'Do commercial renovations need a building permit?', a: '<p>Often, yes. Changes to walls, plumbing, electrical, exits or the use of the space usually need a permit from your local building department. Rules vary by town, so we talk it through before work starts.</p>' },
+      { q: "Do I need my landlord's permission to renovate?", a: "<p>If you lease, usually yes. Most commercial leases require the landlord's written approval before renovations. Check your lease and get approval in writing before work starts.</p>" },
     ],
   },
 };
@@ -574,7 +669,7 @@ for (const s of SERVICES) {
   <article class="prose">${d.body}</article>
   <aside>${sideCard()}</aside>
 </div></section>
-${related.length ? `<section class="section alt"><div class="wrap"><div class="section-head"><span class="eyebrow">Related projects</span><h2>Recent ${s.name.toLowerCase()} work</h2></div><div class="grid grid-2">${related.map(projectCard).join('')}</div><p class="mt-lg"><a class="btn btn-ghost" href="/projects/">See all projects</a></p></div></section>` : ''}
+${related.length ? `<section class="section alt"><div class="wrap"><div class="section-head"><span class="eyebrow">Related projects</span><h2>Recent ${s.name.toLowerCase()} work</h2></div><div class="grid grid-2">${related.map((p) => projectCard(p, false)).join('')}</div><p class="mt-lg"><a class="btn btn-ghost" href="/projects/">See all projects</a></p></div></section>` : ''}
 <section class="section"><div class="wrap">${faqBlock(d.faq)}</div></section>
 <section class="section alt"><div class="wrap"><h2>Other services</h2><ul class="chips">${SERVICES.filter((o) => o.slug !== s.slug).map((o) => `<li><a href="/services/${o.slug}/">${o.name}</a></li>`).join('')}<li><a href="/service-areas/">Service areas</a></li></ul></div></section>
 ${cta()}`,
@@ -586,13 +681,13 @@ ${cta()}`,
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Our Projects', url: '/projects/' }];
   const cats = [...new Set(PROJECTS.map((p) => p.cat))];
   add({
-    path: '/projects/', title: `Renovation Projects in Oshawa & Durham Region | ${C.name}`, crumbs, ogImage: 'recRoom',
+    path: '/projects/', title: `Renovation Projects in Oshawa & Durham Region | ${C.name}`, crumbs, ogImage: 'projectsHero',
     description: `Basement, bathroom, kitchen and whole-home renovation projects by ${C.name}, summarised from customer reviews.`,
-    body: `${pageHero({ crumbs, eyebrow: 'Our projects', h1: 'Real homes. Real transformations.', lead: 'Projects our customers have written about, from basement suites to bathrooms and whole-home updates. Photos from these jobs are being added.', image: 'recRoom', actions: false })}
+    body: `${pageHero({ crumbs, eyebrow: 'Our projects', h1: 'Real homes. Real transformations.', lead: 'Projects our customers have written about, from basement suites to bathrooms and whole-home updates. Photos from these jobs are being added.', image: 'projectsHero', actions: false })}
 <section class="section"><div class="wrap">
   <ul class="chips" aria-label="Project types">${cats.map((c) => `<li><a href="#${c.toLowerCase().replace(/[^a-z]+/g, '-')}">${esc(c)}</a></li>`).join('')}</ul>
-  ${cats.map((c) => `<h2 class="mt-lg" id="${c.toLowerCase().replace(/[^a-z]+/g, '-')}">${esc(c)}</h2><div class="grid grid-3">${PROJECTS.filter((p) => p.cat === c).map(projectCard).join('')}</div>`).join('')}
-  <p class="notice mt-lg">Each project is summarised in our words from a customer's public review on HomeStars. We never use stock photos to represent our own work.</p>
+  ${cats.map((c) => `<h2 class="mt-lg" id="${c.toLowerCase().replace(/[^a-z]+/g, '-')}">${esc(c)}</h2><div class="grid grid-3">${PROJECTS.filter((p) => p.cat === c).map((p) => projectCard(p)).join('')}</div>`).join('')}
+  <p class="notice mt-lg">Each project is summarised in our words from a customer's public review on HomeStars. Photos marked “Illustrative photo” show similar work, not these exact jobs. Photos from our own projects are being added.</p>
 </div></section>
 ${cta('Planning something similar?')}`,
   });
@@ -630,9 +725,9 @@ ${cta('Become our next five-star project')}`,
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Service Areas', url: '/service-areas/' }];
   add({
-    path: '/service-areas/', title: `Service Areas: Durham Region, York Region, Cobourg & Kingston | ${C.name}`, crumbs, ogImage: 'home',
+    path: '/service-areas/', title: `Service Areas: Durham Region, York Region, Cobourg & Kingston | ${C.name}`, crumbs, ogImage: 'areasHomes',
     description: `${C.name} renovates homes across Durham Region (${C.areaGroups[0].towns.join(', ')}), York Region (${C.areaGroups[1].towns.join(', ')}), Cobourg and Kingston.`,
-    body: `${pageHero({ crumbs, eyebrow: 'Service areas', h1: 'Renovating homes across Durham Region and beyond', lead: 'Basement, bathroom, kitchen and home renovations from Pickering to Kingston, and north to Port Perry, Stouffville and King City.', image: 'home' })}
+    body: `${pageHero({ crumbs, eyebrow: 'Service areas', h1: 'Renovating homes across Durham Region and beyond', lead: 'Basement, bathroom, kitchen and home renovations from Pickering to Kingston, and north to Port Perry, Stouffville and King City.', image: 'areasHomes' })}
 <section class="section"><div class="wrap split">
   <div>
     <h2>Where we work</h2>
@@ -651,10 +746,10 @@ ${cta()}`,
     { q: 'Can I add a basement apartment in Oshawa?', a: `<p>Often, yes, subject to zoning, a building permit, fire safety and parking rules. See our page on <a href="/services/basement-rental-units/">basement rental units</a>.</p>` },
   ];
   add({
-    path: '/service-areas/oshawa/', title: `Renovation Contractor in Oshawa | Basements & Bathrooms | ${C.name}`, crumbs: oc, ogImage: 'basementOpen',
+    path: '/service-areas/oshawa/', title: `Renovation Contractor in Oshawa | Basements & Bathrooms | ${C.name}`, crumbs: oc, ogImage: 'oshawaHome',
     description: `Oshawa renovation contractor for basements, basement rental units, bathrooms and home renovations. Local permit tips and a clear quote. Call ${C.phoneDisplay}.`,
     schema: [faqLd(oshawaFaq)],
-    body: `${pageHero({ crumbs: oc, eyebrow: 'Oshawa, Ontario', h1: 'Your Oshawa renovation contractor', lead: 'Basement, bathroom and home renovations for Oshawa homeowners, from a team based right here.', image: 'basementOpen' })}
+    body: `${pageHero({ crumbs: oc, eyebrow: 'Oshawa, Ontario', h1: 'Your Oshawa renovation contractor', lead: 'Basement, bathroom and home renovations for Oshawa homeowners, from a team based right here.', image: 'oshawaHome' })}
 <section class="section"><div class="wrap sidebar-layout">
   <article class="prose">
     <p>${esc(C.name)} is based in Oshawa. Most of our work is in Oshawa homes: finished basements and basement rental units, bathroom remodels, kitchens, floors, stairs and full-floor makeovers.</p>
@@ -678,9 +773,9 @@ ${cta()}`,
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about/' }];
   add({
-    path: '/about/', title: `About ${C.name} | Oshawa Renovation Contractor`, crumbs, ogImage: 'measure',
+    path: '/about/', title: `About ${C.name} | Oshawa Renovation Contractor`, crumbs, ogImage: 'aboutTools',
     description: `${C.name} is an Oshawa-based renovation team owned by Sam and Farid, known for honest advice, clear timelines and quality basement, bathroom and home renovations.`,
-    body: `${pageHero({ crumbs, eyebrow: 'About us', h1: 'A renovation team homeowners recommend', lead: `${esc(C.name)} is owned by Sam and Farid and based in ${esc(C.city)}. We've been renovating Durham Region homes and earning five-star reviews since at least ${C.homestars.since}.`, image: 'measure' })}
+    body: `${pageHero({ crumbs, eyebrow: 'About us', h1: 'A renovation team homeowners recommend', lead: `${esc(C.name)} is owned by Sam and Farid and based in ${esc(C.city)}. We've been renovating Durham Region homes and earning five-star reviews since at least ${C.homestars.since}.`, image: 'aboutTools' })}
 <section class="section"><div class="wrap split">
   <div class="prose">
     <h2>Who we are</h2>
@@ -694,7 +789,7 @@ ${cta()}`,
     <dt>Owners</dt><dd>Sam and Farid</dd>
     <dt>Based in</dt><dd>${esc(C.city)}, Ontario, Canada</dd>
     <dt>Serves</dt><dd>${esc(C.areas.join(', '))}</dd>
-    <dt>Services</dt><dd>Basement renovations, basement rental units, bathroom renovations, kitchen remodeling, home renovations</dd>
+    <dt>Services</dt><dd>Basement renovations, basement rental units, bathroom renovations, kitchen remodeling, home renovations, restoration, commercial renovations</dd>
     <dt>Reviews</dt><dd>5-star rating on Google; ${C.homestars.rating} on HomeStars</dd>
     <dt>On HomeStars since</dt><dd>${C.homestars.since}</dd>
     <dt>Warranty</dt><dd>Offered on our work</dd>
@@ -715,9 +810,9 @@ ${cta()}`,
     { q: 'Who will I deal with during the job?', a: '<p>Sam and Farid, the owners, with the RC Construction crew. We coordinate the electricians and plumbers, so you have one point of contact.</p>' },
   ];
   add({
-    path: '/our-process/', title: `Our Renovation Process | ${C.name}`, crumbs, ogImage: 'saw', schema: [faqLd(processFaq)],
+    path: '/our-process/', title: `Our Renovation Process | ${C.name}`, crumbs, ogImage: 'tile', schema: [faqLd(processFaq)],
     description: `How ${C.name} runs a renovation: talk it through, plan and quote, renovate with coordinated trades, and a final walkthrough.`,
-    body: `${pageHero({ crumbs, eyebrow: 'Our process', h1: 'What working with us looks like', lead: 'No surprises: you know what is happening, when, and why.', image: 'saw' })}
+    body: `${pageHero({ crumbs, eyebrow: 'Our process', h1: 'What working with us looks like', lead: 'No surprises: you know what is happening, when, and why.', image: 'tile' })}
 <section class="section"><div class="wrap">
   <ol class="steps">
     <li><h3>Talk it through</h3><p>Call, text or send photos and a few lines about your project. We'll ask the questions that matter and tell you honestly whether we're the right fit.</p></li>
@@ -735,7 +830,7 @@ ${cta()}`,
 {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about/' }, { name: 'FAQ', url: '/faq/' }];
   add({
-    path: '/faq/', title: `Renovation FAQ: Basements, Bathrooms, Kitchens & Permits | ${C.name}`, crumbs, ogImage: 'measure', schema: [faqLd(ALL_FAQ)],
+    path: '/faq/', title: `Renovation FAQ: Basements, Kitchens, Restoration, Commercial & Permits | ${C.name}`, crumbs, ogImage: 'measure', schema: [faqLd(ALL_FAQ)],
     description: 'Answers to common renovation questions in Durham Region and Ontario: costs, timelines, building permits, basement apartments, warranties and working with RC Construction.',
     body: `${pageHero({ crumbs, eyebrow: 'FAQ', h1: 'Renovation questions, answered', lead: 'Straight answers about costs, timelines, permits and basement apartments, for homeowners across Durham Region and Ontario.', actions: false })}
 <section class="section"><div class="wrap sidebar-layout">
@@ -756,7 +851,7 @@ ${cta()}`,
     path: '/resources/', title: `Renovation Guides for Durham Region Homeowners | ${C.name}`, crumbs, ogImage: 'basementOpen',
     description: 'Plain-English guides for Durham Region homeowners: basement permits, what drives renovation costs, and basement finishing vs a rental unit.',
     body: `${pageHero({ crumbs, eyebrow: 'Homeowner guides', h1: 'Plan your renovation with confidence', lead: 'Straight answers to the questions we hear most from homeowners.', actions: false })}
-<section class="section"><div class="wrap"><div class="grid grid-3">${GUIDES.map((g) => `<a class="card" href="/resources/${g.slug}/">${img(g.img, { sizes: '(min-width: 1000px) 33vw, 100vw' })}<div class="card-body"><h3>${esc(g.title)}</h3><span class="card-link">Read the guide</span></div></a>`).join('')}</div></div></section>
+<section class="section"><div class="wrap"><div class="grid grid-3">${GUIDES.map((g) => `<a class="card" href="/resources/${g.slug}/">${img(g.hubImg, { sizes: '(min-width: 1000px) 33vw, 100vw' })}<div class="card-body"><h3>${esc(g.title)}</h3><span class="card-link">Read the guide</span></div></a>`).join('')}</div></div></section>
 ${cta()}`,
   });
 }
@@ -809,9 +904,9 @@ for (const g of GUIDES) {
   const crumbs = [{ name: 'Home', url: '/' }, { name: 'Homeowner Guides', url: '/resources/' }, { name: g.short, url: `/resources/${g.slug}/` }];
   const qa = [{ q: g.title, a: `<p>${d.answer}</p>` }];
   add({
-    path: `/resources/${g.slug}/`, title: `${g.title} | ${C.name}`, description: d.description, crumbs, ogImage: g.img, ogType: 'article',
+    path: `/resources/${g.slug}/`, title: `${g.title} | ${C.name}`, description: d.description, crumbs, ogImage: g.hero, ogType: 'article',
     schema: [articleLd(g, d.description), faqLd(qa)],
-    body: `${pageHero({ crumbs, eyebrow: 'Homeowner guide', h1: esc(g.title), lead: '', image: g.img, actions: false })}
+    body: `${pageHero({ crumbs, eyebrow: 'Homeowner guide', h1: esc(g.title), lead: '', image: g.hero, actions: false })}
 <section class="section"><div class="wrap sidebar-layout">
   <article class="prose">
     <p class="updated">Updated ${new Date(TODAY + 'T12:00:00Z').toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })} · by ${esc(C.name)}, ${esc(C.city)}</p>
@@ -847,7 +942,7 @@ const choice = (name, value, required = true) => `<label class="choice"><input t
     <div class="progress js-only" aria-hidden="true"><span class="progress-bar"></span></div>
     <fieldset class="step" data-step="1">
       <legend><span class="step-k">Step 1 of 3</span>What are you planning?</legend>
-      <div class="choice-grid">${['Basement renovation', 'Basement rental unit', 'Bathroom renovation', 'Kitchen remodel', 'Floors, stairs, trim or other', 'Not sure yet'].map((v) => choice('project_type', v)).join('')}</div>
+      <div class="choice-grid">${['Basement renovation', 'Basement rental unit', 'Bathroom renovation', 'Kitchen remodel', 'Floors, stairs, trim or other', 'Restoration / water damage', 'Commercial renovation', 'Not sure yet'].map((v) => choice('project_type', v)).join('')}</div>
       <div class="form-nav js-only"><button class="btn btn-dark" type="button" data-next>Next</button></div>
     </fieldset>
     <fieldset class="step" data-step="2">
@@ -894,7 +989,7 @@ add({
   <form class="lead-form" data-phone="${esc(C.phoneDisplay)}" action="https://api.web3forms.com/submit" method="POST">
     ${hiddenFormFields('New message from the RC Construction contact page')}
     <div class="row">
-      <div class="field"><label for="type">Project type</label><select id="type" name="project_type" required><option value="">Choose one</option><option>Basement renovation</option><option>Basement rental unit</option><option>Bathroom renovation</option><option>Kitchen remodel</option><option>Floors, stairs, trim or other</option><option>Something else</option></select></div>
+      <div class="field"><label for="type">Project type</label><select id="type" name="project_type" required><option value="">Choose one</option><option>Basement renovation</option><option>Basement rental unit</option><option>Bathroom renovation</option><option>Kitchen remodel</option><option>Floors, stairs, trim or other</option><option>Restoration / water damage</option><option>Commercial renovation</option><option>Something else</option></select></div>
       <div class="field"><label for="city">City or neighbourhood</label><input id="city" name="city" autocomplete="address-level2" placeholder="e.g. Whitby"></div>
     </div>
     <div class="row">
@@ -984,7 +1079,7 @@ Sitemap: ${abs('/sitemap.xml')}
 // llms.txt: a plain summary for AI assistants (GEO).
 fs.writeFileSync(path.join(OUT, 'llms.txt'), `# ${C.name}
 
-> ${C.name} is a renovation contractor based in ${C.city}, Ontario, Canada, serving ${areaSentence()}. It does basement renovations, basement rental units, bathroom renovations, kitchen remodeling and home renovations (flooring, stairs, trim, wainscoting, painting). It has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars. Phone: ${C.phoneDisplay} (call or text).
+> ${C.name} is a renovation contractor based in ${C.city}, Ontario, Canada, serving ${areaSentence()}. It does basement renovations, basement rental units, bathroom renovations, kitchen remodeling, home renovations (flooring, stairs, trim, wainscoting, painting), restoration after flood and water damage, and commercial renovations (offices, retail, restaurants). It has a 5-star Google rating and is rated ${C.homestars.rating} on HomeStars. Phone: ${C.phoneDisplay} (call or text).
 
 ## Key facts
 - Based in: ${C.city}, Ontario, Canada

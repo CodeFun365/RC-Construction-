@@ -2,7 +2,7 @@
 
 Static website for RC Construction (Oshawa, Durham Region). No framework and no dependencies: `build.js` turns the content into plain HTML in `site/`.
 
-- 23 pages: home, 5 service pages (basements, rental units, bathrooms, kitchen remodeling, home renovations), projects, reviews, FAQ, service areas, Oshawa, about, process, 3 homeowner guides, get an estimate, thank you, contact, photo credits, 404
+- 25 pages: home, 7 service pages (basements, rental units, bathrooms, kitchen remodeling, home renovations, restoration, commercial renovations), projects, reviews, FAQ, service areas, Oshawa, about, process, 3 homeowner guides, get an estimate, thank you, contact, photo credits, 404
 - Google reviews: real reviews summarised in `REVIEWS` in `build.js` (first name + last initial, link to Google). Paste a customer's exact words into `quote` to show them in quotation marks.
 - Logo: `assets/logo.svg` (vector redraw of RC's badge, watermark removed), favicons `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, and `logo-512.png` for Google
 - Leads: every "Get an Estimate" button opens `/get-an-estimate/`, a 3-step form (project, timing and town, then name, phone, email). Each request includes where the visitor came from (Google Ads click, UTM tags or referring site) and lands on `/thank-you/`, which can be used as the Google Ads conversion page
@@ -53,4 +53,4 @@ npx wrangler pages deploy site --project-name rc-construction
 - Add the website link to the Google Business Profile and HomeStars profile
 - Add Facebook or Instagram links to `sameAs` in `config.js` when known
 
-Photos: illustrative images from Unsplash (free licence), credited on `/photo-credits/`. They must never be presented as RC's own work.
+Photos: illustrative images from Unsplash (free licence), credited on `/photo-credits/`. Every photo is used once only. Project cards carry an "Illustrative photo" label; they must never be presented as RC's own work.
