@@ -4,7 +4,7 @@
 
 module.exports = {
   // The live address of the site. Change to the real domain once it's connected in Cloudflare.
-  siteUrl: process.env.SITE_URL || 'https://rc-construction.pages.dev',
+  siteUrl: process.env.SITE_URL || 'https://rcconstruction.ca',
 
   name: 'RC Construction',
   tagline: 'Basement, bathroom and home renovations',
