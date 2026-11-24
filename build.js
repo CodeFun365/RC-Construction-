@@ -272,6 +272,7 @@ ${p.noindex ? '<meta name="robots" content="noindex">' : '<meta name="robots" co
 <meta name="twitter:card" content="summary_large_image">
 <meta name="geo.region" content="CA-ON">
 <meta name="geo.placename" content="${esc(C.city)}">
+<meta name="google-site-verification" content="4l6uIN7StFWyQ3J_raBydcakBQgxlHdrQiIF3Z5NK2U">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
