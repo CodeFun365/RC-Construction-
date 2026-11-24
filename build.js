@@ -1076,6 +1076,9 @@ Allow: /
 Sitemap: ${abs('/sitemap.xml')}
 `);
 
+// Google Search Console ownership file (property https://rcconstruction.ca/, Farid's Google account). Keep it.
+fs.writeFileSync(path.join(OUT, 'google8ab6114701ce4e98.html'), 'google-site-verification: google8ab6114701ce4e98.html');
+
 // llms.txt: a plain summary for AI assistants (GEO).
 fs.writeFileSync(path.join(OUT, 'llms.txt'), `# ${C.name}
 
