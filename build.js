@@ -273,6 +273,10 @@ ${p.noindex ? '<meta name="robots" content="noindex">' : '<meta name="robots" co
 <meta name="geo.region" content="CA-ON">
 <meta name="geo.placename" content="${esc(C.city)}">
 <meta name="google-site-verification" content="4l6uIN7StFWyQ3J_raBydcakBQgxlHdrQiIF3Z5NK2U">
+<script async src="https://www.googletagmanager.com/gtag/js?id=${C.googleAds.id}"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', '${C.googleAds.id}');
+document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a[href^="tel:"]'); if (a) gtag('event', 'conversion', { send_to: '${C.googleAds.phoneTap}' }); });${p.path === '/thank-you/' ? `
+gtag('event', 'conversion', { send_to: '${C.googleAds.formLead}' });` : ''}</script>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">

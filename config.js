@@ -32,6 +32,12 @@ module.exports = {
   warranty: true, // HomeStars profile: "Offers warranty". CONFIRM the terms before describing them.
 
   // Free form handling through https://web3forms.com: get an access key emailed to RC's inbox and paste it here.
+  // Google Ads account 919-043-7898 (Farid's). Tag + conversion labels from Goals > Conversions (Nov 2026).
+  googleAds: {
+    id: 'AW-11138710407',
+    formLead: 'AW-11138710407/-BJoCI_ap74dEIf3rL8p', // "Website lead - estimate or contact form": fires on /thank-you/
+    phoneTap: 'AW-11138710407/9HtvCJLap74dEIf3rL8p', // "Website phone tap - call button": fires on any tel: link tap
+  },
   web3formsKey: process.env.WEB3FORMS_KEY || '4f8f67bb-8d0c-48ef-ad9f-092dcb0619d3',
 
   // Other public profiles (add Facebook / Instagram / Google listing link when known).
